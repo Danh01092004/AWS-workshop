@@ -1,9 +1,9 @@
 ---
-title: "How AWS Protects Customers from DDoS Events"
+title: "Blog 1"
 date: 2023-10-10
 weight: 1
 chapter: false
-pre: "<b>Security / DDoS Protection</b>"
+pre: " <b> 3.1. </b> "
 ---
 
 # How AWS Protects Customers from DDoS Events

@@ -7,118 +7,40 @@ pre: " <b> 3.2. </b> "
 ---
 
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Secure Cloud Innovation Starts at re:Inforce 2025  
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+## Balancing Speed and Security  
+Every day, I speak with security leaders who are facing an important balance. On one hand, their organizations are moving faster than ever, adopting breakthrough technologies like **generative AI** and expanding their cloud footprint. On the other hand, they need to maintain strong security controls and visibility in an increasingly complex environment.  
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+We all know that simply adding more tools and security layers is not a sustainable path. We need a different approach that enables security to scale.  
 
----
+## re:Inforce 2025: A Security Roadmap that Accelerates Innovation  
+This is the driving force behind our vision for [**AWS re:Inforce 2025**](https://reinforce.awsevents.com). When implemented correctly, security at scale is not a barrier, but becomes a **business enabler**, helping organizations move faster and with greater confidence in the cloud.  
 
-## Architecture Guidance
+At re:Inforce, we will share our perspective on **simplifying security at scale**, based on our experience supporting millions of customers worldwide. We will explore how organizations are building inherently resilient applications that both defend against modern threats and drive innovation. I am particularly excited to showcase **real-world customer examples** and **reference architectures** that demonstrate how security can directly support business objectives.  
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+## An Immersive Cloud Security Learning Environment  
+We created **re:Inforce** as a specialized, in-person event for the security community. Unlike broad AWS events, re:Inforce provides the space to:  
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+- Dive deep into implementation details.  
+- Ask tough questions.  
+- Solve complex scenarios.  
 
-**The solution architecture is now as follows:**
+Here, you can directly engage with the engineers who built AWS security services, collaborate with security partners, or schedule one-on-one sessions with AWS leaders to address your specific needs. This is the environment where true learning happens.  
 
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+We have designed multiple **learning paths** to fit every stage of your cloud security journey. With more than **250 technical sessions**, you will find content that matches your needs — from automating security controls, aligning development and security teams, to transforming security operations.  
 
----
+Key activities include:  
+- Interactive workshops where you can build solutions on the spot.  
+- Small-group technical chalk talks.  
+- Hands-on labs to experiment with new approaches.  
+- “Solution-building” sessions with AWS experts.  
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+Importantly, **70% of the content is advanced or expert level**, ensuring the detailed implementation guidance you need.  
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+## Join Us at re:Inforce 2025  
+I invite you to join us for **three days of experience that will transform how you think about and implement cloud security**.  
 
----
+[Register today](https://registration.awsevents.com) with code **SECBLObhZzr9** to receive a limited-time $300 USD discount. Hurry, as seats are going fast based on past experience.  
 
-## Technology Choices and Communication Scope
-
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
-
----
-
-## The Pub/Sub Hub
-
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
-
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
-
----
-
-## Core Microservice
-
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
-
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
-
----
-
-## Front Door Microservice
-
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
-
----
-
-## Staging ER7 Microservice
-
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
-
----
-
-## New Features in the Solution
-
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Together, we will explore how **simple, scalable cloud security** can become the driving force for your organization’s future.  

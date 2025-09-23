@@ -1,9 +1,9 @@
 ---
-title: "Cách AWS Bảo Vệ Khách Hàng Trước Các Cuộc Tấn Công DDoS"
+title: "Blog 1"
 date: 2023-10-10
 weight: 1
 chapter: false
-pre: "<b>Bảo mật / Bảo vệ DDoS</b>"
+pre: " <b> 3.1. </b> "
 ---
 
 # Cách AWS Bảo Vệ Khách Hàng Trước Các Cuộc Tấn Công DDoS

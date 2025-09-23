@@ -6,120 +6,74 @@ chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
+# Amazon Inspector Suppression Rules: Thực hành tốt nhất cho AWS Organizations
 
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+## Thiết lập Delegated Administrator
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+Chỉ định một tài khoản AWS làm **delegated administrator** cho Amazon Inspector. Tài khoản này có thể quản lý tập trung các scans, tổng hợp findings và áp dụng suppression rules trên tất cả các tài khoản trong AWS Organization. Lợi ích bao gồm:
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+- Tầm nhìn tập trung về các lỗ hổng  
+- Thực thi chính sách nhất quán  
+- Giảm overhead quản trị  
 
----
+**Các bước:**
 
-## Hướng dẫn kiến trúc
+1. Kích hoạt AWS Organizations và thêm các tài khoản thành viên.  
+2. Gán vai trò delegated admin cho Amazon Inspector.  
+3. Xác nhận quyền truy cập và phân quyền trên các tài khoản.
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
 
-**Kiến trúc giải pháp bây giờ như sau:**
+## Suppression Rules ở quy mô lớn
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+Suppression rules giúp lọc tự động các findings rủi ro thấp, cho phép nhóm bảo mật tập trung vào các lỗ hổng quan trọng. Điểm chính:
 
----
+- Rules có thể dựa trên **thuộc tính của finding**, **tags tài nguyên** hoặc **CVSS scores**.  
+- Findings bị suppression được **lưu trữ (archived)**, không bị xóa, đảm bảo khả năng kiểm toán.  
+- Rules có thể áp dụng trên **nhiều tài khoản** thông qua delegated admin.  
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+**Ví dụ:** Suppress các findings cho EC2 instance không production, tag `Environment:Dev`, với CVSS thấp (<4).
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
 
----
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+## Tagging và Ưu tiên theo rủi ro
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Sử dụng tags nhất quán trên các tài nguyên giúp nhóm ưu tiên lỗ hổng theo tác động kinh doanh:
 
----
+- Tag theo **môi trường** (`Prod`, `Dev`, `Test`)  
+- Tag theo **chủ sở hữu ứng dụng**  
+- Tag theo **yêu cầu compliance**  
 
-## The pub/sub hub
+Amazon Inspector có thể dùng các tags này để tạo báo cáo và áp dụng suppression một cách có chọn lọc, phù hợp với ưu tiên của doanh nghiệp.
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
 
----
+## Đánh giá liên tục và cải tiến
 
-## Core microservice
+Suppression rules và cấu hình scan không phải là “thiết lập một lần rồi quên”. Giám sát liên tục đảm bảo hiệu quả:
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+1. Xem lại các findings đã suppression thường xuyên để đảm bảo rules vẫn hợp lệ.  
+2. Điều chỉnh lịch scan, phạm vi và cài đặt để phù hợp với các dịch vụ hoặc workloads mới.  
+3. Sử dụng báo cáo tổng hợp từ tài khoản delegated admin để xác định xu hướng và lỗ hổng.
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+Lợi ích:
 
----
+- Duy trì compliance với các tiêu chuẩn bảo mật  
+- Giảm “alert fatigue” cho nhóm bảo mật  
+- Đảm bảo remediation kịp thời các lỗ hổng quan trọng
 
-## Front door microservice
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+## Xem xét đa tài khoản
 
----
+Quản lý suppression rules trên nhiều tài khoản AWS cần lập kế hoạch cẩn thận:
 
-## Staging ER7 microservice
+- Sử dụng **AWS Organizations** với delegated admin để tránh trùng lặp rules.  
+- Áp dụng **mẫu kế thừa (inheritance patterns)** cho các tài khoản thành viên.  
+- Kết hợp chiến lược tagging với suppression rules để target cụ thể các tài khoản hoặc workloads.  
 
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+Cách tiếp cận này đảm bảo **chính sách bảo mật nhất quán**, đồng thời cho phép mở rộng và linh hoạt cho tổ chức đang phát triển.
 
----
+## Kết luận
 
-## Tính năng mới trong giải pháp
-
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Bằng cách tận dụng **delegated admin, suppression rules, tagging và đánh giá liên tục**, các tổ chức có thể quản lý lỗ hổng hiệu quả ở quy mô lớn bằng Amazon Inspector. Thực hành tốt nhất này đảm bảo nhóm bảo mật tập trung vào các vấn đề quan trọng trong khi vẫn duy trì khả năng kiểm toán và compliance trên tất cả tài khoản AWS.
