@@ -1,7 +1,7 @@
 ---
 title: "Week 4 Worklog"
 date: 2025-01-01
-weight: 1
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
@@ -9,47 +9,23 @@ pre: " <b> 1.4. </b> "
 
 
 ### Week 4 Objectives:
+* Understand and practice with Amazon S3 (static website hosting, public access, versioning, CloudFront).  
+* Understand and practice with Amazon RDS (create DB, backup/restore, VPC/Subnet/SG configuration, cleanup).  
+* Compare using AWS Console vs AWS CLI for managing resources.  
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### Tasks & Progress:
+| Day | Task                                                                                                                                                                                                                          | Start Date | Completion Date | Reference Material |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------- | ------------------ |
+| 2 | - Review S3 lab overview <br> - Understand steps: create bucket, enable static website, configure public access, versioning, cleanup <br> - Prepare AWS Free Tier account for practice | 29/09/2025 | 29/09/2025 | <https://000057.awsstudygroup.com/vi/> |
+| 3 | - Started with Amazon S3 <br> + Create S3 bucket <br> + Upload objects <br> + Enable static website hosting <br> + Configure Block Public Access & object permissions <br> + Test website <br> + Configure CloudFront <br> + Enable versioning <br> + Copy objects to another region <br> + Cleanup resources | 30/09/2025 | 30/09/2025 | <https://000057.awsstudygroup.com/vi/> |
+| 4 | - Review RDS lab overview <br> - Learn steps: create VPC, Subnet, Security Groups, DB Subnet Group, RDS instance, backup/restore, cleanup | 01/10/2025 | 01/10/2025 | <https://000005.awsstudygroup.com/vi/> |
+| 5 | - Started with Amazon RDS <br> + Create VPC <br> + Create EC2 & RDS security groups <br> + Create DB Subnet Group <br> + Launch RDS DB instance <br> + Backup & restore DB <br> + Test DB endpoint <br> + Cleanup resources | 02/10/2025 | 02/10/2025 | <https://000005.awsstudygroup.com/vi/> |
+| 6 | - Practice AWS CLI commands for S3 and RDS: <br> + Create and list S3 buckets via CLI <br> + Upload/download objects via CLI <br> + Describe and connect to RDS instance via CLI <br> - Document differences between Console and CLI workflows | 03/10/2025 | 03/10/2025 | <https://000057.awsstudygroup.com/vi/>, <https://000005.awsstudygroup.com/vi/> |
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
-
-### Week 4 Achievements:
-
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+### Week Achievements:
+* Successfully hosted a static website on Amazon S3 with CloudFront and versioning.  
+* Learned to manage object permissions and configure public access in S3.  
+* Gained hands-on experience creating and managing Amazon RDS DB instances with networking setup (VPC, Subnets, Security Groups).  
+* Practiced backup & restore operations for RDS.  
+* Cleaned up all resources properly to avoid unnecessary costs.  
+* Compared AWS Console vs AWS CLI workflows and noted pros/cons for each approach.  

@@ -26,28 +26,19 @@ pre: " <b> 1.1. </b> "
 ### Week 1 Achievements:
 
 - Became acquainted with FCJ members.
-
 - Read and took notes on the internship unit’s rules and regulations.
-
 - Learned about AWS and its main service categories: 
   - Compute
   - Storage
   - Networking
   - Database
   - AWS Overview
-
 - Created an AWS Free Tier account.
-
 - Explored the AWS Management Console and AWS CLI.
-
 - Created a Budget template and studied Cost Budget, Usage Budget, Reservation Instance, and Savings Plan Budget.
-
 - Set up MFA (Virtual MFA device), created an Admin group and Admin user, and supported account authentication.
-
 - Learned about AWS VPC (VPC Security, Multi-VPC features, DirectConnect, Load Balancer, Extra resources).
-
 - Hands-on practice:
   - Created VPC, Subnet, Internet Gateway, Route Table, Security Groups, NAT Gateway.
   - Launched and connected EC2 Instances within Subnets.
-
 - Practiced launching an EC2 instance, connecting via SSH, and attaching an EBS volume.

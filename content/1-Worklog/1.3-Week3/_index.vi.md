@@ -6,52 +6,31 @@ chapter: false
 pre: " <b> 1.3. </b> "
 ---
 
-
-
 ### Mục tiêu tuần 3:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Học và thực hành với Amazon VPC (mạng cơ bản, subnet, bảng định tuyến, security groups).  
+* Thực hành với EC2 instances: khởi tạo, kết nối bằng SSH, gắn thêm bộ nhớ.  
+* Hiểu về EBS, Elastic IP và cấu hình Security Group.  
+* Kết hợp AWS Console và CLI để quản lý mạng và lưu trữ của EC2.  
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+### Nhiệm vụ trong tuần:
+| Ngày | Nhiệm vụ                                                                                                                                                                                                  | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo                        |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------------- | ----------------------------------------- |
+| 2 | - Đọc qua các yêu cầu trong hướng dẫn lab <br> - Hiểu cơ sở hạ tầng toàn cầu của AWS (Regions, AZs, VPC) <br> - Ôn tập các khái niệm mạng cơ bản (subnet, bảng định tuyến, gateway) | 22/09/2025 | 22/09/2025 | <https://000003.awsstudygroup.com/vi/> |
+| 3 | - Học cách tạo VPC tùy chỉnh <br>&emsp; + Xác định CIDR block <br>&emsp; + Thêm subnet công khai & riêng tư <br>&emsp; + Cấu hình bảng định tuyến & internet gateway <br>&emsp; + Gắn subnet | 23/09/2025 | 23/09/2025 | <https://000004.awsstudygroup.com/vi/> |
+| 4 | - Khám phá mạng của EC2: <br>&emsp; + Security Groups (luồng vào & luồng ra) <br>&emsp; + Key pairs cho SSH <br> - Chuẩn bị môi trường để khởi tạo EC2 Linux instance | 24/09/2025 | 24/09/2025 | <https://000004.awsstudygroup.com/vi/> |
+| 5 | - Thực hành khởi tạo EC2: <br>&emsp; + Chọn AMI (Amazon Linux/Ubuntu) <br>&emsp; + Chọn loại instance (t2.micro) <br>&emsp; + Cấu hình mạng (VPC, subnet, SG) <br>&emsp; + Gán Elastic IP <br> - Kiểm tra kết nối SSH | 25/09/2025 | 25/09/2025 | <https://000004.awsstudygroup.com/vi/> |
+| 6 | - Làm việc với bộ nhớ: <br>&emsp; + Tạo và gắn thêm EBS volume <br>&emsp; + Định dạng và mount volume <br> - Kiểm tra trạng thái instance & kết nối qua Console & CLI <br> - Dọn dẹp tài nguyên (xóa EC2, giải phóng Elastic IP, xóa volume) | 26/09/2025 | 26/09/2025 | <https://000004.awsstudygroup.com/vi/> |
 
 ### Kết quả đạt được tuần 3:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Hiểu cơ sở hạ tầng toàn cầu của AWS (Regions, AZs, và VPC).  
+* Tạo thành công một VPC tùy chỉnh với subnet, bảng định tuyến và internet gateway.  
+* Học cách cấu hình Security Groups và quản lý luồng vào/ra.  
+* Khởi tạo thành công một Linux EC2 instance với cấu hình mạng phù hợp.  
+* Thực hành kết nối EC2 bằng SSH với key pair.  
+* Gán và kiểm tra Elastic IP để có địa chỉ công cộng ổn định.  
+* Gắn, định dạng và mount một EBS volume để mở rộng bộ nhớ.  
+* Kiểm tra trạng thái instance và tài nguyên bằng cả AWS Console và CLI.  
+* Thực hành dọn dẹp tài nguyên đúng cách: xóa EC2, giải phóng Elastic IP, xóa EBS volume.  
+* Xây dựng nền tảng vững chắc về AWS networking (VPC) và compute (EC2).  

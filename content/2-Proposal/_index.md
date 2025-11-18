@@ -7,107 +7,164 @@ pre: " <b> 2. </b> "
 ---
 
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
-
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+# Mini Food Social  
+## A Serverless Social Platform with AI-Powered Recipe Generation
 
 ### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+The **Mini Food Social** project is designed as a modern, serverless web application for culinary enthusiasts to share food posts, upload images, and generate AI-based recipe suggestions. The platform supports up to **100 registered users** with authentication, CRUD functionality (create, read, update, delete posts), likes, comments, and AI integration.  
+
+The system leverages **AWS Serverless Architecture** for scalability, low cost, and simplicity. The combination of **AWS Amplify**, **Amazon API Gateway**, **AWS Lambda**, **Amazon DynamoDB**, and **Amazon Bedrock** ensures end-to-end functionality with minimal operational overhead.
+
+**AWS Services Used**
+- **AWS Amplify**: Hosts Next.js web app and manages CI/CD.  
+- **Amazon API Gateway**: Routes requests between frontend and backend.  
+- **AWS Lambda**: Handles business logic and API endpoints.  
+- **Amazon DynamoDB**: Stores user posts, likes, and comments.  
+- **Amazon Cognito**: Manages user authentication.  
+- **Amazon Bedrock (Claude Model)**: Generates creative recipes from user prompts.  
+- **Amazon CloudFront + WAF + Route 53**: Ensures fast, secure content delivery.  
+
+**Estimated Cost:** ~$16.70/month (~$200.40/year) without free tier.
+
+---
 
 ### 2. Problem Statement
 ### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+Existing recipe-sharing platforms are either static or rely on heavy infrastructure. They often lack:
+- Personalized AI recipe generation.
+- Serverless scalability and cost optimization.
+- Secure authentication and lightweight architecture.
+
+Managing infrastructure for dynamic social features like posts, likes, and AI generation requires significant effort and cost.
 
 ### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+Mini Food Social solves these issues through **a fully serverless AWS stack**:
+- AWS Amplify + Next.js for hosting and frontend logic.  
+- Cognito for authentication and user management.  
+- API Gateway connects to multiple Lambda functions (Post CRUD, User, AI Recipe).  
+- DynamoDB stores post metadata and user interactions.  
+- Bedrock (Claude) provides AI recipe generation via Lambda.  
+- CloudFront + WAF + Route 53 secure the content globally.  
 
 ### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+- **Low Cost** – Pay only for usage.  
+- **Fully Serverless** – No manual scaling or servers.  
+- **AI-Enhanced Engagement** – Personalized recipe generation keeps users active.  
+- **Secure** – Cognito authentication and data encryption by AWS.  
+
+The project demonstrates scalable social architecture under $20/month while integrating AI seamlessly into user experience.
+
+---
 
 ### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+The Mini Food Social platform follows a **five-layer architecture**:
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+1. **Frontend (Amplify + Next.js)**:  
+   - Users upload photos, create posts, and view feeds.  
+   - Handles authentication via Cognito and fetches API data.  
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+2. **API Gateway + Lambda Router**:  
+   - Routes requests (CRUD operations, AI requests).  
+   - Lambda functions handle `createPost`, `getPosts`, `likePost`, and `generateRecipe`.  
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
+3. **Database (DynamoDB)**:  
+   - Stores users, posts, likes, and recipe results.  
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+4. **AI Integration (Bedrock)**:  
+   - Claude model generates creative recipes based on user-uploaded photos or text prompts.  
+
+5. **Security & Delivery Layer (CloudFront + WAF + Route 53)**:  
+   - Protects the app from malicious traffic.  
+   - Ensures low-latency delivery of assets.
+
+**Architecture Diagram**
+<img src="/images/2-Proposal/Untitled Diagram.drawio.png" alt="Your profile picture" width="800" height="500" />
+
+---
 
 ### 4. Technical Implementation
 **Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+
+- **Phase 1 – Research & Design (Month 0)**  
+  - Define system requirements and AWS architecture.  
+  - Study Bedrock integration for recipe generation.  
+
+- **Phase 2 – Setup & Pricing (Month 1)**  
+  - Use AWS Pricing Calculator to estimate total cost (~$16.70/month).  
+  - Create GitLab repository and Amplify CI/CD pipeline.  
+
+- **Phase 3 – Build & Integration (Month 2)**  
+  - Develop Lambda APIs for CRUD and AI recipe endpoints.  
+  - Configure DynamoDB tables and Cognito authentication flow.  
+
+- **Phase 4 – Deployment & Testing (Month 3)**  
+  - Deploy Amplify frontend and backend stack.  
+  - Test API integration, AI outputs, and security.  
 
 **Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+- **Frontend:** Next.js + AWS Amplify.  
+- **Backend:** AWS Lambda, API Gateway, DynamoDB.  
+- **AI Module:** AWS Lambda calling Amazon Bedrock (Claude) for text generation.  
+- **Auth:** Amazon Cognito for login and JWT verification.  
+- **Storage:** DynamoDB + optional S3 for image upload.  
+
+---
 
 ### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+| Phase | Duration | Description |
+|-------|-----------|-------------|
+| Month 0 | 1 month | Design system & architecture |
+| Month 1 | 1 month | Pricing & setup of AWS Amplify + Cognito |
+| Month 2 | 1 month | Develop API Gateway + Lambda + Bedrock integration |
+| Month 3 | 1 month | Testing, deployment, and optimization |
+| Post-Launch | Ongoing | Monitor, improve AI model prompts, collect feedback |
+
+---
 
 ### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+You can find the full budget on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=abcd1234efgh5678).  
+Or download the [Budget Estimation File](../attachments/budget_estimation_mfs.pdf).
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+#### Infrastructure Costs
+| Service | Monthly Estimate | Description |
+|----------|------------------|--------------|
+| AWS Amplify | $3.00 | Web hosting & CI/CD |
+| API Gateway | $2.50 | 20,000 requests/month |
+| AWS Lambda | $2.00 | 50,000 invocations/month |
+| DynamoDB | $1.20 | 1 GB storage |
+| Cognito | $1.00 | 100 active users |
+| Bedrock (Claude) | $5.00 | 500 AI recipe generations |
+| CloudFront + WAF | $2.00 | CDN and basic firewall |
 
-Total: $0.7/month, $8.40/12 months
+**Total Monthly:** ~$16.70  
+**Total Annual:** ~$200.40  
 
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+---
 
 ### 7. Risk Assessment
 #### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
-
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
+| Risk | Impact | Probability | Mitigation |
+|------|---------|--------------|-------------|
+| High Bedrock Cost | Medium | Medium | Limit AI calls per user/day |
+| API Gateway Bottlenecks | Medium | Low | Use caching and CloudFront |
+| DynamoDB Hot Partition | Medium | Low | Implement balanced keys |
+| Authentication Issues | Medium | Low | Use Cognito token refresh and multi-region backup |
+| Over-usage | Low | Medium | Apply API throttling and budget alerts |
 
 #### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
+- Use fallback recipe templates if Bedrock API fails.  
+- Migrate to DynamoDB on-demand mode for scalability.  
+- Enable AWS Cost Explorer alerts for budget control.
+
+---
 
 ### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+#### Technical Improvements
+- Serverless architecture allows instant scalability.  
+- AI integration enriches user interaction and creativity.  
+- Minimal maintenance and infrastructure management.  
+
+#### Long-Term Value
+- Demonstrates AWS serverless and AI integration for education and startup use.  
+- Reusable for future projects (social, content, or AI-based apps).  
+- Foundation for AI-driven user personalization and recommendation systems.

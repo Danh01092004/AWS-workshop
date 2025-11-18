@@ -1,7 +1,7 @@
 ---
 title: "Week 3 Worklog"
 date: 2025-01-01
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
@@ -10,46 +10,29 @@ pre: " <b> 1.3. </b> "
 
 ### Week 3 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Learn and practice with Amazon VPC (basic networking, subnets, route tables, security groups).  
+* Get hands-on with EC2 instances: launch, connect via SSH, attach storage.  
+* Understand EBS, Elastic IP, and Security Group configurations.  
+* Combine AWS Console and CLI to manage EC2 networking and storage resources.  
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task                                                                                                                                                                                                  | Start Date | Completion Date | Reference Material                        |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------- | ----------------------------------------- |
+| 2 | - Read through prerequisites in lab guide <br> - Understand AWS global infrastructure (Regions, AZs, VPC) <br> - Review basic networking concepts (subnets, route tables, gateways) | 09/22/2025 | 09/22/2025 | <https://000003.awsstudygroup.com/vi/> |
+| 3 | - Learn how to create a custom VPC <br>&emsp; + Define CIDR block <br>&emsp; + Add public & private subnets <br>&emsp; + Configure route tables & internet gateway <br>&emsp; + Associate subnets | 09/23/2025 | 09/23/2025 | <https://000004.awsstudygroup.com/vi/> |
+| 4 | - Explore EC2 networking: <br>&emsp; + Security Groups (inbound & outbound rules) <br>&emsp; + Key pairs for SSH <br> - Prepare environment for launching Linux EC2 instance | 09/24/2025 | 09/24/2025 | <https://000004.awsstudygroup.com/vi/> |
+| 5 | - Practice EC2 launch: <br>&emsp; + Choose AMI (Amazon Linux/Ubuntu) <br>&emsp; + Select instance type (t2.micro) <br>&emsp; + Configure networking (VPC, subnet, SG) <br>&emsp; + Assign Elastic IP <br> - Test SSH connectivity | 09/25/2025 | 09/25/2025 | <https://000004.awsstudygroup.com/vi/> |
+| 6 | - Work with storage: <br>&emsp; + Create and attach additional EBS volume <br>&emsp; + Format and mount the volume <br> - Verify instance status & connectivity via Console & CLI <br> - Cleanup resources (terminate EC2, release Elastic IP, delete volumes) | 09/26/2025 | 09/26/2025 | <https://000004.awsstudygroup.com/vi/> |
 
 ### Week 3 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Understood AWS global infrastructure (Regions, AZs, and VPC).  
+* Successfully created a custom VPC with subnets, route tables, and an internet gateway.  
+* Learned to configure Security Groups and manage inbound/outbound rules.  
+* Launched a Linux EC2 instance with proper networking setup.  
+* Practiced connecting to EC2 via SSH using key pairs.  
+* Assigned and tested Elastic IP for stable public access.  
+* Attached, formatted, and mounted an EBS volume to extend storage.  
+* Verified instance status and resources using both AWS Console and CLI.  
+* Practiced proper cleanup: terminating EC2, releasing Elastic IP, and deleting EBS volumes.  
+* Built solid foundational skills for AWS networking (VPC) and compute (EC2).  

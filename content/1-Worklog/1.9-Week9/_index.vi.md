@@ -7,51 +7,43 @@ pre: " <b> 1.9. </b> "
 ---
 
 
+### Mục tiêu Tuần 9:
 
-### Mục tiêu tuần 9:
+* Học cách thiết kế CI/CD pipeline an toàn và có khả năng mở rộng.
+* Xây dựng quy trình triển khai ứng dụng bằng AWS CodePipeline, CodeBuild và CodeDeploy.
+* Tích hợp GitHub hoặc CodeCommit làm nguồn mã.
+* Tự động hóa việc triển khai ứng dụng lên EC2 và Lambda.
+* Tăng cường bảo mật pipeline và thêm các bước kiểm thử tự động.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Các nhiệm vụ thực hiện trong tuần:
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ----- | ---------- | --------------- | ------------------ |
+| 2 | - Tìm hiểu khái niệm CI/CD trên AWS.<br> - Hiểu cách CodePipeline điều phối các bước build → test → deploy.<br> - **Thực hành:** <br>&emsp; + Tạo một CodePipeline đơn giản với GitHub làm nguồn mã.<br><br>→ Nắm được kiến thức nền tảng về tự động hóa CI/CD. | 03/11/2025 | 03/11/2025 | AWS Study Group |
+| 3 | - Học AWS CodeBuild để build và kiểm thử ứng dụng.<br> - **Thực hành:** <br>&emsp; + Viết file buildspec.yml.<br>&emsp; + Chạy build tự động và unit test.<br><br>→ Hiểu rõ cách tự động hóa build và cấu hình môi trường. | 04/11/2025 | 04/11/2025 | AWS Study Group |
+| 4 | - Làm việc với AWS CodeDeploy để tự động triển khai ứng dụng.<br> - **Thực hành:** <br>&emsp; + Tạo deployment group cho EC2.<br>&emsp; + Triển khai ứng dụng bằng AppSpec.<br>&emsp; + Thử triển khai in-place và blue/green.<br><br>→ Hiểu rõ cách tự động deploy lên EC2. | 05/11/2025 | 05/11/2025 | AWS Study Group |
+| 5 | - Tích hợp triển khai Lambda vào CodePipeline.<br> - **Thực hành:** <br>&emsp; + Deploy hàm Lambda bằng CodeDeploy.<br>&emsp; + Kiểm thử chiến lược triển khai Linear và Canary.<br><br>→ Xây dựng CI/CD cho ứng dụng serverless. | 06/11/2025 | 06/11/2025 | AWS Study Group |
+| 6 | - Thêm bảo mật và giám sát cho pipeline.<br> - **Thực hành:** <br>&emsp; + Bật CloudWatch và SNS notifications.<br>&emsp; + Cấu hình IAM cho từng stage trong pipeline.<br>&emsp; + Thêm bước test/approval để triển khai an toàn hơn.<br><br>→ Tăng tính tin cậy và khả năng quản trị của CI/CD pipeline. | 07/11/2025 | 07/11/2025 | AWS Study Group |
 
+### Thành tựu Tuần 9:
 
-### Kết quả đạt được tuần 9:
+* **Kiến thức nền tảng về CI/CD Pipeline**
+  * Hiểu quy trình CI/CD: source → build → test → deploy.
+  * Xây dựng thành công CodePipeline đầu tiên tích hợp GitHub.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* **Tự động hóa Build (CodeBuild)**
+  * Viết đầy đủ file buildspec.yml phục vụ build & test tự động.
+  * Chạy build thành công trong môi trường cách ly của CodeBuild.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* **Tự động triển khai (CodeDeploy)**
+  * Cấu hình deployment group cho EC2 và triển khai theo kiểu In-place & Blue/Green.
+  * Hiểu rõ vai trò của AppSpec và các lifecycle hook.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* **Triển khai Serverless**
+  * Tự động triển khai Lambda bằng CodeDeploy.
+  * Kiểm thử các chiến lược rollout an toàn như **Linear** & **Canary**.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* **Bảo mật & Quản trị Pipeline**
+  * Thêm bước phê duyệt, phân quyền IAM chi tiết cho từng stage.
+  * Theo dõi pipeline bằng CloudWatch & SNS.
+  * Cải thiện độ ổn định và an toàn của toàn bộ CI/CD workflow.

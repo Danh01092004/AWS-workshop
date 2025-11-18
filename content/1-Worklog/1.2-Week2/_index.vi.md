@@ -7,6 +7,7 @@ pre: " <b> 1.2. </b> "
 ---
 
 
+
 ### Mục tiêu tuần 2:
 
 * Kết nối, làm quen với các thành viên trong First Cloud Journey.
@@ -29,8 +30,6 @@ pre: " <b> 1.2. </b> "
   * Compute (EC2, Lambda, Auto Scaling)
   * Storage (S3, EBS, EFS)
   * Networking (VPC, Route 53, VPN, Security Groups)
-  * Database (RDS, DynamoDB)
-  * Monitoring & Management (CloudWatch, CloudTrail)
 * Successfully created and fully configured an AWS Free Tier account.
 * Became familiar with the AWS Management Console: locating services, navigating dashboards, accessing features.
 * Installed and configured AWS CLI with:

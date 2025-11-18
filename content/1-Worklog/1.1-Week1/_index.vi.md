@@ -26,39 +26,30 @@ pre: " <b> 1.1. </b> "
 ### Kết quả đạt được tuần 1:
 
 - Làm quen với các thành viên FCJ.
-
 - Đọc và ghi chú nội quy, quy định của đơn vị thực tập.
-
 - Tìm hiểu về AWS và các nhóm dịch vụ chính:
   - Compute (tính toán)
   - Storage (lưu trữ)
   - Networking (mạng)
   - Database (cơ sở dữ liệu)
   - Tổng quan AWS
-
 - Tạo tài khoản AWS Free Tier.
-
 - Khám phá AWS Management Console và AWS CLI.
-
 - Tạo mẫu Budget và tìm hiểu về:
   - Cost Budget
   - Usage Budget
   - Reserved Instance
   - Savings Plan Budget
-
 - Thiết lập MFA (Virtual MFA device), tạo nhóm Admin và người dùng Admin, đồng thời cấu hình xác thực tài khoản.
-
 - Học về AWS VPC:
   - VPC Security
   - Multi-VPC features
   - DirectConnect
   - Load Balancer
   - Extra resources
-
 - **Thực hành:**
   - Tạo VPC, Subnet, Internet Gateway, Route Table, Security Groups, NAT Gateway.
   - Khởi chạy và kết nối EC2 Instances trong các Subnet.
-
 - Thực hành khởi chạy EC2 instance, kết nối qua SSH và gắn EBS volume.
 
 
