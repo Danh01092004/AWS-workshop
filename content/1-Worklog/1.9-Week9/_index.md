@@ -19,11 +19,11 @@ pre: " <b> 1.9. </b> "
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ----- | ---------- | --------------- | ------------------ |
-| 2 | - Study concepts of CI/CD pipelines on AWS.<br> - Understand how CodePipeline orchestrates build → test → deploy.<br> - **Practice:** <br>&emsp; + Create a simple CodePipeline with GitHub as the source.<br><br>→ Gain foundational understanding of CI/CD automation. | 03/11/2025 | 03/11/2025 | AWS Study Group |
-| 3 | - Learn AWS CodeBuild for building and testing applications.<br> - **Practice:** <br>&emsp; + Write a buildspec.yml file.<br>&emsp; + Run automated builds and unit tests.<br><br>→ Understand build automation and environment configuration. | 04/11/2025 | 04/11/2025 | AWS Study Group |
-| 4 | - Work with AWS CodeDeploy for deployment automation.<br> - **Practice:** <br>&emsp; + Create an EC2 deployment group.<br>&emsp; + Deploy application revisions using AppSpec.<br>&emsp; + Test in-place and blue/green deployments.<br><br>→ Learn automated deployment to EC2. | 05/11/2025 | 05/11/2025 | AWS Study Group |
-| 5 | - Integrate Lambda deployments into CodePipeline.<br> - **Practice:** <br>&emsp; + Deploy Lambda functions using CodeDeploy Lambda.<br>&emsp; + Test linear and canary deployment strategies.<br><br>→ Implement CI/CD for serverless workloads. | 06/11/2025 | 06/11/2025 | AWS Study Group |
-| 6 | - Add pipeline security and monitoring.<br> - **Practice:** <br>&emsp; + Enable CloudWatch and SNS notifications.<br>&emsp; + Configure IAM permissions for pipeline stages.<br>&emsp; + Add test/approval stages for safer deployments.<br><br>→ Improve CI/CD reliability and governance. | 07/11/2025 | 07/11/2025 | AWS Study Group |
+| 2 | - Study concepts of CI/CD pipelines on AWS.<br> - Understand how CodePipeline orchestrates build → test → deploy.<br> - **Practice:** <br>&emsp; + Create a simple CodePipeline with GitHub as the source.<br>| 03/11/2025 | 03/11/2025 | AWS Study Group |
+| 3 | - Learn AWS CodeBuild for building and testing applications.<br> - **Practice:** <br>&emsp; + Write a buildspec.yml file.<br>&emsp; + Run automated builds and unit tests.<br>| 04/11/2025 | 04/11/2025 | AWS Study Group |
+| 4 | - Work with AWS CodeDeploy for deployment automation.<br> - **Practice:** <br>&emsp; + Create an EC2 deployment group.<br>&emsp; + Deploy application revisions using AppSpec.<br>&emsp; + Test in-place and blue/green deployments.<br>| 05/11/2025 | 05/11/2025 | AWS Study Group |
+| 5 | - Integrate Lambda deployments into CodePipeline.<br> - **Practice:** <br>&emsp; + Deploy Lambda functions using CodeDeploy Lambda.<br>&emsp; + Test linear and canary deployment strategies.<br>| 06/11/2025 | 06/11/2025 | AWS Study Group |
+| 6 | - Add pipeline security and monitoring.<br> - **Practice:** <br>&emsp; + Enable CloudWatch and SNS notifications.<br>&emsp; + Configure IAM permissions for pipeline stages.<br>&emsp; + Add test/approval stages for safer deployments.<br>| 07/11/2025 | 07/11/2025 | AWS Study Group |
 
 ### Week 9 Achievements:
 

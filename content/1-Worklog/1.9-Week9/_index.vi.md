@@ -19,11 +19,11 @@ pre: " <b> 1.9. </b> "
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ----- | ---------- | --------------- | ------------------ |
-| 2 | - Tìm hiểu khái niệm CI/CD trên AWS.<br> - Hiểu cách CodePipeline điều phối các bước build → test → deploy.<br> - **Thực hành:** <br>&emsp; + Tạo một CodePipeline đơn giản với GitHub làm nguồn mã.<br><br>→ Nắm được kiến thức nền tảng về tự động hóa CI/CD. | 03/11/2025 | 03/11/2025 | AWS Study Group |
-| 3 | - Học AWS CodeBuild để build và kiểm thử ứng dụng.<br> - **Thực hành:** <br>&emsp; + Viết file buildspec.yml.<br>&emsp; + Chạy build tự động và unit test.<br><br>→ Hiểu rõ cách tự động hóa build và cấu hình môi trường. | 04/11/2025 | 04/11/2025 | AWS Study Group |
-| 4 | - Làm việc với AWS CodeDeploy để tự động triển khai ứng dụng.<br> - **Thực hành:** <br>&emsp; + Tạo deployment group cho EC2.<br>&emsp; + Triển khai ứng dụng bằng AppSpec.<br>&emsp; + Thử triển khai in-place và blue/green.<br><br>→ Hiểu rõ cách tự động deploy lên EC2. | 05/11/2025 | 05/11/2025 | AWS Study Group |
-| 5 | - Tích hợp triển khai Lambda vào CodePipeline.<br> - **Thực hành:** <br>&emsp; + Deploy hàm Lambda bằng CodeDeploy.<br>&emsp; + Kiểm thử chiến lược triển khai Linear và Canary.<br><br>→ Xây dựng CI/CD cho ứng dụng serverless. | 06/11/2025 | 06/11/2025 | AWS Study Group |
-| 6 | - Thêm bảo mật và giám sát cho pipeline.<br> - **Thực hành:** <br>&emsp; + Bật CloudWatch và SNS notifications.<br>&emsp; + Cấu hình IAM cho từng stage trong pipeline.<br>&emsp; + Thêm bước test/approval để triển khai an toàn hơn.<br><br>→ Tăng tính tin cậy và khả năng quản trị của CI/CD pipeline. | 07/11/2025 | 07/11/2025 | AWS Study Group |
+| 2 | - Tìm hiểu khái niệm CI/CD trên AWS.<br> - Hiểu cách CodePipeline điều phối các bước build → test → deploy.<br> - **Thực hành:** <br>&emsp; + Tạo một CodePipeline đơn giản với GitHub làm nguồn mã.<br>| 03/11/2025 | 03/11/2025 | AWS Study Group |
+| 3 | - Học AWS CodeBuild để build và kiểm thử ứng dụng.<br> - **Thực hành:** <br>&emsp; + Viết file buildspec.yml.<br>&emsp; + Chạy build tự động và unit test.<br>| 04/11/2025 | 04/11/2025 | AWS Study Group |
+| 4 | - Làm việc với AWS CodeDeploy để tự động triển khai ứng dụng.<br> - **Thực hành:** <br>&emsp; + Tạo deployment group cho EC2.<br>&emsp; + Triển khai ứng dụng bằng AppSpec.<br>&emsp; + Thử triển khai in-place và blue/green.<br>| 05/11/2025 | 05/11/2025 | AWS Study Group |
+| 5 | - Tích hợp triển khai Lambda vào CodePipeline.<br> - **Thực hành:** <br>&emsp; + Deploy hàm Lambda bằng CodeDeploy.<br>&emsp; + Kiểm thử chiến lược triển khai Linear và Canary.<br>| 06/11/2025 | 06/11/2025 | AWS Study Group |
+| 6 | - Thêm bảo mật và giám sát cho pipeline.<br> - **Thực hành:** <br>&emsp; + Bật CloudWatch và SNS notifications.<br>&emsp; + Cấu hình IAM cho từng stage trong pipeline.<br>&emsp; + Thêm bước test/approval để triển khai an toàn hơn.<br>| 07/11/2025 | 07/11/2025 | AWS Study Group |
 
 ### Thành tựu Tuần 9:
 

@@ -10,46 +10,36 @@ pre: " <b> 1.12. </b> "
 
 ### Week 12 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Learn and practice AWS data services including S3, Glue, Athena, DynamoDB, QuickSight, EMR, DataBrew, Kinesis, and Lambda.  
+* Understand how to build serverless, event-driven architectures and transform, analyze, and visualize data in AWS.  
+* Gain hands-on experience with dataset management, dashboard creation, and cost & resource management.
+
+
 
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Create S3 Bucket <br> - Create Sample Data <br> - Create Glue Crawler <br> - Data Check| 24/11/2025 | 24/11/2025      |  AWS Study Group  |
+| 3   | - S3 store output, Session connect setup <br> - Analysis with Athena,Visualize with QuickSight <br>&emsp; + Hand-on Labs for Amazon <br>&emsp; + Explore dynamoDB, dynamoDB console <br>&emsp; + Back up + Clean up | 25/11/2025 | 25/11/2025      |  AWS Study Group  |
+| 4   | - Advanced Design Patterns for Amazon DynamoDB <br> - Build a Serverless Event Driven Architecture with DynamoDB <br>&emsp;  + Preparing the database + Building a database <br>&emsp; + Data in the table <br>&emsp; + Cost + Tagging And Cost Allocation + Usage + Addition result query <br>&emsp; + Clean up resource | 26/11/2025 | 26/11/2025       |  AWS Study Group  |
+| 5   | - Cloushell 2.2 + Console + SDK <br>&emsp; + Creating a Cloud9 Instance <br>&emsp; + Download Dataset + Upload Dataset to S3 + Setting up DataBrew <br>&emsp; + Clean & Tranform data| 27/11/2025 | 27/11/2025       |  AWS Study Group  |
+| 6   | - **Practice:** <br>&emsp; + Tranform Data with AWS Glue , AWS Glue DataBrew <br>&emsp; + Tranform Data with EMR + Analysis with Athena <br>&emsp; + Analysis with Kinesis Data Analtytics <br>&emsp; + Visualize in QuickSight + Serve with Lambda <br>&emsp; + Build Dashboard <br>&emsp; + Dashboard Improvemnts + Create Interactive Dashboard | 28/11/2025 | 28/11/2025 |  AWS Study Group  |
 
 
 ### Week 12 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+**1. AWS Data Storage & Management**  
+- Created and managed S3 buckets with sample data.  
+- Built Glue Crawlers and prepared datasets for analysis.  
+- Explored DynamoDB, designed database patterns, and implemented serverless event-driven architecture.  
 
-* Successfully created and configured an AWS Free Tier account.
+**2. Data Transformation & Analysis**  
+- Used AWS Glue, DataBrew, and EMR to transform datasets.  
+- Analyzed data with Athena and Kinesis Data Analytics.  
+- Practiced uploading, backing up, and cleaning datasets.  
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+**3. Visualization & Serverless Integration**  
+- Built dashboards and visualizations using QuickSight.  
+- Integrated Lambda for data serving and interactivity.  
+- Learned to manage costs, tags, and resource allocation efficiently.  
+- Improved ability to combine AWS Console and CLI for parallel management of resources.

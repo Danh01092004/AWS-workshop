@@ -8,50 +8,34 @@ pre: " <b> 1.11. </b> "
 
 
 
-### Mục tiêu tuần 11:
+### Week 11 Objectives:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Học và hiểu các dịch vụ bảo mật của AWS và mô hình Shared Responsibility.  
+* Thực hành quản lý IAM, Cognito, Security Hub, Key Management Service và AWS Organizations.  
+* Trải nghiệm thực hành tạo và quản lý VPC, Security Group, EC2 instance, Lambda role và tag cho tài nguyên.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks to be carried out this week:
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---- | ---------- | --------------- | ----------------- |
+| 2   | - Mô hình Shared Responsibility <br> - Quản lý danh tính và quyền truy cập AWS (IAM) <br> - Amazon Cognito <br> - AWS Organizations, Identity Center, Security Hub <br> - Amazon Key Management Service | 17/11/2025 | 17/11/2025 | AWS Study Group |
+| 3   | - **Thực hành:** <br>&emsp; + Bật Security Hub <br>&emsp; + Đánh giá điểm số theo từng tiêu chí <br>&emsp; + Dọn dẹp tài nguyên | 18/11/2025 | 18/11/2025 | AWS Study Group |
+| 4   | - Tạo VPC <br>&emsp; + Tạo Security Group <br>&emsp; + Tạo EC2 instance <br>&emsp; + Cấu hình Incoming Web-hooks clack <br>&emsp; + Tạo Tag cho instance <br>&emsp; + Tạo Role cho Lambda | 19/11/2025 | 19/11/2025 | AWS Study Group |
+| 5   | - Kiểm tra kết quả <br>&emsp; + Tính năng dừng instance <br>&emsp; + Tính năng khởi động instance <br>&emsp; + Dọn dẹp tài nguyên | 20/11/2025 | 20/11/2025 | AWS Study Group |
+| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance có tag <br>&emsp; + Quản lý tag trên tài nguyên AWS, lọc tài nguyên theo tag <br>&emsp; + Sử dụng tag với CLI <br>&emsp; + Dọn dẹp tài nguyên | 21/11/2025 | 21/11/2025 | AWS Study Group |
 
+### Week 11 Achievements
 
-### Kết quả đạt được tuần 11:
+**1. Bảo mật & Quản lý danh tính AWS**  
+- Nắm vững các dịch vụ bảo mật của AWS, bao gồm IAM, Cognito, Key Management Service, Security Hub và Organizations.  
+- Học và áp dụng mô hình Shared Responsibility cho các tài nguyên AWS.  
+- Thực hành bật Security Hub, đánh giá điểm số bảo mật và dọn dẹp tài nguyên trên AWS.  
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+**2. Thiết lập mạng & Compute**  
+- Tạo và cấu hình VPC, Security Group, EC2 instance và Lambda role.  
+- Áp dụng tag cho tài nguyên AWS và học cách quản lý hiệu quả dựa trên tag.  
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+**3. Quản lý tài nguyên & Tự động hóa**  
+- Thực hành tự động bật/tắt EC2 instance.  
+- Đảm bảo dọn dẹp tài nguyên đúng cách.  
+- Nâng cao khả năng quản lý tài nguyên AWS hiệu quả bằng cách kết hợp Console và CLI. 
 

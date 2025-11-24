@@ -22,11 +22,11 @@ pre: " <b> 1.6. </b> "
 
 | Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | --- | ---- | ----------- | ---------------- | ------------------ |
-| 2 | - Tìm hiểu khái niệm và lợi ích của **Serverless Computing**. <br> - Hiểu khi nào nên dùng **Lambda** thay vì **EC2**. <br> - **Thực hành:** <br> &emsp;+ Tạo một hàm **Lambda** đơn giản bằng Python. <br> &emsp;+ Kiểm thử kích hoạt hàm qua **AWS Console** và **CLI**. <br><br> → Nắm vững kiến thức nền tảng về thực thi không máy chủ (serverless). | 13/10/2025 | 13/10/2025 | AWS Study Group |
-| 3 | - Học cách xây dựng **API** bằng **Amazon API Gateway**. <br> - **Thực hành:** <br> &emsp;+ Tạo một REST API endpoint liên kết với Lambda. <br> &emsp;+ Triển khai các giai đoạn (stage) API và kiểm thử truy cập công khai. <br><br> → Hiểu cách tích hợp API với các hàm serverless. | 14/10/2025 | 14/10/2025 | AWS Study Group |
-| 4 | - Làm việc với **Amazon DynamoDB** cho lưu trữ dữ liệu serverless. <br> - **Thực hành:** <br> &emsp;+ Tạo bảng DynamoDB và định nghĩa **Partition Key** / **Sort Key**. <br> &emsp;+ Kết hợp Lambda để thực hiện các thao tác **CRUD**. <br> &emsp;+ Kiểm thử truy xuất và cập nhật dữ liệu thông qua API Gateway. <br><br> → Hiểu kiến trúc serverless hướng dữ liệu (data-driven). | 15/10/2025 | 15/10/2025 |AWS Study Group |
-| 5 | - Tìm hiểu cơ bản về **AWS CloudFormation** cho **Hạ tầng dưới dạng mã (IaC)**. <br> - **Thực hành:** <br> &emsp;+ Viết tệp YAML để triển khai Lambda, API Gateway và DynamoDB. <br> &emsp;+ Tự động hóa việc tạo và xóa stack. <br><br> → Tự động hóa triển khai bằng CloudFormation templates. | 16/10/2025 | 16/10/2025 | AWS Study Group |
-| 6 | - Thực hiện **giám sát (monitoring)** và **tự động hóa (automation)** cho hệ thống serverless. <br> - **Thực hành:** <br> &emsp;+ Sử dụng **CloudWatch Logs** để theo dõi hoạt động của Lambda. <br> &emsp;+ Thiết lập **CloudWatch Alarms** để phát hiện lỗi và throttles. <br> &emsp;+ Tạo một quy tắc tự động đơn giản bằng **EventBridge**. <br><br> → Duy trì độ tin cậy và khả năng quan sát của hệ thống serverless. | 17/10/2025 | 17/10/2025 | AWS Study Group |
+| 2 | - Tìm hiểu khái niệm và lợi ích của **Serverless Computing**. <br> - Hiểu khi nào nên dùng **Lambda** thay vì **EC2**. <br> - **Thực hành:** <br> &emsp;+ Tạo một hàm **Lambda** đơn giản bằng Python. <br> &emsp;+ Kiểm thử kích hoạt hàm qua **AWS Console** và **CLI**. <br>| 13/10/2025 | 13/10/2025 | AWS Study Group |
+| 3 | - Học cách xây dựng **API** bằng **Amazon API Gateway**. <br> - **Thực hành:** <br> &emsp;+ Tạo một REST API endpoint liên kết với Lambda. <br> &emsp;+ Triển khai các giai đoạn (stage) API và kiểm thử truy cập công khai. <br>| 14/10/2025 | 14/10/2025 | AWS Study Group |
+| 4 | - Làm việc với **Amazon DynamoDB** cho lưu trữ dữ liệu serverless. <br> - **Thực hành:** <br> &emsp;+ Tạo bảng DynamoDB và định nghĩa **Partition Key** / **Sort Key**. <br> &emsp;+ Kết hợp Lambda để thực hiện các thao tác **CRUD**. <br> &emsp;+ Kiểm thử truy xuất và cập nhật dữ liệu thông qua API Gateway. <br>| 15/10/2025 | 15/10/2025 |AWS Study Group |
+| 5 | - Tìm hiểu cơ bản về **AWS CloudFormation** cho **Hạ tầng dưới dạng mã (IaC)**. <br> - **Thực hành:** <br> &emsp;+ Viết tệp YAML để triển khai Lambda, API Gateway và DynamoDB. <br> &emsp;+ Tự động hóa việc tạo và xóa stack. <br>| 16/10/2025 | 16/10/2025 | AWS Study Group |
+| 6 | - Thực hiện **giám sát (monitoring)** và **tự động hóa (automation)** cho hệ thống serverless. <br> - **Thực hành:** <br> &emsp;+ Sử dụng **CloudWatch Logs** để theo dõi hoạt động của Lambda. <br> &emsp;+ Thiết lập **CloudWatch Alarms** để phát hiện lỗi và throttles. <br> &emsp;+ Tạo một quy tắc tự động đơn giản bằng **EventBridge**. <br>| 17/10/2025 | 17/10/2025 | AWS Study Group |
 
 ---
 
@@ -53,7 +53,3 @@ pre: " <b> 1.6. </b> "
   Sử dụng **CloudWatch Logs** và **CloudWatch Alarms** để phát hiện sự cố trong quá trình chạy.  
   Dùng **EventBridge** để kích hoạt cảnh báo hoặc quy trình tự động dựa trên các sự kiện từ Lambda.
 
----
-
-**Tổng kết:**  
-Kết thúc tuần 6, tôi đã nắm vững kiến thức và kỹ năng thực hành về **AWS Serverless**, bao gồm việc xây dựng, triển khai, và giám sát ứng dụng sử dụng **Lambda**, **API Gateway**, **DynamoDB** và **CloudFormation**.

@@ -8,50 +8,29 @@ pre: " <b> 1.10. </b> "
 
 
 
-### Mục tiêu tuần 10:
+### Week 10 Objectives:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
-
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+* Học cách làm việc với máy ảo bằng VMWare và chuyển chúng lên AWS.  
+* Thực hành quản lý S3 bucket, phân quyền, static website hosting và CloudFront.  
+* Thiết lập và sử dụng AWS Storage Gateway, file shares và hệ thống file Multi-AZ.  
+* Nâng cao kỹ năng giám sát, kiểm tra hiệu năng, mở rộng lưu trữ và dọn dẹp tài nguyên trên AWS.
 
 
-### Kết quả đạt được tuần 10:
-
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+### Tasks to be carried out this week:
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ----- | ---------- | --------------- | ------------------ |
+| 2   | - VMWare Workstation <br>&emsp; + Xuất máy ảo từ On-premises <br>&emsp; + Upload máy ảo lên AWS <br>&emsp; + Import máy ảo vào AWS <br>&emsp; + Triển khai EC2 Instance từ AMI | 17/09/2025 | 17/09/2025 | AWS Study Group |
+| 3   | - Thiết lập S3 bucket ACL <br> - Xuất máy ảo từ instance <br>&emsp; + Dọn dẹp tài nguyên trên AWS Cloud <br>&emsp; + Tạo Storage Gateway <br>&emsp; + Tạo File Shares <br>&emsp; + Mount File Shares lên On-premises | 18/09/2025 | 18/09/2025 | AWS Study Group |
+| 4   | - **Thực hành:** <br>&emsp; + Tạo HDD Multi-AZ file system <br>&emsp; + Tạo file share mới <br>&emsp; + Kiểm tra hiệu năng <br>&emsp; + Theo dõi hiệu năng <br>&emsp; + Bật tính năng deduplication <br>&emsp; + Quản lý user sessions và open files <br>&emsp; + Mở rộng throughput capacity và storage capacity <br>&emsp; + Xóa môi trường | 19/09/2025 | 19/09/2025 | AWS Study Group |
+| 5   | - Tạo S3 bucket <br>&emsp; + Tải dữ liệu lên <br>&emsp; + Bật tính năng static website hosting <br>&emsp; + Cấu hình Public Access Block và cấp quyền public cho object | 20/09/2025 | 20/09/2025 | AWS Study Group |
+| 6   | - Kiểm tra website <br>&emsp; + Chặn toàn bộ public access <br>&emsp; + Cấu hình Amazon CloudFront <br>&emsp; + Kiểm tra hoạt động của CloudFront | 21/09/2025 | 21/09/2025 | AWS Study Group |
 
 
+### Week 10 Achievements:
+
+- Nắm vững kiến thức nền tảng về AWS và các nhóm dịch vụ chính bao gồm Compute, Storage, Networking và Database.
+- Tạo và cấu hình thành công tài khoản AWS Free Tier phục vụ mục đích học tập và thực hành.
+- Làm quen với AWS Management Console và biết cách điều hướng giao diện, tìm kiếm dịch vụ và quản lý tài nguyên.
+- Cài đặt và cấu hình AWS CLI, bao gồm thiết lập Access Key, Secret Key và Default Region để thao tác qua dòng lệnh.
+- Thực hiện các tác vụ quan trọng với AWS CLI như kiểm tra thông tin cấu hình, liệt kê các vùng (region), tương tác với dịch vụ EC2 và tạo hoặc quản lý key pairs.
+- Phát triển khả năng quản lý tài nguyên AWS song song bằng cả Console và CL
