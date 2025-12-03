@@ -1,6 +1,7 @@
 baseURL = "https://Danh01092004.github.io/AWS-workshop/"
 relativeURLs = true
 canonifyURLs = true
+publishDir = "docs"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"
