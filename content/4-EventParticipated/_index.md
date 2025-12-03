@@ -1,44 +1,159 @@
 ---
-title: "Events Participated"
+title: "Events Attended"
 date: 2025-01-01
 weight: 4
 chapter: false
 pre: " <b> 4. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** for your report, including this warning.
-{{% /notice %}}
+During my internship, I had the opportunity to attend 3 events. Each event provided valuable knowledge, practical experience, and memorable moments.
 
-> In this section, you should list and describe in detail the events you have participated in during your internship or work experience.  
-> 
-> Each event should be presented in the format Event 1, Event 2, Event 3…, along with the following details:
-> * Event name
-> * Date and time
-> * Location (if applicable)
-> * Your role in the event (attendee, event support, speaker, etc.)
-> * A brief description of the event’s content and main activities
-> * Outcomes or value gained (lessons learned, new skills, contribution to the team/project)
-> * This listing helps demonstrate your actual participation as well as the soft skills and experience you have gained from each event.
 
-During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+### [Event 1](4.1-Event1/)
 
-### [Event 1](4.1-Event1/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+**Event Name:** AWS AI/ML & Generative AI  
+**Time:** 09:00, August 15, 2025  
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+**Location:** 26th Floor, Bitexco Financial Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+**Role:** Attendee  
 
-&emsp;**Role:** Attendee  
+**Event Content:**  
+- Introduction to AWS AI/ML ecosystem  
+- Overview of key services such as Amazon SageMaker and Amazon Bedrock  
+- End-to-end ML model development and deployment workflow  
+- Introduction to Generative AI, Prompt Engineering, and RAG architecture  
+- Hands-on demos and expert-guided discussion  
+
+**Outcomes:**  
+- AI/ML must be implemented with a **clear strategy**, not following trends  
+- RAG and Guardrails are essential for enterprise-grade GenAI solutions  
+- SageMaker and Bedrock significantly reduce time, cost, and accelerate innovation  
 
 ---
 
-### [Event 2](4.2-Event2/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+### [Event 2](4.2-Event2/)
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+**Event Name:** DevOps on AWS  
+**Time:** 09:00, August 17, 2025  
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+**Location:** 26th Floor, Bitexco Financial Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
 
-&emsp;**Role:** Attendee  
+**Role:** Attendee  
+
+**Event Content:**  
+- Introduction to DevOps culture, mindset, and principles  
+- Overview of DevOps services on AWS for CI/CD  
+- Hands-on Infrastructure as Code (IaC) using CloudFormation and CDK  
+- Understanding containerization and orchestration on AWS  
+- Overview of monitoring, observability, and incident response  
+- Real-world DevOps case studies and career guidance  
+
+**Outcomes:**  
+- DevOps is a combination of culture and technology  
+- Observability is the foundation of stable operations  
+- Choosing the right orchestrator depends on team capabilities and workload  
+
+---
+
+### [Event 3](4.3-Event3/)
+
+**Event Name:** AWS Security Best Practices  
+**Time:** 09:00, August 29, 2025  
+
+**Location:** 26th Floor, Bitexco Financial Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+
+**Role:** Attendee  
+
+**Event Content:**  
+- Implement MFA and apply IAM least privilege  
+- Encrypt all critical data using AWS KMS  
+- Enable GuardDuty, CloudTrail, and Config by default  
+- Adopt a multi-account architecture with AWS Control Tower  
+
+**Outcomes:**  
+- Misconfiguration is the #1 cause of security incidents  
+- Security must be continuous and automated  
+- Zero Trust is becoming the new security standard  
+
+---
+---
+title: "Events Attended"
+date: 2025-01-01
+weight: 4
+chapter: false
+pre: " <b> 4. </b> "
+---
+
+During my internship, I had the opportunity to attend 3 events. Each event provided valuable knowledge, practical experience, and memorable moments.
+
+---
+
+### [Event 1](4.1-Event1/)
+
+**Event Name:** AWS AI/ML & Generative AI  
+**Time:** 09:00, August 15, 2025  
+
+**Location:** 26th Floor, Bitexco Financial Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+
+**Role:** Attendee  
+
+**Event Content:**  
+- Introduction to AWS AI/ML ecosystem  
+- Overview of key services such as Amazon SageMaker and Amazon Bedrock  
+- End-to-end ML model development and deployment workflow  
+- Introduction to Generative AI, Prompt Engineering, and RAG architecture  
+- Hands-on demos and expert-guided discussion  
+
+**Outcomes:**  
+- AI/ML must be implemented with a **clear strategy**, not following trends  
+- RAG and Guardrails are essential for enterprise-grade GenAI solutions  
+- SageMaker and Bedrock significantly reduce time, cost, and accelerate innovation  
+
+---
+
+### [Event 2](4.2-Event2/)
+
+**Event Name:** DevOps on AWS  
+**Time:** 09:00, August 17, 2025  
+
+**Location:** 26th Floor, Bitexco Financial Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+
+**Role:** Attendee  
+
+**Event Content:**  
+- Introduction to DevOps culture, mindset, and principles  
+- Overview of DevOps services on AWS for CI/CD  
+- Hands-on Infrastructure as Code (IaC) using CloudFormation and CDK  
+- Understanding containerization and orchestration on AWS  
+- Overview of monitoring, observability, and incident response  
+- Real-world DevOps case studies and career guidance  
+
+**Outcomes:**  
+- DevOps is a combination of culture and technology  
+- Observability is the foundation of stable operations  
+- Choosing the right orchestrator depends on team capabilities and workload  
+
+---
+
+### [Event 3](4.3-Event3/)
+
+**Event Name:** AWS Security Best Practices  
+**Time:** 09:00, August 29, 2025  
+
+**Location:** 26th Floor, Bitexco Financial Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+
+**Role:** Attendee  
+
+**Event Content:**  
+- Implement MFA and apply IAM least privilege  
+- Encrypt all critical data using AWS KMS  
+- Enable GuardDuty, CloudTrail, and Config by default  
+- Adopt a multi-account architecture with AWS Control Tower  
+
+**Outcomes:**  
+- Misconfiguration is the #1 cause of security incidents  
+- Security must be continuous and automated  
+- Zero Trust is becoming the new security standard  
+
+

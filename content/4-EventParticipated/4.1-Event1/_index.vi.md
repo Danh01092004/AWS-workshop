@@ -23,7 +23,7 @@ pre: " <b> 4.1. </b> "
 
 # Workshop Agenda & Key Highlights
 
-## 🕗 8:30 – 9:00 AM | Welcome & Introduction
+## 8:30 – 9:00 AM | Welcome & Introduction
 
 ### Hoạt động chính
 - **Đăng ký & networking** với các chuyên gia và người tham dự  
@@ -37,7 +37,7 @@ pre: " <b> 4.1. </b> "
 
 ---
 
-## 🕘 9:00 – 10:30 AM | AWS AI/ML Services Overview
+## 9:00 – 10:30 AM | AWS AI/ML Services Overview
 
 ### 1. Amazon SageMaker – End-to-End ML Platform
 Các nội dung được trình bày:
@@ -58,12 +58,12 @@ Các nội dung được trình bày:
 
 ---
 
-## ☕ 10:30 – 10:45 AM | Coffee Break
+## 10:30 – 10:45 AM | Coffee Break
 Thời gian để nghỉ ngơi, trao đổi thêm với chuyên gia và thảo luận về các case thực tế.
 
 ---
 
-## 🕚 10:45 AM – 12:00 PM | Generative AI with Amazon Bedrock
+## 10:45 AM – 12:00 PM | Generative AI with Amazon Bedrock
 
 ### 1. Foundation Models (FMs)
 So sánh và hướng dẫn lựa chọn:
