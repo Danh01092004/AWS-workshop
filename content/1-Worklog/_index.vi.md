@@ -15,24 +15,24 @@ Thông thường và cũng là tiêu chuẩn, một worklog được thực hi�
 
 **Tuần 1:** [Làm quen với AWS và các dịch vụ cơ bản trong AWS](1.1-week1/)
 
-**Tuần 2:** [Làm công việc A...](1.2-week2/)
+**Tuần 2:** [AWS VPC, EC2, Kiến thức nền tảng Networking & Thiết lập Route 53 DNS](1.2-week2/)
 
-**Tuần 3:** [Làm công việc B...](1.3-week3/)
+**Tuần 3:** [VPC, EC2, Quản lý Storage & Thực hành Networking tương tác](1.3-week3/)
 
-**Tuần 4:** [Làm công việc C...](1.4-week4/)
+**Tuần 4:** [Amazon S3 Static Website Hosting & Thiết lập Amazon RDS Database](1.4-week4/)
 
-**Tuần 5:** [Làm công việc D...](1.5-week5/)
+**Tuần 5:** [Triển khai WordPress, CDN CloudFront & Tích hợp AWS Managed AD](1.5-week5/)
 
-**Tuần 6:** [Làm công việc E...](1.6-week6/)
+**Tuần 6:** [Kiến trúc Serverless: Lambda, API Gateway, DynamoDB & CloudFormation](1.6-week6/)
 
-**Tuần 7:** [Làm công việc G...](1.7-week7/)
+**Tuần 7:** [Công nghệ Container: Docker, ECR, ECS Fargate & CI/CD Pipeline](1.7-week7/)
 
-**Tuần 8:** [Làm công việc H...](1.8-week8/)
+**Tuần 8:** [Networking Nâng cao: VPC Peering, Transit Gateway, Direct Connect & Hybrid Cloud](1.8-week8/)
 
-**Tuần 9:** [Làm công việc I...](1.9-week9/)
+**Tuần 9:** [Tự động hóa CI/CD: CodePipeline, CodeBuild, CodeDeploy & Safe Deployments](1.9-week9/)
 
-**Tuần 10:** [Làm công việc L...](1.10-week10/)
+**Tuần 10:** [Migrate VM với VMWare, Quản lý S3, Storage Gateway & CloudFront](1.10-week10/)
 
-**Tuần 11:** [Làm công việc M...](1.11-week11/)
+**Tuần 11:** [AWS Security: IAM, Cognito, Security Hub, KMS & Resource Tagging](1.11-week11/)
 
-**Tuần 12:** [Làm công việc N...](1.12-week12/)
+**Tuần 12:** [Data Services: S3, Glue, Athena, DynamoDB, QuickSight & Data Analytics](1.12-week12/)
