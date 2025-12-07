@@ -1,7 +1,7 @@
 ---
 title: "Event 2"
 date: 2025-01-01
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
@@ -210,8 +210,3 @@ pre: " <b> 4.2. </b> "
 - Choosing the right container orchestration model depends on team maturity and workload  
 
 ---
-
-### Event Photos  
-*Add your workshop images here*
-
-> Overall, the “DevOps on AWS” workshop provided a comprehensive understanding of modern DevOps workflows, tools, and best practices, helping me build more reliable, scalable, and automated systems.

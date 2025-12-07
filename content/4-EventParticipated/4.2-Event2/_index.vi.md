@@ -1,7 +1,7 @@
 ---
 title: "Event 2"
 date: 2025-01-01
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
@@ -212,7 +212,3 @@ pre: " <b> 4.2. </b> "
 
 ---
 
-### Hình ảnh sự kiện  
-*Thêm hình của bạn tại đây*
-
-> Tổng thể, workshop “DevOps on AWS” mang đến cái nhìn toàn diện về quy trình DevOps hiện đại, công cụ, best practices và cách vận hành hệ thống tự động, ổn định và có khả năng mở rộng.

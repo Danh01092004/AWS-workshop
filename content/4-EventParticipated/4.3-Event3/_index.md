@@ -1,217 +1,121 @@
 ---
 title: "Event 3"
-date: 2025-01-01
-weight: 1
+date: 2025-11-29
+weight: 3
 chapter: false
 pre: " <b> 4.3. </b> "
 ---
 
-# Summary Report: “Security on AWS Workshop”
 
-### Event Objectives
 
-- Implement MFA and IAM least privilege  
-- Encrypt all critical data with KMS  
-- Enable GuardDuty, CloudTrail, Config by default  
-- Use multi-account architecture with Control Tower 
+# Summary Report: “AWS Well-Architected Security Pillar Workshop”
+
+## Workshop Objectives
+
+Join the course on the 5 security pillars of the AWS Well-Architected Framework, helping you build a strong security foundation and a comprehensive incident response process.
 
 ---
 
 # Workshop Agenda & Key Highlights
 
-# Morning Session (8:30 AM – 12:00 PM)
+## Morning Session (8:30 AM – 12:00 PM)
 
 ---
 
-### 8:30 – 9:00 AM | Welcome & Security Landscape
+### 8:50 - 10h30 AM | Identity & Access Management,Detection
 
-### Topics
-- Recap of previous Cloud & DevOps sessions  
-- Overview of **AWS Shared Responsibility Model**  
-- Emerging cloud threats & Vietnam cybersecurity context  
+**Key Topics**
+- Modern IAM architecture: Users, Roles, Policies  
+- Avoiding long-term credentials  
+- IAM Identity Center: SSO and permission sets  
+- SCP (Service Control Policies) and permission boundaries for multi-account  
+- MFA enforcement, credential rotation, Access Analyzer  
+- CloudTrail , GuardDuty, Security Hub  
+- Logging at every layer: VPC Flow Logs, ALB logs, S3 logs  
+- Alerting and automation with EventBridge  
+- Detection-as-Code (infrastructure + rules)  
 
-**Highlights:**
-- Clarified boundaries between AWS security and customer responsibilities  
-- Discussed growing threats such as phishing, misconfigurations, data leaks  
-- Emphasized need for automation and zero-trust principles  
-
----
-
-### 9:00 – 10:30 AM | Identity & Access Management (IAM)
-
-### Core Components
-- IAM structure: **Users**, **Roles**, **Groups**, **Policies**  
-- Permission Boundaries & Service Control Policies (SCPs)  
-- IAM Identity Center for centralized workforce access  
-- MFA enforcement, credential rotation, and auditing best practices  
-
-### Demo
-- Creating and validating IAM policies  
-- Restricting access using least privilege  
+**Hands-on Demo**
+- IAM Policy validation  
+- Access simulation  
 
 **Key Takeaways**
-- Least-privilege access significantly reduces blast radius  
-- IAM Identity Center improves security for multi-account environments  
+- Least privilege reduces blast radius  
+- IAM Identity Center optimizes multi-account security  
 - SCPs enforce governance at the organization level  
 
 ---
 
-### 10:30 – 10:45 AM | Coffee Break
+### 9:55 - 10:10 AM | Coffee Break
 - Chill
-- Tolet
+- Toilet
 
 ---
 
-### 10:45 AM – 12:00 PM | Network Security
+###  10:45 - 11:30 AM | Infrastructure Protection 
 
-### Topics Covered
-- VPC design best practices  
-- Public vs Private subnets, NAT, subnet isolation  
-- **Security Groups** vs **Network ACLs**  
-- AWS WAF, Shield, and Network Firewall overview  
+**Key Topics**
+- VPC segmentation: public vs private placement  
+- Security Groups vs NACLs: real-world use cases  
+- WAF, Shield, Network Firewall  
+- Workload protection: EC2, ECS/EKS security basics  
 
-### Exercise
-- Designing a secure, multi-tier VPC architecture  
+**Design Exercise**
+- Designing a secure multi-tier VPC architecture  
 
-**Discussion**
-- Layered network defense (defense in depth)  
-- Protecting applications against DDoS, OWASP Top 10  
-- Centralized inspection using AWS Network Firewall  
-
----
-
-### 12:00 – 1:00 PM | Lunch Break (Self-arranged)
+**Key Takeaways**
+- Defense in depth: layered security  
+- Application protection against DDoS and OWASP Top 10  
+- Centralized inspection with AWS Network Firewall  
 
 ---
 
-# Afternoon Session (1:00 PM – 5:00 PM)
+###  11h30 - 12:10 AM | Data Protection
+
+**Key Topics**
+- AWS KMS: key policies, grants, rotation  
+- Encryption at-rest and in-transit: S3, EBS, RDS, DynamoDB  
+- Secrets Manager and Parameter Store: rotation models  
+- Data classification and access guardrails  
+
+**Hands-on Demo**
+- Large-scale encryption deployment  
+- Automated secret rotation  
+
+**Key Takeaways**
+- Encryption must be applied both at-rest and in-transit  
+- Misconfigured key policies can cause outages  
+- Secrets Manager reduces risks of hardcoded credentials  
 
 ---
 
-### 1:00 – 2:30 PM | Data Protection & Encryption
+### Summary & Q&A (11:40 AM - 12:00 PM)
 
-### Topics
-- **AWS KMS**: key policies, rotation, envelope encryption  
-- Encryption options for:  
-  - **S3**, **EBS**, **RDS**, **DynamoDB**  
-- Secrets Management using AWS Secrets Manager  
-- Certificate management using ACM  
-
-### Demo
-- Implementing encryption at scale  
-- Automating secret rotation  
-
-**Highlights:**
-- Encryption must be applied both **at rest** and **in transit**  
-- Poor key policy configuration can cause major outages  
-- Secrets Manager reduces risks caused by hardcoded credentials  
-
----
-
-### 2:30 – 2:45 PM | Break
-- Chill with homie
-
----
-
-### 2:45 – 4:00 PM | Security Monitoring & Incident Response
-
-### Topics
-- AWS Security Hub, GuardDuty, Config, CloudTrail, Detective  
-- Continuous compliance & threat detection  
-- Building an incident response lifecycle  
-
-### Demo
-- Operating a Security Operations Dashboard  
-- Investigating threats using GuardDuty + Detective  
-
-**Best Practices**
-- Enable CloudTrail organization-wide  
-- Use Config Rules to detect misconfiguration  
-- Automate alerts with SNS, EventBridge, and Lambda  
-
----
-
-### 4:00 – 4:30 PM | Compliance & Governance
-
-### Topics
-- Major standards: **GDPR, HIPAA, PCI-DSS, SOC 2, ISO 27001**  
-- AWS Control Tower & Organizations  
-- Governance for multi-account structures  
-- Case Study: Enterprise multi-account security model  
-
-**Highlights**
-- Compliance != Security (need both)  
-- Control Tower enforces guardrails for account lifecycle  
-- Multi-account is essential for isolation & least privilege  
-
----
-
-### 4:30 – 4:50 PM | AWS Well-Architected Security Pillar
-
-### Topics
-- Identity, Detection, Infrastructure, Data, Response  
-- Security automation & DevSecOps  
-- Zero Trust Architecture  
-- Cost optimization for security controls  
-
-**Highlights**
-- Shift-left security in CI/CD  
-- Identity is the foundation of Zero Trust  
-- Automation reduces operational noise and mistakes  
-
----
-
-### 4:50 – 5:00 PM | Closing Remarks
-
-### Closing Items
-- Key takeaways from the AWS Cloud Mastery Series  
-- Advanced learning and certification roadmap  
-- Networking and group discussion  
-
----
-
-# Key Takeaways
-
-### Security Foundations
-- Shared Responsibility Model defines clear security boundaries  
-- Identity is the first and strongest line of defense  
-
-### Technical Skills
-- IAM governance ensures scalable security  
-- KMS simplifies encryption across AWS services  
-- Network isolation reduces attack surfaces  
-- Security Hub + GuardDuty = continuous monitoring  
-
-### Applying to Work
-- Implement MFA and IAM least privilege  
-- Encrypt all critical data with KMS  
-- Enable GuardDuty, CloudTrail, Config by default  
-- Use multi-account architecture with Control Tower  
+**Summary Contents**
+- Summary of the 5 Security Pillar components  
+- Common pitfalls in Vietnamese enterprises  
+- Learning roadmap: Security Specialty, SA Pro  
 
 ---
 
 # Event Experience
 
-### Expert Knowledge
-- Real-world examples of cloud breaches  
-- Deep dive into AWS security controls  
-- Clear explanation of IAM and encryption concepts  
+### Security Foundation
+- The AWS Shared Responsibility Model defines clear security boundaries  
+- Identity is the first and strongest line of defense  
+- Zero Trust Architecture is becoming the new standard  
 
-### Practical Learning
-- Hands-on IAM and KMS exercises  
-- VPC security design session  
-- Incident investigation demo  
+### Technical Skills
+- IAM governance ensures scalable security  
+- KMS simplifies encryption across AWS services  
+- Network isolation reduces attack surface  
+- Security Hub + GuardDuty = continuous monitoring  
 
-### Networking
-- Discussions with cloud engineers & security analysts  
-- Shared challenges around compliance & scaling security  
-
-### Lessons Learned
-- Misconfigurations are the #1 cause of cloud incidents  
-- Security must be continuous and automated  
-- Zero Trust is becoming the new standard  
+### Applying to Work
+- Enforce MFA and least privilege IAM  
+- Encrypt all critical data with KMS  
+- Enable GuardDuty, CloudTrail, Config by default  
+- Use multi-account architecture with Control Tower  
+- Shift-left security in CI/CD pipelines  
 
 ---
-
-### Event Photos  
-*Add your workshop images here*
