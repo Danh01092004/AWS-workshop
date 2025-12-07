@@ -249,19 +249,6 @@
                 href="https://Danh01092004.github.io/AWS-workshop/1-worklog/1.2-week2/"
                 />
   </url><url>
-    <loc>https://Danh01092004.github.io/AWS-workshop/4-eventparticipated/4.3-event3/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://Danh01092004.github.io/AWS-workshop/vi/4-eventparticipated/4.3-event3/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Danh01092004.github.io/AWS-workshop/4-eventparticipated/4.3-event3/"
-                />
-  </url><url>
     <loc>https://Danh01092004.github.io/AWS-workshop/5-workshop/5.3-s3-vpc/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -273,6 +260,19 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://Danh01092004.github.io/AWS-workshop/5-workshop/5.3-s3-vpc/"
+                />
+  </url><url>
+    <loc>https://Danh01092004.github.io/AWS-workshop/4-eventparticipated/4.3-event3/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://Danh01092004.github.io/AWS-workshop/vi/4-eventparticipated/4.3-event3/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://Danh01092004.github.io/AWS-workshop/4-eventparticipated/4.3-event3/"
                 />
   </url><url>
     <loc>https://Danh01092004.github.io/AWS-workshop/5-workshop/5.4-s3-onprem/5.4.3-test-endpoint/</loc>
@@ -325,6 +325,19 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://Danh01092004.github.io/AWS-workshop/5-workshop/5.4-s3-onprem/"
+                />
+  </url><url>
+    <loc>https://Danh01092004.github.io/AWS-workshop/4-eventparticipated/4.4-event4/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://Danh01092004.github.io/AWS-workshop/vi/4-eventparticipated/4.4-event4/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://Danh01092004.github.io/AWS-workshop/4-eventparticipated/4.4-event4/"
                 />
   </url><url>
     <loc>https://Danh01092004.github.io/AWS-workshop/4-eventparticipated/</loc>
