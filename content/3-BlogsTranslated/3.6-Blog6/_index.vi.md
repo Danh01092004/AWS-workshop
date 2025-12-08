@@ -1,125 +1,151 @@
 ---
 title: "Blog 6"
 date: 2025-01-01
-weight: 1
+weight: 6
 chapter: false
 pre: " <b> 3.6. </b> "
 ---
 
+# AWS for Database : Native SQL Server Replication Options on Amazon RDS Custom for SQL Server  
+*(AWS Database, Amazon RDS Custom, SQL Server, Replication, Data & Analytics, Industries)*
 
+## Introduction
+Các ứng dụng hiện đại thường yêu cầu khả năng phân phối dữ liệu đáng tin cậy và tính sẵn sàng cao trên nhiều cơ sở dữ liệu để hỗ trợ hoạt động kinh doanh quan trọng. SQL Server Replication cho phép quản trị viên cơ sở dữ liệu (DBA) tự động phân phối dữ liệu giữa các cơ sở dữ liệu theo thời gian gần như thực, giúp giảm tải các tác vụ đọc nặng từ hệ thống sản xuất và đồng bộ dữ liệu giữa các vùng hoặc các môi trường cơ sở dữ liệu khác nhau.
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
-
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
-
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
-
----
-
-## Hướng dẫn kiến trúc
-
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
-
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
-
-**Kiến trúc giải pháp bây giờ như sau:**
-
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+Amazon RDS Custom for SQL Server là dịch vụ được quản lý kết hợp giữa sự linh hoạt của cơ sở dữ liệu tự quản và các lợi ích tự động hóa của một dịch vụ hoàn toàn được quản lý. Với RDS Custom, bạn có thể tận dụng các tính năng replication gốc của SQL Server trong khi AWS xử lý các tác vụ hạ tầng như backup, vá lỗi, snapshot và giám sát.  
+Blog này khám phá cách cấu hình SQL Server Replication trên RDS Custom, bao gồm các loại replication được hỗ trợ (snapshot, transactional, merge, peer-to-peer) và hướng dẫn từng bước để cấu hình distributor, publication và subscription.  
+Amazon Web Services, Inc.
 
 ---
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+## 1. Supported Replication Types & Comparison Table
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+#### 1.1 Roles & Capabilities of RDS Custom
 
----
+| Role / Replication Mode | RDS for SQL Server | RDS Custom for SQL Server |
+|-------------------------|--------------------|----------------------------|
+| Publisher               | No                 | Yes                        |
+| Distributor             | No                 | Yes                        |
+| Pull Subscriber         | No                 | Yes                        |
+| Push Subscriber         | Yes                | Yes                        |
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+RDS Custom mở rộng khả năng vượt xa RDS tiêu chuẩn bằng cách hỗ trợ các vai trò như Publisher và Distributor, vốn thường không được phép trên các bản RDS thông thường.  
+Amazon Web Services, Inc.
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+#### 1.2 SQL Server Replication Types
 
----
+| Replication Type     | Supported on RDS for SQL Server | Supported on RDS Custom | Notes |
+|----------------------|---------------------------------|--------------------------|--------|
+| Transactional        | Yes (as subscriber only)        | Yes                      | Phổ biến cho đồng bộ gần thời gian thực — Amazon Web Services, Inc. |
+| Snapshot             | Yes (as subscriber only)        | Yes                      | Chụp lại trạng thái dữ liệu tại một thời điểm — Amazon Web Services, Inc. |
+| Merge                | No                               | Yes (with limitations)   | Yêu cầu dùng hostname thay cho CNAME khi thay thế host — Amazon Web Services, Inc. |
+| Peer-to-peer         | No                               | Yes (with limitations)   | Cần cấu hình hostname để tránh lỗi khi host replacement — Amazon Web Services, Inc. |
 
-## The pub/sub hub
-
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
-
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+**Lưu ý:** Merge và peer-to-peer replication trên RDS Custom yêu cầu sử dụng hostname thay vì CNAME để tránh lỗi khi có thay thế host.  
+Amazon Web Services, Inc.
 
 ---
 
-## Core microservice
+## 2. Solution Overview & Architecture
+Giải pháp gốc minh họa kiến trúc mẫu với hai instance RDS Custom trong cùng một vùng (region). Một instance đóng vai trò Publisher kiêm Distributor, trong khi instance còn lại đóng vai trò Subscriber. Replication được xử lý thông qua publication và subscription.  
+Amazon Web Services, Inc.
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+Trước khi cấu hình replication, hãy đảm bảo:
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+- Cả hai instance RDS Custom đều được triển khai với cấu hình mạng và domain phù hợp (nếu dùng Kerberos).  
+  Amazon Web Services, Inc.
 
----
+- Tên server (`@@SERVERNAME`) trùng với hostname DNS được dùng cho replication.  
+  Amazon Web Services, Inc.
 
-## Front door microservice
+- SQL Server Agent được bật trên cả publisher và subscriber.  
+  Amazon Web Services, Inc.
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+- Kết nối mạng (cổng 1433) giữa các instance được cấu hình đúng.  
+  Amazon Web Services, Inc.
 
 ---
 
-## Staging ER7 microservice
+## 3. Transactional Replication Configuration Guide
+Below are the steps to set up transactional replication between RDS Custom for SQL Server instances.  
+Amazon Web Services, Inc.
 
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+#### Step 1: Update the Server Name (`SERVERNAME`) if Needed
+Connect to each instance (publisher and subscriber) and check the current value of `@@SERVERNAME`.
+
+If the current server name does not match the hostname/CNAME you plan to use, execute:
+
+```sql
+SELECT @@SERVERNAME AS 'Current_Server_Name';
+EXEC sp_dropserver 'old_server_name';
+EXEC sp_addserver 'new_cname', 'local';
+```
+
+#### Step 2: Create the Publication on the Publisher:
+```sql
+CREATE DATABASE PublicationDB;
+GO
+USE PublicationDB;
+GO
+CREATE TABLE Tracker (
+    Date DATE,
+    RPO TIME,
+    Status VARCHAR(255),
+    PRIMARY KEY (RPO)
+);
+GO
+INSERT INTO Tracker VALUES (CAST(GETDATE() AS Date), CAST(GETDATE() AS time(7)), 'Success');
+GO
+
+On the Subscriber:
+CREATE DATABASE SubscriptionDB;
+GO
+```
+#### Bước 3: Tạo Publication và Subscription
+- Trên Publisher, mở Replication > New Publication Wizard
+- Chọn database PublicationDB và chọn bảng Tracker làm article
+- Tạo một subscription trỏ đến instance Subscriber
+- Chọn push subscription, với agent chạy trên Distributor (có thể đặt trên cùng instance với Publisher nếu đã cấu hình)
+- Sau khi hoàn tất cấu hình, bạn có thể theo dõi hoạt động replication bằng Replication Monitor
+
+## 4. Advantages, Limitations & Considerations
+
+#### Advantages
+- Hỗ trợ replication gốc của SQL Server trên RDS Custom — không cần xây dựng hệ thống replication bên ngoài
+- Cung cấp nhiều loại replication (transactional, snapshot, merge, peer-to-peer) để đáp ứng nhiều trường hợp sử dụng
+- Giúp giảm tải workload phân tích khỏi hệ thống sản xuất
+
+#### Limitations & Risks
+- Merge và peer-to-peer replication yêu cầu cấu hình hostname và có thể gặp vấn đề khi thay thế host
+- Độ trễ có thể xảy ra khi workload giao dịch cao
+- Việc thay đổi tên server (@@SERVERNAME) yêu cầu khởi động lại và cần được thực hiện cẩn thận
+- Các replication agent (Snapshot, Log Reader, Distribution) phải được giám sát để tránh lỗi
+
+#### Practical Considerations
+- Đảm bảo DNS/hostname ổn định — không phụ thuộc hoàn toàn vào CNAME khi có khả năng xảy ra host replacement
+- Xác nhận SQL Server Agent được cấu hình auto-start
+- Cấu hình các tài khoản Windows hoặc tài khoản domain phù hợp cho các replication agent (Snapshot Agent, Log Reader Agent, Distributor Agent)
+- Giám sát độ trễ và lỗi replication thông qua SQL Server Replication Monitor
+
+## Conclusion
+
+Amazon RDS Custom for SQL Server allows you to use native SQL Server replication features that are not supported on standard RDS instances. You can deploy snapshot, transactional, merge, or peer-to-peer replication depending on your needs, with special attention to hostname configuration, server name settings, agent permissions, and network access.
+
+For environments requiring data distribution across multiple databases, high availability, or separate analytical workloads, native replication on RDS Custom provides powerful benefits without the need to build an external replication solution.
+
+## About the Author
+
+**Sudhir Amin**
+<img src="/images/Blog3.1.jpg" width="120" style="float:left; margin:0;" />
+
+Sudhir là Kiến trúc sư giải pháp cao cấp (Senior Solutions Architect) tại Amazon Web Services, làm việc tại New York. Anh cung cấp hướng dẫn kiến trúc và hỗ trợ kỹ thuật cho các khách hàng doanh nghiệp trên nhiều lĩnh vực khác nhau, giúp họ đẩy nhanh quá trình chuyển đổi và ứng dụng điện toán đám mây.
+Ngoài công việc, Sudhir đam mê bi-a (snooker) và các môn thể thao đối kháng như boxing và UFC. Anh cũng thích du lịch đến các khu bảo tồn thiên nhiên trên khắp thế giới để quan sát các loài động vật hoang dã trong môi trường tự nhiên của chúng. 
 
 ---
 
-## Tính năng mới trong giải pháp
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+ **Mesgana Gormley**
+ <img src="/images/Blog3.2.jpg" width="120" style="float:left; margin:0;" />
+
+Mesgana là Kiến trúc sư giải pháp chuyên gia cơ sở dữ liệu cao cấp (Senior Database Specialist Solution Architect) thuộc bộ phận Worldwide Public Sector (WWPS) tại Amazon Web Services (AWS), làm việc cùng nhóm Amazon RDS. Cô tập trung vào việc cung cấp hướng dẫn kỹ thuật cho khách hàng AWS, hỗ trợ họ di chuyển, thiết kế, triển khai và tối ưu hóa các khối lượng công việc cơ sở dữ liệu quan hệ trên AWS một cách hiệu quả.
+ Ngoài công việc, Mesgana yêu thích du lịch và dành thời gian bên gia đình, bạn bè.

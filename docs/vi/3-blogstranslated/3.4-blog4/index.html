@@ -15,21 +15,21 @@
     <title>Blog 4 :: Báo cáo thực tập</title>
 
     
-    <link href="../../../css/nucleus.css?1765118002" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1765118002" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1765118002" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1765118002" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1765118002" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1765118002" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1765118002" rel="stylesheet">
-    <link href="../../../css/theme.css?1765118002" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1765118002" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1765168168" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1765168168" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1765168168" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1765168168" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1765168168" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1765168168" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1765168168" rel="stylesheet">
+    <link href="../../../css/theme.css?1765168168" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1765168168" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1765118002" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1765168168" rel="stylesheet">
     
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1765118002"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1765168168"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -88,14 +88,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1765118002"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1765118002"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1765168168"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1765168168"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/Danh01092004.github.io\/AWS-workshop\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1765118002"></script>
+<script type="text/javascript" src="../../../js/search.js?1765168168"></script>
  
   </div>
 
@@ -341,7 +341,7 @@
            
 <li
   data-nav-id="/vi/2-proposal/"
-  title="Bản đề xuất"
+  title="Đề xuất dự án"
   class="dd-item 
         
         
@@ -349,7 +349,7 @@
         "
 >
   <a href="../../../vi/2-proposal/">
-     <b> 2. </b> Bản đề xuất 
+     <b> 2. </b> Đề xuất dự án 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -456,7 +456,7 @@
         "
 >
   <a href="../../../vi/3-blogstranslated/3.5-blog5/">
-     <b> 3.6. </b> Blog 5 
+     <b> 3.5. </b> Blog 5 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -1023,17 +1023,25 @@
                     <div class="progress">
   <div class="wrapper"><nav id="TableOfContents">
   <ul>
-    <li><a href="#hướng-dẫn-kiến-trúc">Hướng dẫn kiến trúc</a></li>
-    <li><a href="#lựa-chọn-công-nghệ-và-phạm-vi-giao-tiếp">Lựa chọn công nghệ và phạm vi giao tiếp</a></li>
-    <li><a href="#the-pubsub-hub">The pub/sub hub</a></li>
-    <li><a href="#core-microservice">Core microservice</a></li>
-    <li><a href="#front-door-microservice">Front door microservice</a></li>
-    <li><a href="#staging-er7-microservice">Staging ER7 microservice</a></li>
-    <li><a href="#tính-năng-mới-trong-giải-pháp">Tính năng mới trong giải pháp</a>
+    <li><a href="#giới-thiệu">Giới Thiệu</a></li>
+    <li><a href="#1-kiểm-soát-chi-phí-khi-mở-rộng">1. Kiểm Soát Chi Phí Khi Mở Rộng</a>
       <ul>
-        <li><a href="#1-aws-cloudformation-cross-stack-references">1. AWS CloudFormation cross-stack references</a></li>
+        <li></li>
       </ul>
     </li>
+    <li><a href="#2-cải-thiện-quy-trình-cập-nhật-và-phát-hành">2. Cải Thiện Quy Trình Cập Nhật Và Phát Hành</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#3-hỗ-trợ--tích-hợp-sâu-với-aws">3. Hỗ Trợ &amp; Tích Hợp Sâu Với AWS</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#4-định-hướng-tương-lai--tầm-nhìn">4. Định Hướng Tương Lai &amp; Tầm Nhìn</a></li>
+    <li><a href="#kết-luận">Kết Luận</a></li>
+    <li><a href="#về-tác-giả">Về Tác Giả</a></li>
   </ul>
 </nav></div>
 </div>
@@ -1058,127 +1066,58 @@
 
 
 
-	<h1 id="bắt-đầu-với-healthcare-data-lakes-sử-dụng-microservices">Bắt đầu với healthcare data lakes: Sử dụng microservices</h1>
-<p>Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. <strong>Data lake</strong> là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.</p>
-<p>Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, <em>“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”</em>, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.</p>
-<hr>
-<h2 id="hướng-dẫn-kiến-trúc">Hướng dẫn kiến trúc</h2>
-<p>Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.</p>
-<p>Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các <strong>HL7v2 messages</strong> được định dạng theo <strong>Quy tắc mã hóa 7 (ER7)</strong> thông qua giao diện REST.</p>
-<p><strong>Kiến trúc giải pháp bây giờ như sau:</strong></p>
-<blockquote>
-<p><em>Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.</em></p></blockquote>
-<hr>
-<p>Mặc dù thuật ngữ <em>microservices</em> có một số sự mơ hồ cố hữu, một số đặc điểm là chung:</p>
+	<h1 id="aws-for-games-jackbox-games-mở-ra-cơ-hội-mới-với-amazon-gamelift-streams">AWS for Games: Jackbox Games Mở Ra Cơ Hội Mới Với Amazon GameLift Streams</h1>
+<p><strong>Bởi David Holladay – ngày 6 tháng 3 năm 2025</strong></p>
+<p><em>Tags: Amazon CloudFront, Amazon GameLift, Amazon SQS, Amazon S3, Giải pháp Khách hàng, Phát triển Game, Game, Messaging, Networking &amp; Content Delivery, Storage, Industries</em></p>
+<h2 id="giới-thiệu">Giới Thiệu</h2>
+<p>Jackbox Games là studio trò chơi có trụ sở tại Chicago, nổi tiếng với các tựa game party như Quiplash, Fibbage, Drawful, Trivia Murder Party, và nhiều trò khác. Với hơn 50 trò chơi trong danh mục, Jackbox theo đuổi mục tiêu về &ldquo;gaming dễ tiếp cận&rdquo; — tức là người chơi có thể tham gia từ thiết bị bất kỳ mà họ có. Toàn bộ hạ tầng server của công ty được xây dựng trên Amazon Web Services.</p>
+<p>Trước đây, người chơi thường sử dụng TV để hiển thị trò chơi và điện thoại làm điều khiển — một cách chơi đơn giản nhưng vẫn rất phổ biến. Gần đây, Jackbox quyết định hợp tác với Amazon GameLift Streams để mang trải nghiệm chơi không cần cài đặt, truy cập trực tiếp cho người chơi.</p>
+<p>Amazon GameLift Streams là một tính năng trong GameLift, cho phép trò chơi được stream với độ trễ thấp, khung hình cao và quy mô toàn cầu — giúp studio như Jackbox mở rộng phạm vi tiếp cận mà không cần phụ thuộc vào console hoặc thiết bị mạnh.</p>
+<h2 id="1-kiểm-soát-chi-phí-khi-mở-rộng">1. Kiểm Soát Chi Phí Khi Mở Rộng</h2>
+<p>Việc đưa một trò chơi lên nền tảng streaming có thể rất tốn kém nếu làm riêng lẻ. Jackbox có danh mục rất lớn, nên họ cần một cách tối ưu hóa chi phí.</p>
+<h4 id="11-tạo-nhóm-stream-stream-group-cho-tất-cả-trò-chơi">1.1 Tạo Nhóm Stream (Stream Group) Cho Tất Cả Trò Chơi</h4>
+<p>AWS đã hợp tác với Jackbox để gom 50 trò chơi vào một Stream Group duy nhất trong Amazon GameLift Streams. Nhờ vậy, họ có thể mở rộng quy mô cho toàn bộ danh mục cùng nhau thay vì từng trò riêng biệt.</p>
+<h4 id="12-multi-tenancy--giảm-chi-phí-tài-nguyên">1.2 Multi-tenancy &amp; Giảm Chi Phí Tài Nguyên</h4>
+<p>Vì các trò Jackbox không yêu cầu GPU mạnh, một instance server có thể chạy nhiều trò chơi cùng lúc – tức là áp dụng mô hình đa ứng dụng (multi-tenancy) để tiết kiệm chi phí.</p>
+<h4 id="13-sử-dụng-data-channel-để-chèn-quảng-cáo">1.3 Sử Dụng Data Channel Để Chèn Quảng Cáo</h4>
+<p>Amazon GameLift Streams cung cấp tính năng Data Channel, cho phép chèn quảng cáo vào các khoảnh khắc hợp lý giữa các vòng chơi — giúp Jackbox duy trì mô hình miễn phí hoặc hỗ trợ doanh thu bằng quảng cáo.</p>
+<h2 id="2-cải-thiện-quy-trình-cập-nhật-và-phát-hành">2. Cải Thiện Quy Trình Cập Nhật Và Phát Hành</h2>
+<h4 id="21-mô-hình-party-pack-truyền-thống--hạn-chế">2.1 Mô Hình Party Pack Truyền Thống &amp; Hạn Chế</h4>
+<p>Trước đây, Jackbox phát hành trò chơi theo Party Packs — mỗi gói gồm 5 trò. Khi muốn cập nhật một trò, họ phải cập nhật toàn bộ gói trên mọi nền tảng, gây phức tạp trong quản lý và triển khai.</p>
+<h4 id="22-streaming-cho-phép-cập-nhật-riêng-lẻ-linh-hoạt">2.2 Streaming Cho Phép Cập Nhật Riêng Lẻ, Linh Hoạt</h4>
+<p>Với GameLift Streams, Jackbox có thể cập nhật một trò duy nhất ở server mà không ảnh hưởng các trò khác, và không cần quan tâm đến các platform khác nhau. Điều này cũng cho phép người chơi chuyển từ trò này sang trò kia mượt mà, mà không cần đóng mở gói trò.</p>
+<h4 id="23-tăng-tính-khả-khám-phá-trò-chơi-discoverability">2.3 Tăng Tính Khả Khám Phá Trò Chơi (Discoverability)</h4>
+<p>Khi mọi trò đều có thể truy cập qua dịch vụ streaming, người chơi có nhiều cơ hội thử trò mới ngay — thay vì bị giới hạn trong các gói họ đã mua trước.</p>
+<h2 id="3-hỗ-trợ--tích-hợp-sâu-với-aws">3. Hỗ Trợ &amp; Tích Hợp Sâu Với AWS</h2>
+<h4 id="31-hỗ-trợ-kỹ-thuật-tích-hợp-vào-slack">3.1 Hỗ Trợ Kỹ Thuật Tích Hợp Vào Slack</h4>
+<p>Trong quá trình triển khai, AWS hỗ trợ Jackbox trực tiếp thông qua Slack của họ — giúp đội phát triển dễ dàng trao đổi, giải quyết sự cố nhanh chóng. CTO Jackbox cho biết trải nghiệm này khiến AWS giống như một phần của đội họ.</p>
+<h4 id="32-sử-dụng-nhiều-dịch-vụ-aws-khác">3.2 Sử Dụng Nhiều Dịch Vụ AWS Khác</h4>
+<p>Bên cạnh GameLift Streams, Jackbox dùng nhiều dịch vụ AWS để vận hành hệ thống:</p>
 <ul>
-<li>Chúng nhỏ, tự chủ, kết hợp rời rạc</li>
-<li>Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ</li>
-<li>Chuyên biệt để giải quyết một việc</li>
-<li>Thường được triển khai trong <strong>event-driven architecture</strong></li>
+<li><strong>Amazon EC2</strong> cho xử lý backend, session management</li>
+<li><strong>Amazon S3</strong> cho lưu trữ tài nguyên trò chơi và dữ liệu</li>
+<li><strong>Amazon SQS</strong> cho quản lý hàng đợi</li>
+<li><strong>Amazon CloudFront</strong> để phân phối nội dung nhanh và ổn định</li>
 </ul>
-<p>Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:</p>
+<p>Tất cả đều nằm trong hệ sinh thái AWS mà Jackbox đã sử dụng từ trước.</p>
+<h2 id="4-định-hướng-tương-lai--tầm-nhìn">4. Định Hướng Tương Lai &amp; Tầm Nhìn</h2>
+<p>Jackbox rất kỳ vọng vào việc tiếp cận người chơi mới qua thiết bị phổ biến như Smart TV, mà không yêu cầu console. Họ muốn trải nghiệm như mở ứng dụng streaming (như Netflix) để chơi trò chơi trực tiếp.</p>
+<p>Streaming cũng tạo điều kiện để Jackbox xem xét hợp tác với các studio khác, đưa trò chơi từ các engine khác vào dịch vụ của họ — mở rộng danh mục nhanh hơn. CTO của Jackbox nhấn mạnh rằng streaming mở ra &ldquo;mô hình kinh doanh mới&rdquo; mà họ không làm được với cấu trúc Party Pack truyền thống — mô hình đăng ký, quảng cáo, truy cập trực tiếp — và GameLift Streams mang lại linh hoạt để họ tiếp tục phát triển.</p>
+<h2 id="kết-luận">Kết Luận</h2>
+<p>Nhờ ứng dụng Amazon GameLift Streams, Jackbox Games đạt được nhiều lợi ích:</p>
 <ul>
-<li><strong>Nội tại</strong>: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng</li>
-<li><strong>Bên ngoài</strong>: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng</li>
-<li><strong>Con người</strong>: quyền sở hữu nhóm, quản lý <em>cognitive load</em></li>
+<li>Mở rộng khả năng tiếp cận người chơi toàn cầu</li>
+<li>Giảm chi phí vận hành nhờ multi-tenancy và quản lý tập trung</li>
+<li>Đơn giản hóa quy trình cập nhật trò chơi</li>
+<li>Cho phép mô hình doanh thu linh hoạt hơn (quảng cáo, đăng ký)</li>
+<li>Cải thiện trải nghiệm người chơi và khả năng khám phá nội dung</li>
 </ul>
-<hr>
-<h2 id="lựa-chọn-công-nghệ-và-phạm-vi-giao-tiếp">Lựa chọn công nghệ và phạm vi giao tiếp</h2>
-<table>
-  <thead>
-      <tr>
-          <th>Phạm vi giao tiếp</th>
-          <th>Các công nghệ / mô hình cần xem xét</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Trong một microservice</td>
-          <td>Amazon Simple Queue Service (Amazon SQS), AWS Step Functions</td>
-      </tr>
-      <tr>
-          <td>Giữa các microservices trong một dịch vụ</td>
-          <td>AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS)</td>
-      </tr>
-      <tr>
-          <td>Giữa các dịch vụ</td>
-          <td>Amazon EventBridge, AWS Cloud Map, Amazon API Gateway</td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-<h2 id="the-pubsub-hub">The pub/sub hub</h2>
-<p>Việc sử dụng kiến trúc <strong>hub-and-spoke</strong> (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.</p>
-<ul>
-<li>Mỗi microservice chỉ phụ thuộc vào <em>hub</em></li>
-<li>Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất</li>
-<li>Giảm số lượng synchronous calls vì pub/sub là <em>push</em> không đồng bộ một chiều</li>
-</ul>
-<p>Nhược điểm: cần <strong>phối hợp và giám sát</strong> để tránh microservice xử lý nhầm message.</p>
-<hr>
-<h2 id="core-microservice">Core microservice</h2>
-<p>Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:</p>
-<ul>
-<li><strong>Amazon S3</strong> bucket cho dữ liệu</li>
-<li><strong>Amazon DynamoDB</strong> cho danh mục dữ liệu</li>
-<li><strong>AWS Lambda</strong> để ghi message vào data lake và danh mục</li>
-<li><strong>Amazon SNS</strong> topic làm <em>hub</em></li>
-<li><strong>Amazon S3</strong> bucket cho artifacts như mã Lambda</li>
-</ul>
-<blockquote>
-<p>Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.</p></blockquote>
-<hr>
-<h2 id="front-door-microservice">Front door microservice</h2>
-<ul>
-<li>Cung cấp API Gateway để tương tác REST bên ngoài</li>
-<li>Xác thực &amp; ủy quyền dựa trên <strong>OIDC</strong> thông qua <strong>Amazon Cognito</strong></li>
-<li>Cơ chế <em>deduplication</em> tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-<ol>
-<li>SNS deduplication TTL chỉ 5 phút</li>
-<li>SNS FIFO yêu cầu SQS FIFO</li>
-<li>Chủ động báo cho sender biết message là bản sao</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h2 id="staging-er7-microservice">Staging ER7 microservice</h2>
-<ul>
-<li>Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute</li>
-<li>Step Functions Express Workflow để chuyển ER7 → JSON</li>
-<li>Hai Lambda:
-<ol>
-<li>Sửa format ER7 (newline, carriage return)</li>
-<li>Parsing logic</li>
-</ol>
-</li>
-<li>Kết quả hoặc lỗi được đẩy lại vào pub/sub hub</li>
-</ul>
-<hr>
-<h2 id="tính-năng-mới-trong-giải-pháp">Tính năng mới trong giải pháp</h2>
-<h3 id="1-aws-cloudformation-cross-stack-references">1. AWS CloudFormation cross-stack references</h3>
-<p>Ví dụ <em>outputs</em> trong core microservice:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">Outputs</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Bucket</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref Bucket</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-Bucket</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ArtifactBucket</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref ArtifactBucket</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-ArtifactBucket</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Topic</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref Topic</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-Topic</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Catalog</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref Catalog</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-Catalog</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">CatalogArn</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">GetAtt Catalog.Arn</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-CatalogArn</span>
-</span></span></code></pre></div>
+<p>Sự hợp tác giữa Jackbox và AWS cho thấy streaming trò chơi không chỉ là xu hướng, mà là nền tảng để đổi mới trong ngành game.</p>
+<h2 id="về-tác-giả">Về Tác Giả</h2>
+<p><strong>David Holladay</strong>
+<img src="../../../images/blog1.jpeg" width="300" style="float:left; margin:0;" /></p>
+<p>David Holladay là Principal Solutions Architect thuộc nhóm AWS Game Tech, chuyên tư vấn và hỗ trợ các studio trò chơi trong việc xây dựng hạ tầng quy mô lớn trên AWS. Ông có hơn 15 năm kinh nghiệm trong phát triển phần mềm và thiết kế hệ thống cho ngành game, từng làm việc với nhiều studio hàng đầu thế giới. Khi không làm việc, David yêu thích việc stream các game indie mới ra mắt và tham gia các sự kiện game jam để chia sẻ kinh nghiệm lập trình với cộng đồng phát triển trò chơi.</p>
+
 
 
 
@@ -1914,19 +1853,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1765118002"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1765118002"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1765118002"></script>
-    <script src="../../../js/jquery.sticky.js?1765118002"></script>
-    <script src="../../../js/featherlight.min.js?1765118002"></script>
-    <script src="../../../js/highlight.pack.js?1765118002"></script>
+    <script src="../../../js/clipboard.min.js?1765168168"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1765168168"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1765168168"></script>
+    <script src="../../../js/jquery.sticky.js?1765168168"></script>
+    <script src="../../../js/featherlight.min.js?1765168168"></script>
+    <script src="../../../js/highlight.pack.js?1765168168"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1765118002"></script>
-    <script src="../../../js/learn.js?1765118002"></script>
-    <script src="../../../js/hugo-learn.js?1765118002"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1765168168"></script>
+    <script src="../../../js/learn.js?1765168168"></script>
+    <script src="../../../js/hugo-learn.js?1765168168"></script>
 
-    <link href="../../../mermaid/mermaid.css?1765118002" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1765118002"></script>
+    <link href="../../../mermaid/mermaid.css?1765168168" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1765168168"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

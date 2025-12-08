@@ -56,6 +56,4 @@ pre: " <b> 1.6. </b> "
 
 ---
 
-**Summary:**  
-By the end of Week 6, I gained hands-on experience in building, deploying, and automating **serverless architectures** on AWS using Lambda, API Gateway, DynamoDB, and CloudFormation.  
-I also learned how to monitor, troubleshoot, and optimize event-driven workloads for better reliability and scalability.
+

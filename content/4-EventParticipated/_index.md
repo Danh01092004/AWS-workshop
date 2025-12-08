@@ -12,7 +12,7 @@ During my internship, I had the opportunity to attend 4 events. Each event provi
 ### [Event 1](4.1-Event1/)
 
 **Event Name:** AWS AI/ML & Generative AI  
-**Time:** 09:00, August 15, 2025  
+**Time:** 09:00, November 15, 2025  
 
 **Location:** 26th Floor, Bitexco Financial Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
 
@@ -35,7 +35,7 @@ During my internship, I had the opportunity to attend 4 events. Each event provi
 ### [Event 2](4.2-Event2/)
 
 **Event Name:** DevOps on AWS  
-**Time:** 09:00, August 17, 2025  
+**Time:** 09:00, November 17, 2025  
 
 **Location:** 26th Floor, Bitexco Financial Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
 
@@ -59,7 +59,7 @@ During my internship, I had the opportunity to attend 4 events. Each event provi
 ### [Event 3](4.3-Event3/)
 
 **Event Name:** AWS Security Best Practices  
-**Time:** 09:00, August 29, 2025  
+**Time:** 09:00, November 29, 2025  
 
 **Location:** 26th Floor, Bitexco Financial Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
 
@@ -81,7 +81,7 @@ During my internship, I had the opportunity to attend 4 events. Each event provi
 ### [Event 4](4.4-Event4/)
 
 **Event Name:** AWS Bedrock, Agent Core & Future of AI Agents  
-**Time:** January 1, 2025  
+**Time:** December 5, 2025  
 
 **Role:** Attendee  
 

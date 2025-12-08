@@ -1,124 +1,126 @@
 ---
 title: "Blog 5"
 date: 2025-01-01
-weight: 1
+weight: 5
 chapter: false
 pre: " <b> 3.5. </b> "
 ---
 
+# AWS for Database: Real-time Iceberg Ingestion with AWS DMS
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+**By Caius Brindescu – June 4, 2025**
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+*Tags: AWS Database, AWS DMS, Apache Iceberg, Data & Analytics, Industries*
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+## Introduction
 
----
+Modern data platforms increasingly require the ability to access fresh data with low latency to support real-time analytics and rapid decision-making. However, many organizations struggle to continuously ingest changes (insert, update, delete) from transactional databases into their data lakes while maintaining strong consistency guarantees.
 
-## Architecture Guidance
-
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
-
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+Apache Iceberg is an open table format that brings ACID transactions, schema evolution, time-travel queries, and multi-engine interoperability.  
+In this post (guest-authored by Caius Brindescu in collaboration with AWS), we discuss how to build a near real-time data pipeline using **AWS Database Migration Service (DMS)** to capture change data (CDC) from SQL databases and ingest it into Iceberg tables—ensuring consistency, fault tolerance, and seamless integration with downstream systems like Snowflake.  
+Amazon Web Services, Inc.
 
 ---
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## 1. What is AWS DMS and Why It Matters
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+AWS Database Migration Service (DMS) is a managed service that migrates and synchronizes data across heterogeneous database engines.
 
----
+DMS supports two primary modes:
 
-## Technology Choices and Communication Scope
+- **Full Load** – initial bulk copy from source to destination  
+- **CDC (Change Data Capture)** – captures inserts, updates, and deletes in near real-time  
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Combining Full Load + CDC allows Iceberg tables to stay continuously updated with latency typically below 5 seconds.  
+Amazon Web Services, Inc.
 
 ---
 
-## The Pub/Sub Hub
+## 2. Pipeline Architecture: SQL → AWS DMS → Iceberg
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+#### 2.1 High-Level Architecture
+A typical pipeline looks like:
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+**Source DB (MySQL/PostgreSQL) → AWS DMS → Iceberg Table on S3 → Downstream Analytics (Snowflake, Athena, Spark)**
 
----
+The transactional database acts as the origin point of change events. DMS handles the full load + CDC, and Iceberg stores the data in a scalable open table format.  
+Amazon Web Services, Inc.
 
-## Core Microservice
+#### 2.2 Components and Roles
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
-
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+| Component | Role |
+|----------|------|
+| Source Database | Generates insert/update/delete events |
+| AWS DMS | Performs full load + CDC and streams data |
+| Iceberg Table on S3 | ACID table storage with multi-engine access |
+| Merge/Upsert Logic | Applies CDC changes to the table |
+| Downstream Systems | Snowflake, Athena, Spark for analytics |
 
 ---
 
-## Front Door Microservice
+## 3. Step-by-Step Setup
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+#### 3.1 Creating DMS Endpoints
+
+- **Source Endpoint:** Connects to SQL database (MySQL/PostgreSQL)  
+- **Target Endpoint:** Points to S3 location storing Iceberg data  
+
+Sample configuration includes hostname, port, username, and password.
+
+#### 3.2 Creating a Replication Task
+
+Select **Full Load + CDC** mode  
+Choose specific tables  
+Set small batch sizes for low latency  
+Enable large object options if necessary (LOB/JSON)
+
+When executed, DMS will:
+
+- Perform initial full load  
+- Continuously read source logs  
+- Send changes to target staging  
+
+#### 3.3 Handling DMS Output and Writing to Iceberg
+
+DMS writes change records (often JSON/CSV) into staging, including an `action` column.
+
+Example CDC staging:
+
+| id | name  | action |
+|----|--------|---------|
+| 1 | Alice | INSERT |
+| 2 | Bob | UPDATE |
+| 3 | Carol | DELETE |
+
+Apply changes to Iceberg using a **MERGE** statement:
+
+```sql
+MERGE INTO iceberg_table t
+USING staging_table s
+ON t.id = s.id
+WHEN MATCHED AND s.action = 'DELETE' THEN DELETE
+WHEN MATCHED THEN UPDATE SET name = s.name
+WHEN NOT MATCHED THEN INSERT (id, name) VALUES (s.id, s.name);
+```
+
+## Conclusion
+
+Building a real-time data ingestion pipeline with AWS DMS and Apache Iceberg enables organizations to keep analytical datasets fresh, consistent, and scalable. By combining full-load initialization with continuous CDC streaming, teams can ensure low-latency updates while benefiting from Iceberg’s ACID guarantees and multi-engine interoperability. This architecture not only improves decision-making but also provides a future-proof foundation for modern analytics workloads.
+
+## About the Author
+
+**Caius Brindescu**
+<img src="/images/Blog2.1.png" width="100" style="float:left; margin:0;" />
+
+ Caius Brindescu là Kỹ sư chính (Principal Engineer) tại Etleap, chuyên triển khai các giải pháp dữ liệu thời gian thực. Ông hợp tác với AWS để xây dựng các pipeline sử dụng AWS DMS và Apache Iceberg, hướng đến việc giúp doanh nghiệp đạt khả năng xử lý dữ liệu gần real-time và mở rộng hiệu quả.
 
 ---
 
-## Staging ER7 Microservice
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+ **Mahesh Kansara**
+ <img src="/images/Blog2.2.jpeg" width="100" style="float:left; margin:0;" />
 
----
+ Mahesh là quản lý kỹ thuật cơ sở dữ liệu tại Amazon Web Services (AWS). Anh làm việc chặt chẽ với các nhóm phát triển và kỹ sư để cải thiện các dịch vụ di trú và sao chép dữ liệu. Đồng thời, anh cũng hợp tác với khách hàng để cung cấp hướng dẫn và hỗ trợ kỹ thuật cho nhiều dự án cơ sở dữ liệu và phân tích, giúp họ nâng cao giá trị của các giải pháp khi sử dụng AWS.
 
-## New Features in the Solution
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+

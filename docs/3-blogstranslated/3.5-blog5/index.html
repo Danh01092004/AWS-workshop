@@ -15,21 +15,21 @@
     <title>Blog 5 :: Internship Report</title>
 
     
-    <link href="../../css/nucleus.css?1765118001" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1765118001" rel="stylesheet">
-    <link href="../../css/hybrid.css?1765118001" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1765118001" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1765118001" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1765118001" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1765118001" rel="stylesheet">
-    <link href="../../css/theme.css?1765118001" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1765118001" rel="stylesheet">
+    <link href="../../css/nucleus.css?1765168167" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1765168167" rel="stylesheet">
+    <link href="../../css/hybrid.css?1765168167" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1765168167" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1765168167" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1765168167" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1765168167" rel="stylesheet">
+    <link href="../../css/theme.css?1765168167" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1765168167" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1765118001" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1765168167" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1765118001"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1765168167"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -88,14 +88,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1765118001"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1765118001"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1765168167"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1765168167"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/Danh01092004.github.io\/AWS-workshop\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1765118001"></script>
+<script type="text/javascript" src="../../js/search.js?1765168167"></script>
  
   </div>
 
@@ -1023,17 +1023,20 @@
                     <div class="progress">
   <div class="wrapper"><nav id="TableOfContents">
   <ul>
-    <li><a href="#architecture-guidance">Architecture Guidance</a></li>
-    <li><a href="#technology-choices-and-communication-scope">Technology Choices and Communication Scope</a></li>
-    <li><a href="#the-pubsub-hub">The Pub/Sub Hub</a></li>
-    <li><a href="#core-microservice">Core Microservice</a></li>
-    <li><a href="#front-door-microservice">Front Door Microservice</a></li>
-    <li><a href="#staging-er7-microservice">Staging ER7 Microservice</a></li>
-    <li><a href="#new-features-in-the-solution">New Features in the Solution</a>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#1-what-is-aws-dms-and-why-it-matters">1. What is AWS DMS and Why It Matters</a></li>
+    <li><a href="#2-pipeline-architecture-sql--aws-dms--iceberg">2. Pipeline Architecture: SQL → AWS DMS → Iceberg</a>
       <ul>
-        <li><a href="#1-aws-cloudformation-cross-stack-references">1. AWS CloudFormation Cross-Stack References</a></li>
+        <li></li>
       </ul>
     </li>
+    <li><a href="#3-step-by-step-setup">3. Step-by-Step Setup</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#about-the-author">About the Author</a></li>
   </ul>
 </nav></div>
 </div>
@@ -1058,127 +1061,128 @@
 
 
 
-	<h1 id="getting-started-with-healthcare-data-lakes-using-microservices">Getting Started with Healthcare Data Lakes: Using Microservices</h1>
-<p>Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A <strong>data lake</strong> is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.</p>
-<p>This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, <em>“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”</em>, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.</p>
+	<h1 id="aws-for-database-real-time-iceberg-ingestion-with-aws-dms">AWS for Database: Real-time Iceberg Ingestion with AWS DMS</h1>
+<p><strong>By Caius Brindescu – June 4, 2025</strong></p>
+<p><em>Tags: AWS Database, AWS DMS, Apache Iceberg, Data &amp; Analytics, Industries</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Modern data platforms increasingly require the ability to access fresh data with low latency to support real-time analytics and rapid decision-making. However, many organizations struggle to continuously ingest changes (insert, update, delete) from transactional databases into their data lakes while maintaining strong consistency guarantees.</p>
+<p>Apache Iceberg is an open table format that brings ACID transactions, schema evolution, time-travel queries, and multi-engine interoperability.<br>
+In this post (guest-authored by Caius Brindescu in collaboration with AWS), we discuss how to build a near real-time data pipeline using <strong>AWS Database Migration Service (DMS)</strong> to capture change data (CDC) from SQL databases and ingest it into Iceberg tables—ensuring consistency, fault tolerance, and seamless integration with downstream systems like Snowflake.<br>
+Amazon Web Services, Inc.</p>
 <hr>
-<h2 id="architecture-guidance">Architecture Guidance</h2>
-<p>The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”</p>
-<p>This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of <strong>HL7v2 messages</strong> formatted in <strong>Encoding Rules 7 (ER7)</strong> through a REST interface.</p>
-<p><strong>The solution architecture is now as follows:</strong></p>
-<blockquote>
-<p><em>Figure 1. Overall architecture; colored boxes represent distinct services.</em></p></blockquote>
-<hr>
-<p>While the term <em>microservices</em> has some inherent ambiguity, certain traits are common:</p>
+<h2 id="1-what-is-aws-dms-and-why-it-matters">1. What is AWS DMS and Why It Matters</h2>
+<p>AWS Database Migration Service (DMS) is a managed service that migrates and synchronizes data across heterogeneous database engines.</p>
+<p>DMS supports two primary modes:</p>
 <ul>
-<li>Small, autonomous, loosely coupled</li>
-<li>Reusable, communicating through well-defined interfaces</li>
-<li>Specialized to do one thing well</li>
-<li>Often implemented in an <strong>event-driven architecture</strong></li>
+<li><strong>Full Load</strong> – initial bulk copy from source to destination</li>
+<li><strong>CDC (Change Data Capture)</strong> – captures inserts, updates, and deletes in near real-time</li>
 </ul>
-<p>When determining where to draw boundaries between microservices, consider:</p>
-<ul>
-<li><strong>Intrinsic</strong>: technology used, performance, reliability, scalability</li>
-<li><strong>Extrinsic</strong>: dependent functionality, rate of change, reusability</li>
-<li><strong>Human</strong>: team ownership, managing <em>cognitive load</em></li>
-</ul>
+<p>Combining Full Load + CDC allows Iceberg tables to stay continuously updated with latency typically below 5 seconds.<br>
+Amazon Web Services, Inc.</p>
 <hr>
-<h2 id="technology-choices-and-communication-scope">Technology Choices and Communication Scope</h2>
+<h2 id="2-pipeline-architecture-sql--aws-dms--iceberg">2. Pipeline Architecture: SQL → AWS DMS → Iceberg</h2>
+<h4 id="21-high-level-architecture">2.1 High-Level Architecture</h4>
+<p>A typical pipeline looks like:</p>
+<p><strong>Source DB (MySQL/PostgreSQL) → AWS DMS → Iceberg Table on S3 → Downstream Analytics (Snowflake, Athena, Spark)</strong></p>
+<p>The transactional database acts as the origin point of change events. DMS handles the full load + CDC, and Iceberg stores the data in a scalable open table format.<br>
+Amazon Web Services, Inc.</p>
+<h4 id="22-components-and-roles">2.2 Components and Roles</h4>
 <table>
   <thead>
       <tr>
-          <th>Communication scope</th>
-          <th>Technologies / patterns to consider</th>
+          <th>Component</th>
+          <th>Role</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>Within a single microservice</td>
-          <td>Amazon Simple Queue Service (Amazon SQS), AWS Step Functions</td>
+          <td>Source Database</td>
+          <td>Generates insert/update/delete events</td>
       </tr>
       <tr>
-          <td>Between microservices in a single service</td>
-          <td>AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS)</td>
+          <td>AWS DMS</td>
+          <td>Performs full load + CDC and streams data</td>
       </tr>
       <tr>
-          <td>Between services</td>
-          <td>Amazon EventBridge, AWS Cloud Map, Amazon API Gateway</td>
+          <td>Iceberg Table on S3</td>
+          <td>ACID table storage with multi-engine access</td>
+      </tr>
+      <tr>
+          <td>Merge/Upsert Logic</td>
+          <td>Applies CDC changes to the table</td>
+      </tr>
+      <tr>
+          <td>Downstream Systems</td>
+          <td>Snowflake, Athena, Spark for analytics</td>
       </tr>
   </tbody>
 </table>
 <hr>
-<h2 id="the-pubsub-hub">The Pub/Sub Hub</h2>
-<p>Using a <strong>hub-and-spoke</strong> architecture (or message broker) works well with a small number of tightly related microservices.</p>
+<h2 id="3-step-by-step-setup">3. Step-by-Step Setup</h2>
+<h4 id="31-creating-dms-endpoints">3.1 Creating DMS Endpoints</h4>
 <ul>
-<li>Each microservice depends only on the <em>hub</em></li>
-<li>Inter-microservice connections are limited to the contents of the published message</li>
-<li>Reduces the number of synchronous calls since pub/sub is a one-way asynchronous <em>push</em></li>
+<li><strong>Source Endpoint:</strong> Connects to SQL database (MySQL/PostgreSQL)</li>
+<li><strong>Target Endpoint:</strong> Points to S3 location storing Iceberg data</li>
 </ul>
-<p>Drawback: <strong>coordination and monitoring</strong> are needed to avoid microservices processing the wrong message.</p>
-<hr>
-<h2 id="core-microservice">Core Microservice</h2>
-<p>Provides foundational data and communication layer, including:</p>
+<p>Sample configuration includes hostname, port, username, and password.</p>
+<h4 id="32-creating-a-replication-task">3.2 Creating a Replication Task</h4>
+<p>Select <strong>Full Load + CDC</strong> mode<br>
+Choose specific tables<br>
+Set small batch sizes for low latency<br>
+Enable large object options if necessary (LOB/JSON)</p>
+<p>When executed, DMS will:</p>
 <ul>
-<li><strong>Amazon S3</strong> bucket for data</li>
-<li><strong>Amazon DynamoDB</strong> for data catalog</li>
-<li><strong>AWS Lambda</strong> to write messages into the data lake and catalog</li>
-<li><strong>Amazon SNS</strong> topic as the <em>hub</em></li>
-<li><strong>Amazon S3</strong> bucket for artifacts such as Lambda code</li>
+<li>Perform initial full load</li>
+<li>Continuously read source logs</li>
+<li>Send changes to target staging</li>
 </ul>
-<blockquote>
-<p>Only allow indirect write access to the data lake through a Lambda function → ensures consistency.</p></blockquote>
+<h4 id="33-handling-dms-output-and-writing-to-iceberg">3.3 Handling DMS Output and Writing to Iceberg</h4>
+<p>DMS writes change records (often JSON/CSV) into staging, including an <code>action</code> column.</p>
+<p>Example CDC staging:</p>
+<table>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>action</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>Alice</td>
+          <td>INSERT</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Bob</td>
+          <td>UPDATE</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>Carol</td>
+          <td>DELETE</td>
+      </tr>
+  </tbody>
+</table>
+<p>Apply changes to Iceberg using a <strong>MERGE</strong> statement:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>MERGE <span style="color:#66d9ef">INTO</span> iceberg_table t
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">USING</span> staging_table s
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ON</span> t.id <span style="color:#f92672">=</span> s.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHEN</span> MATCHED <span style="color:#66d9ef">AND</span> s.action <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DELETE&#39;</span> <span style="color:#66d9ef">THEN</span> <span style="color:#66d9ef">DELETE</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHEN</span> MATCHED <span style="color:#66d9ef">THEN</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">SET</span> name <span style="color:#f92672">=</span> s.name
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">NOT</span> MATCHED <span style="color:#66d9ef">THEN</span> <span style="color:#66d9ef">INSERT</span> (id, name) <span style="color:#66d9ef">VALUES</span> (s.id, s.name);
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>Building a real-time data ingestion pipeline with AWS DMS and Apache Iceberg enables organizations to keep analytical datasets fresh, consistent, and scalable. By combining full-load initialization with continuous CDC streaming, teams can ensure low-latency updates while benefiting from Iceberg’s ACID guarantees and multi-engine interoperability. This architecture not only improves decision-making but also provides a future-proof foundation for modern analytics workloads.</p>
+<h2 id="about-the-author">About the Author</h2>
+<p><strong>Caius Brindescu</strong>
+<img src="../../images/Blog2.1.png" width="100" style="float:left; margin:0;" /></p>
+<p>Caius Brindescu là Kỹ sư chính (Principal Engineer) tại Etleap, chuyên triển khai các giải pháp dữ liệu thời gian thực. Ông hợp tác với AWS để xây dựng các pipeline sử dụng AWS DMS và Apache Iceberg, hướng đến việc giúp doanh nghiệp đạt khả năng xử lý dữ liệu gần real-time và mở rộng hiệu quả.</p>
 <hr>
-<h2 id="front-door-microservice">Front Door Microservice</h2>
-<ul>
-<li>Provides an API Gateway for external REST interaction</li>
-<li>Authentication &amp; authorization based on <strong>OIDC</strong> via <strong>Amazon Cognito</strong></li>
-<li>Self-managed <em>deduplication</em> mechanism using DynamoDB instead of SNS FIFO because:
-<ol>
-<li>SNS deduplication TTL is only 5 minutes</li>
-<li>SNS FIFO requires SQS FIFO</li>
-<li>Ability to proactively notify the sender that the message is a duplicate</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h2 id="staging-er7-microservice">Staging ER7 Microservice</h2>
-<ul>
-<li>Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute</li>
-<li>Step Functions Express Workflow to convert ER7 → JSON</li>
-<li>Two Lambdas:
-<ol>
-<li>Fix ER7 formatting (newline, carriage return)</li>
-<li>Parsing logic</li>
-</ol>
-</li>
-<li>Result or error is pushed back into the pub/sub hub</li>
-</ul>
-<hr>
-<h2 id="new-features-in-the-solution">New Features in the Solution</h2>
-<h3 id="1-aws-cloudformation-cross-stack-references">1. AWS CloudFormation Cross-Stack References</h3>
-<p>Example <em>outputs</em> in the core microservice:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">Outputs</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Bucket</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref Bucket</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-Bucket</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ArtifactBucket</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref ArtifactBucket</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-ArtifactBucket</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Topic</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref Topic</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-Topic</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Catalog</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref Catalog</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-Catalog</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">CatalogArn</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">GetAtt Catalog.Arn</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-CatalogArn</span>
-</span></span></code></pre></div>
+<p><strong>Mahesh Kansara</strong>
+<img src="../../images/Blog2.2.jpeg" width="100" style="float:left; margin:0;" /></p>
+<p>Mahesh là quản lý kỹ thuật cơ sở dữ liệu tại Amazon Web Services (AWS). Anh làm việc chặt chẽ với các nhóm phát triển và kỹ sư để cải thiện các dịch vụ di trú và sao chép dữ liệu. Đồng thời, anh cũng hợp tác với khách hàng để cung cấp hướng dẫn và hỗ trợ kỹ thuật cho nhiều dự án cơ sở dữ liệu và phân tích, giúp họ nâng cao giá trị của các giải pháp khi sử dụng AWS.</p>
+
 
 
 
@@ -1914,19 +1918,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1765118001"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1765118001"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1765118001"></script>
-    <script src="../../js/jquery.sticky.js?1765118001"></script>
-    <script src="../../js/featherlight.min.js?1765118001"></script>
-    <script src="../../js/highlight.pack.js?1765118001"></script>
+    <script src="../../js/clipboard.min.js?1765168167"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1765168167"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1765168167"></script>
+    <script src="../../js/jquery.sticky.js?1765168167"></script>
+    <script src="../../js/featherlight.min.js?1765168167"></script>
+    <script src="../../js/highlight.pack.js?1765168167"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1765118001"></script>
-    <script src="../../js/learn.js?1765118001"></script>
-    <script src="../../js/hugo-learn.js?1765118001"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1765168167"></script>
+    <script src="../../js/learn.js?1765168167"></script>
+    <script src="../../js/hugo-learn.js?1765168167"></script>
 
-    <link href="../../mermaid/mermaid.css?1765118001" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1765118001"></script>
+    <link href="../../mermaid/mermaid.css?1765168167" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1765168167"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

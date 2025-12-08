@@ -1,125 +1,123 @@
 ---
 title: "Blog 5"
 date: 2025-01-01
-weight: 1
+weight: 5
 chapter: false
-pre: " <b> 3.6. </b> "
+pre: " <b> 3.5. </b> "
 ---
 
+# AWS for Database: Real-time Iceberg Ingestion with AWS DMS
 
+**By Caius Brindescu – June 4, 2025**
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+*Tags: AWS Database, AWS DMS, Apache Iceberg, Data & Analytics, Industries*
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+## Introduction
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+Các nền tảng dữ liệu hiện đại ngày càng yêu cầu khả năng truy cập dữ liệu mới với độ trễ thấp để hỗ trợ phân tích thời gian thực và ra quyết định nhanh chóng. Tuy nhiên, nhiều tổ chức gặp khó khăn trong việc liên tục ingest các thay đổi (insert, update, delete) từ các cơ sở dữ liệu giao dịch vào data lake trong khi vẫn duy trì tính nhất quán mạnh mẽ.
 
----
-
-## Hướng dẫn kiến trúc
-
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
-
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
-
-**Kiến trúc giải pháp bây giờ như sau:**
-
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+Apache Iceberg là một định dạng bảng mở cung cấp ACID transactions, mở rộng schema linh hoạt, truy vấn time-travel, và khả năng tương thích với nhiều engine.  
+Trong bài viết này (được viết bởi Caius Brindescu với sự hợp tác của AWS), chúng tôi thảo luận cách xây dựng pipeline dữ liệu gần real-time bằng **AWS Database Migration Service (DMS)** để thu thập dữ liệu thay đổi (CDC) từ cơ sở dữ liệu SQL và ingest vào các bảng Iceberg—đảm bảo tính nhất quán, chịu lỗi, và tích hợp mượt với các hệ thống downstream như Snowflake.  
+Amazon Web Services, Inc.
 
 ---
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+## 1. What is AWS DMS and Why It Matters
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+AWS Database Migration Service (DMS) là dịch vụ quản lý cho phép di chuyển và đồng bộ dữ liệu giữa các hệ quản trị cơ sở dữ liệu khác nhau.
 
----
+DMS hỗ trợ hai chế độ chính:
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+- **Full Load** – sao chép toàn bộ dữ liệu ban đầu  
+- **CDC (Change Data Capture)** – thu thập insert, update và delete gần real-time  
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Kết hợp Full Load + CDC giúp các bảng Iceberg được cập nhật liên tục với độ trễ thường dưới 5 giây.  
+Amazon Web Services, Inc.
 
 ---
 
-## The pub/sub hub
+## 2. Pipeline Architecture: SQL → AWS DMS → Iceberg
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+#### 2.1 High-Level Architecture
+Một pipeline điển hình như sau:
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+**Source DB (MySQL/PostgreSQL) → AWS DMS → Iceberg Table on S3 → Downstream Analytics (Snowflake, Athena, Spark)**
 
----
+Cơ sở dữ liệu giao dịch đóng vai trò nguồn sinh ra các sự kiện thay đổi. DMS xử lý full load + CDC, và Iceberg lưu trữ dữ liệu trong định dạng bảng mở có khả năng mở rộng.  
+Amazon Web Services, Inc.
 
-## Core microservice
+#### 2.2 Components and Roles
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
-
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+| Component | Role |
+|----------|------|
+| Source Database | Sinh ra các sự kiện insert/update/delete |
+| AWS DMS | Thực hiện full load + CDC và stream dữ liệu |
+| Iceberg Table on S3 | Lưu trữ bảng ACID với khả năng truy cập từ nhiều engine |
+| Merge/Upsert Logic | Áp dụng các thay đổi CDC lên bảng |
+| Downstream Systems | Snowflake, Athena, Spark phục vụ phân tích |
 
 ---
 
-## Front door microservice
+## 3. Step-by-Step Setup
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+#### 3.1 Creating DMS Endpoints
+
+- **Source Endpoint:** Kết nối tới cơ sở dữ liệu SQL (MySQL/PostgreSQL)  
+- **Target Endpoint:** Trỏ đến vị trí S3 chứa dữ liệu Iceberg  
+
+Cấu hình mẫu bao gồm hostname, port, username, password.
+
+#### 3.2 Creating a Replication Task
+
+Chọn chế độ **Full Load + CDC**  
+Chọn bảng cần sao chép  
+Thiết lập batch size nhỏ để giảm độ trễ  
+Bật tùy chọn large objects nếu cần (LOB/JSON)
+
+Khi chạy, DMS sẽ:
+
+- Thực hiện full load ban đầu  
+- Liên tục đọc log của source  
+- Gửi thay đổi sang nơi staging  
+
+#### 3.3 Handling DMS Output and Writing to Iceberg
+
+DMS ghi các bản ghi thay đổi (thường ở dạng JSON/CSV) vào staging, bao gồm cột `action`.
+
+Ví dụ dữ liệu CDC:
+
+| id | name  | action |
+|----|--------|---------|
+| 1 | Alice | INSERT |
+| 2 | Bob | UPDATE |
+| 3 | Carol | DELETE |
+
+Áp dụng thay đổi vào Iceberg bằng câu lệnh **MERGE**:
+
+```sql
+MERGE INTO iceberg_table t
+USING staging_table s
+ON t.id = s.id
+WHEN MATCHED AND s.action = 'DELETE' THEN DELETE
+WHEN MATCHED THEN UPDATE SET name = s.name
+WHEN NOT MATCHED THEN INSERT (id, name) VALUES (s.id, s.name);
+```
+
+## Conclusion
+
+Building a real-time data ingestion pipeline with AWS DMS and Apache Iceberg enables organizations to keep analytical datasets fresh, consistent, and scalable. By combining full-load initialization with continuous CDC streaming, teams can ensure low-latency updates while benefiting from Iceberg’s ACID guarantees and multi-engine interoperability. This architecture not only improves decision-making but also provides a future-proof foundation for modern analytics workloads.
+
+## About the Author
+
+**Caius Brindescu**
+<img src="/images/Blog2.1.png" width="100" style="float:left; margin:0;" />
+
+ Caius Brindescu là Kỹ sư chính (Principal Engineer) tại Etleap, chuyên triển khai các giải pháp dữ liệu thời gian thực. Ông hợp tác với AWS để xây dựng các pipeline sử dụng AWS DMS và Apache Iceberg, hướng đến việc giúp doanh nghiệp đạt khả năng xử lý dữ liệu gần real-time và mở rộng hiệu quả.
 
 ---
 
-## Staging ER7 microservice
 
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+ **Mahesh Kansara**
+ <img src="/images/Blog2.2.jpeg" width="100" style="float:left; margin:0;" />
 
----
-
-## Tính năng mới trong giải pháp
-
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+ Mahesh là quản lý kỹ thuật cơ sở dữ liệu tại Amazon Web Services (AWS). Anh làm việc chặt chẽ với các nhóm phát triển và kỹ sư để cải thiện các dịch vụ di trú và sao chép dữ liệu. Đồng thời, anh cũng hợp tác với khách hàng để cung cấp hướng dẫn và hỗ trợ kỹ thuật cho nhiều dự án cơ sở dữ liệu và phân tích, giúp họ nâng cao giá trị của các giải pháp khi sử dụng AWS.

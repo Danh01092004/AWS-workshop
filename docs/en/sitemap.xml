@@ -15,71 +15,6 @@
                 href="https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.1-blog1/"
                 />
   </url><url>
-    <loc>https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.2-blog2/</loc>
-    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://Danh01092004.github.io/AWS-workshop/vi/3-blogstranslated/3.2-blog2/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.2-blog2/"
-                />
-  </url><url>
-    <loc>https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.3-blog3/</loc>
-    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://Danh01092004.github.io/AWS-workshop/vi/3-blogstranslated/3.3-blog3/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.3-blog3/"
-                />
-  </url><url>
-    <loc>https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.4-blog4/</loc>
-    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://Danh01092004.github.io/AWS-workshop/vi/3-blogstranslated/3.4-blog4/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.4-blog4/"
-                />
-  </url><url>
-    <loc>https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.5-blog5/</loc>
-    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://Danh01092004.github.io/AWS-workshop/vi/3-blogstranslated/3.5-blog5/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.5-blog5/"
-                />
-  </url><url>
-    <loc>https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.6-blog6/</loc>
-    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://Danh01092004.github.io/AWS-workshop/vi/3-blogstranslated/3.6-blog6/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.6-blog6/"
-                />
-  </url><url>
     <loc>https://Danh01092004.github.io/AWS-workshop/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -171,6 +106,32 @@
                 href="https://Danh01092004.github.io/AWS-workshop/1-worklog/"
                 />
   </url><url>
+    <loc>https://Danh01092004.github.io/AWS-workshop/2-proposal/</loc>
+    <lastmod>2025-09-09T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://Danh01092004.github.io/AWS-workshop/vi/2-proposal/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://Danh01092004.github.io/AWS-workshop/2-proposal/"
+                />
+  </url><url>
+    <loc>https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.2-blog2/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://Danh01092004.github.io/AWS-workshop/vi/3-blogstranslated/3.2-blog2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.2-blog2/"
+                />
+  </url><url>
     <loc>https://Danh01092004.github.io/AWS-workshop/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -210,19 +171,6 @@
                 href="https://Danh01092004.github.io/AWS-workshop/5-workshop/5.2-prerequiste/"
                 />
   </url><url>
-    <loc>https://Danh01092004.github.io/AWS-workshop/2-proposal/</loc>
-    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://Danh01092004.github.io/AWS-workshop/vi/2-proposal/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Danh01092004.github.io/AWS-workshop/2-proposal/"
-                />
-  </url><url>
     <loc>https://Danh01092004.github.io/AWS-workshop/5-workshop/5.3-s3-vpc/5.3.2-test-gwe/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -260,6 +208,19 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://Danh01092004.github.io/AWS-workshop/5-workshop/5.3-s3-vpc/"
+                />
+  </url><url>
+    <loc>https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.3-blog3/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://Danh01092004.github.io/AWS-workshop/vi/3-blogstranslated/3.3-blog3/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.3-blog3/"
                 />
   </url><url>
     <loc>https://Danh01092004.github.io/AWS-workshop/4-eventparticipated/4.3-event3/</loc>
@@ -327,6 +288,19 @@
                 href="https://Danh01092004.github.io/AWS-workshop/5-workshop/5.4-s3-onprem/"
                 />
   </url><url>
+    <loc>https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.4-blog4/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://Danh01092004.github.io/AWS-workshop/vi/3-blogstranslated/3.4-blog4/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.4-blog4/"
+                />
+  </url><url>
     <loc>https://Danh01092004.github.io/AWS-workshop/4-eventparticipated/4.4-event4/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -379,6 +353,19 @@
                 href="https://Danh01092004.github.io/AWS-workshop/1-worklog/1.4-week4/"
                 />
   </url><url>
+    <loc>https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.5-blog5/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://Danh01092004.github.io/AWS-workshop/vi/3-blogstranslated/3.5-blog5/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.5-blog5/"
+                />
+  </url><url>
     <loc>https://Danh01092004.github.io/AWS-workshop/5-workshop/5.5-policy/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -416,6 +403,19 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://Danh01092004.github.io/AWS-workshop/5-workshop/"
+                />
+  </url><url>
+    <loc>https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.6-blog6/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://Danh01092004.github.io/AWS-workshop/vi/3-blogstranslated/3.6-blog6/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://Danh01092004.github.io/AWS-workshop/3-blogstranslated/3.6-blog6/"
                 />
   </url><url>
     <loc>https://Danh01092004.github.io/AWS-workshop/5-workshop/5.6-cleanup/</loc>

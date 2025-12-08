@@ -15,21 +15,21 @@
     <title>Blog 6 :: Báo cáo thực tập</title>
 
     
-    <link href="../../../css/nucleus.css?1765118002" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1765118002" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1765118002" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1765118002" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1765118002" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1765118002" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1765118002" rel="stylesheet">
-    <link href="../../../css/theme.css?1765118002" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1765118002" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1765168168" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1765168168" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1765168168" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1765168168" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1765168168" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1765168168" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1765168168" rel="stylesheet">
+    <link href="../../../css/theme.css?1765168168" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1765168168" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1765118002" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1765168168" rel="stylesheet">
     
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1765118002"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1765168168"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -88,14 +88,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1765118002"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1765118002"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1765168168"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1765168168"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/Danh01092004.github.io\/AWS-workshop\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1765118002"></script>
+<script type="text/javascript" src="../../../js/search.js?1765168168"></script>
  
   </div>
 
@@ -341,7 +341,7 @@
            
 <li
   data-nav-id="/vi/2-proposal/"
-  title="Bản đề xuất"
+  title="Đề xuất dự án"
   class="dd-item 
         
         
@@ -349,7 +349,7 @@
         "
 >
   <a href="../../../vi/2-proposal/">
-     <b> 2. </b> Bản đề xuất 
+     <b> 2. </b> Đề xuất dự án 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -456,7 +456,7 @@
         "
 >
   <a href="../../../vi/3-blogstranslated/3.5-blog5/">
-     <b> 3.6. </b> Blog 5 
+     <b> 3.5. </b> Blog 5 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -1023,17 +1023,25 @@
                     <div class="progress">
   <div class="wrapper"><nav id="TableOfContents">
   <ul>
-    <li><a href="#hướng-dẫn-kiến-trúc">Hướng dẫn kiến trúc</a></li>
-    <li><a href="#lựa-chọn-công-nghệ-và-phạm-vi-giao-tiếp">Lựa chọn công nghệ và phạm vi giao tiếp</a></li>
-    <li><a href="#the-pubsub-hub">The pub/sub hub</a></li>
-    <li><a href="#core-microservice">Core microservice</a></li>
-    <li><a href="#front-door-microservice">Front door microservice</a></li>
-    <li><a href="#staging-er7-microservice">Staging ER7 microservice</a></li>
-    <li><a href="#tính-năng-mới-trong-giải-pháp">Tính năng mới trong giải pháp</a>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#1-supported-replication-types--comparison-table">1. Supported Replication Types &amp; Comparison Table</a>
       <ul>
-        <li><a href="#1-aws-cloudformation-cross-stack-references">1. AWS CloudFormation cross-stack references</a></li>
+        <li></li>
       </ul>
     </li>
+    <li><a href="#2-solution-overview--architecture">2. Solution Overview &amp; Architecture</a></li>
+    <li><a href="#3-transactional-replication-configuration-guide">3. Transactional Replication Configuration Guide</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#4-advantages-limitations--considerations">4. Advantages, Limitations &amp; Considerations</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#about-the-author">About the Author</a></li>
   </ul>
 </nav></div>
 </div>
@@ -1058,127 +1066,182 @@
 
 
 
-	<h1 id="bắt-đầu-với-healthcare-data-lakes-sử-dụng-microservices">Bắt đầu với healthcare data lakes: Sử dụng microservices</h1>
-<p>Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. <strong>Data lake</strong> là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.</p>
-<p>Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, <em>“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”</em>, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.</p>
+	<h1 id="aws-for-database--native-sql-server-replication-options-on-amazon-rds-custom-for-sql-server">AWS for Database : Native SQL Server Replication Options on Amazon RDS Custom for SQL Server</h1>
+<p><em>(AWS Database, Amazon RDS Custom, SQL Server, Replication, Data &amp; Analytics, Industries)</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Các ứng dụng hiện đại thường yêu cầu khả năng phân phối dữ liệu đáng tin cậy và tính sẵn sàng cao trên nhiều cơ sở dữ liệu để hỗ trợ hoạt động kinh doanh quan trọng. SQL Server Replication cho phép quản trị viên cơ sở dữ liệu (DBA) tự động phân phối dữ liệu giữa các cơ sở dữ liệu theo thời gian gần như thực, giúp giảm tải các tác vụ đọc nặng từ hệ thống sản xuất và đồng bộ dữ liệu giữa các vùng hoặc các môi trường cơ sở dữ liệu khác nhau.</p>
+<p>Amazon RDS Custom for SQL Server là dịch vụ được quản lý kết hợp giữa sự linh hoạt của cơ sở dữ liệu tự quản và các lợi ích tự động hóa của một dịch vụ hoàn toàn được quản lý. Với RDS Custom, bạn có thể tận dụng các tính năng replication gốc của SQL Server trong khi AWS xử lý các tác vụ hạ tầng như backup, vá lỗi, snapshot và giám sát.<br>
+Blog này khám phá cách cấu hình SQL Server Replication trên RDS Custom, bao gồm các loại replication được hỗ trợ (snapshot, transactional, merge, peer-to-peer) và hướng dẫn từng bước để cấu hình distributor, publication và subscription.<br>
+Amazon Web Services, Inc.</p>
 <hr>
-<h2 id="hướng-dẫn-kiến-trúc">Hướng dẫn kiến trúc</h2>
-<p>Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.</p>
-<p>Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các <strong>HL7v2 messages</strong> được định dạng theo <strong>Quy tắc mã hóa 7 (ER7)</strong> thông qua giao diện REST.</p>
-<p><strong>Kiến trúc giải pháp bây giờ như sau:</strong></p>
-<blockquote>
-<p><em>Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.</em></p></blockquote>
-<hr>
-<p>Mặc dù thuật ngữ <em>microservices</em> có một số sự mơ hồ cố hữu, một số đặc điểm là chung:</p>
-<ul>
-<li>Chúng nhỏ, tự chủ, kết hợp rời rạc</li>
-<li>Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ</li>
-<li>Chuyên biệt để giải quyết một việc</li>
-<li>Thường được triển khai trong <strong>event-driven architecture</strong></li>
-</ul>
-<p>Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:</p>
-<ul>
-<li><strong>Nội tại</strong>: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng</li>
-<li><strong>Bên ngoài</strong>: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng</li>
-<li><strong>Con người</strong>: quyền sở hữu nhóm, quản lý <em>cognitive load</em></li>
-</ul>
-<hr>
-<h2 id="lựa-chọn-công-nghệ-và-phạm-vi-giao-tiếp">Lựa chọn công nghệ và phạm vi giao tiếp</h2>
+<h2 id="1-supported-replication-types--comparison-table">1. Supported Replication Types &amp; Comparison Table</h2>
+<h4 id="11-roles--capabilities-of-rds-custom">1.1 Roles &amp; Capabilities of RDS Custom</h4>
 <table>
   <thead>
       <tr>
-          <th>Phạm vi giao tiếp</th>
-          <th>Các công nghệ / mô hình cần xem xét</th>
+          <th>Role / Replication Mode</th>
+          <th>RDS for SQL Server</th>
+          <th>RDS Custom for SQL Server</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>Trong một microservice</td>
-          <td>Amazon Simple Queue Service (Amazon SQS), AWS Step Functions</td>
+          <td>Publisher</td>
+          <td>No</td>
+          <td>Yes</td>
       </tr>
       <tr>
-          <td>Giữa các microservices trong một dịch vụ</td>
-          <td>AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS)</td>
+          <td>Distributor</td>
+          <td>No</td>
+          <td>Yes</td>
       </tr>
       <tr>
-          <td>Giữa các dịch vụ</td>
-          <td>Amazon EventBridge, AWS Cloud Map, Amazon API Gateway</td>
+          <td>Pull Subscriber</td>
+          <td>No</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>Push Subscriber</td>
+          <td>Yes</td>
+          <td>Yes</td>
       </tr>
   </tbody>
 </table>
+<p>RDS Custom mở rộng khả năng vượt xa RDS tiêu chuẩn bằng cách hỗ trợ các vai trò như Publisher và Distributor, vốn thường không được phép trên các bản RDS thông thường.<br>
+Amazon Web Services, Inc.</p>
+<h4 id="12-sql-server-replication-types">1.2 SQL Server Replication Types</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Replication Type</th>
+          <th>Supported on RDS for SQL Server</th>
+          <th>Supported on RDS Custom</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Transactional</td>
+          <td>Yes (as subscriber only)</td>
+          <td>Yes</td>
+          <td>Phổ biến cho đồng bộ gần thời gian thực — Amazon Web Services, Inc.</td>
+      </tr>
+      <tr>
+          <td>Snapshot</td>
+          <td>Yes (as subscriber only)</td>
+          <td>Yes</td>
+          <td>Chụp lại trạng thái dữ liệu tại một thời điểm — Amazon Web Services, Inc.</td>
+      </tr>
+      <tr>
+          <td>Merge</td>
+          <td>No</td>
+          <td>Yes (with limitations)</td>
+          <td>Yêu cầu dùng hostname thay cho CNAME khi thay thế host — Amazon Web Services, Inc.</td>
+      </tr>
+      <tr>
+          <td>Peer-to-peer</td>
+          <td>No</td>
+          <td>Yes (with limitations)</td>
+          <td>Cần cấu hình hostname để tránh lỗi khi host replacement — Amazon Web Services, Inc.</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Lưu ý:</strong> Merge và peer-to-peer replication trên RDS Custom yêu cầu sử dụng hostname thay vì CNAME để tránh lỗi khi có thay thế host.<br>
+Amazon Web Services, Inc.</p>
 <hr>
-<h2 id="the-pubsub-hub">The pub/sub hub</h2>
-<p>Việc sử dụng kiến trúc <strong>hub-and-spoke</strong> (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.</p>
+<h2 id="2-solution-overview--architecture">2. Solution Overview &amp; Architecture</h2>
+<p>Giải pháp gốc minh họa kiến trúc mẫu với hai instance RDS Custom trong cùng một vùng (region). Một instance đóng vai trò Publisher kiêm Distributor, trong khi instance còn lại đóng vai trò Subscriber. Replication được xử lý thông qua publication và subscription.<br>
+Amazon Web Services, Inc.</p>
+<p>Trước khi cấu hình replication, hãy đảm bảo:</p>
 <ul>
-<li>Mỗi microservice chỉ phụ thuộc vào <em>hub</em></li>
-<li>Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất</li>
-<li>Giảm số lượng synchronous calls vì pub/sub là <em>push</em> không đồng bộ một chiều</li>
-</ul>
-<p>Nhược điểm: cần <strong>phối hợp và giám sát</strong> để tránh microservice xử lý nhầm message.</p>
-<hr>
-<h2 id="core-microservice">Core microservice</h2>
-<p>Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:</p>
-<ul>
-<li><strong>Amazon S3</strong> bucket cho dữ liệu</li>
-<li><strong>Amazon DynamoDB</strong> cho danh mục dữ liệu</li>
-<li><strong>AWS Lambda</strong> để ghi message vào data lake và danh mục</li>
-<li><strong>Amazon SNS</strong> topic làm <em>hub</em></li>
-<li><strong>Amazon S3</strong> bucket cho artifacts như mã Lambda</li>
-</ul>
-<blockquote>
-<p>Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.</p></blockquote>
-<hr>
-<h2 id="front-door-microservice">Front door microservice</h2>
-<ul>
-<li>Cung cấp API Gateway để tương tác REST bên ngoài</li>
-<li>Xác thực &amp; ủy quyền dựa trên <strong>OIDC</strong> thông qua <strong>Amazon Cognito</strong></li>
-<li>Cơ chế <em>deduplication</em> tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-<ol>
-<li>SNS deduplication TTL chỉ 5 phút</li>
-<li>SNS FIFO yêu cầu SQS FIFO</li>
-<li>Chủ động báo cho sender biết message là bản sao</li>
-</ol>
+<li>
+<p>Cả hai instance RDS Custom đều được triển khai với cấu hình mạng và domain phù hợp (nếu dùng Kerberos).<br>
+Amazon Web Services, Inc.</p>
+</li>
+<li>
+<p>Tên server (<code>@@SERVERNAME</code>) trùng với hostname DNS được dùng cho replication.<br>
+Amazon Web Services, Inc.</p>
+</li>
+<li>
+<p>SQL Server Agent được bật trên cả publisher và subscriber.<br>
+Amazon Web Services, Inc.</p>
+</li>
+<li>
+<p>Kết nối mạng (cổng 1433) giữa các instance được cấu hình đúng.<br>
+Amazon Web Services, Inc.</p>
 </li>
 </ul>
 <hr>
-<h2 id="staging-er7-microservice">Staging ER7 microservice</h2>
+<h2 id="3-transactional-replication-configuration-guide">3. Transactional Replication Configuration Guide</h2>
+<p>Below are the steps to set up transactional replication between RDS Custom for SQL Server instances.<br>
+Amazon Web Services, Inc.</p>
+<h4 id="step-1-update-the-server-name-servername-if-needed">Step 1: Update the Server Name (<code>SERVERNAME</code>) if Needed</h4>
+<p>Connect to each instance (publisher and subscriber) and check the current value of <code>@@SERVERNAME</code>.</p>
+<p>If the current server name does not match the hostname/CNAME you plan to use, execute:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@@</span>SERVERNAME <span style="color:#66d9ef">AS</span> <span style="color:#e6db74">&#39;Current_Server_Name&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">EXEC</span> sp_dropserver <span style="color:#e6db74">&#39;old_server_name&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">EXEC</span> sp_addserver <span style="color:#e6db74">&#39;new_cname&#39;</span>, <span style="color:#e6db74">&#39;local&#39;</span>;
+</span></span></code></pre></div><h4 id="step-2-create-the-publication-on-the-publisher">Step 2: Create the Publication on the Publisher:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">DATABASE</span> PublicationDB;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GO</span>
+</span></span><span style="display:flex;"><span>USE PublicationDB;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GO</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> Tracker (
+</span></span><span style="display:flex;"><span>    Date DATE,
+</span></span><span style="display:flex;"><span>    RPO TIME,
+</span></span><span style="display:flex;"><span>    Status VARCHAR(<span style="color:#ae81ff">255</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (RPO)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GO</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> Tracker <span style="color:#66d9ef">VALUES</span> (<span style="color:#66d9ef">CAST</span>(GETDATE() <span style="color:#66d9ef">AS</span> Date), <span style="color:#66d9ef">CAST</span>(GETDATE() <span style="color:#66d9ef">AS</span> time(<span style="color:#ae81ff">7</span>)), <span style="color:#e6db74">&#39;Success&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GO</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">On</span> the Subscriber:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">DATABASE</span> SubscriptionDB;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GO</span>
+</span></span></code></pre></div><h4 id="bước-3-tạo-publication-và-subscription">Bước 3: Tạo Publication và Subscription</h4>
 <ul>
-<li>Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute</li>
-<li>Step Functions Express Workflow để chuyển ER7 → JSON</li>
-<li>Hai Lambda:
-<ol>
-<li>Sửa format ER7 (newline, carriage return)</li>
-<li>Parsing logic</li>
-</ol>
-</li>
-<li>Kết quả hoặc lỗi được đẩy lại vào pub/sub hub</li>
+<li>Trên Publisher, mở Replication &gt; New Publication Wizard</li>
+<li>Chọn database PublicationDB và chọn bảng Tracker làm article</li>
+<li>Tạo một subscription trỏ đến instance Subscriber</li>
+<li>Chọn push subscription, với agent chạy trên Distributor (có thể đặt trên cùng instance với Publisher nếu đã cấu hình)</li>
+<li>Sau khi hoàn tất cấu hình, bạn có thể theo dõi hoạt động replication bằng Replication Monitor</li>
 </ul>
+<h2 id="4-advantages-limitations--considerations">4. Advantages, Limitations &amp; Considerations</h2>
+<h4 id="advantages">Advantages</h4>
+<ul>
+<li>Hỗ trợ replication gốc của SQL Server trên RDS Custom — không cần xây dựng hệ thống replication bên ngoài</li>
+<li>Cung cấp nhiều loại replication (transactional, snapshot, merge, peer-to-peer) để đáp ứng nhiều trường hợp sử dụng</li>
+<li>Giúp giảm tải workload phân tích khỏi hệ thống sản xuất</li>
+</ul>
+<h4 id="limitations--risks">Limitations &amp; Risks</h4>
+<ul>
+<li>Merge và peer-to-peer replication yêu cầu cấu hình hostname và có thể gặp vấn đề khi thay thế host</li>
+<li>Độ trễ có thể xảy ra khi workload giao dịch cao</li>
+<li>Việc thay đổi tên server (@@SERVERNAME) yêu cầu khởi động lại và cần được thực hiện cẩn thận</li>
+<li>Các replication agent (Snapshot, Log Reader, Distribution) phải được giám sát để tránh lỗi</li>
+</ul>
+<h4 id="practical-considerations">Practical Considerations</h4>
+<ul>
+<li>Đảm bảo DNS/hostname ổn định — không phụ thuộc hoàn toàn vào CNAME khi có khả năng xảy ra host replacement</li>
+<li>Xác nhận SQL Server Agent được cấu hình auto-start</li>
+<li>Cấu hình các tài khoản Windows hoặc tài khoản domain phù hợp cho các replication agent (Snapshot Agent, Log Reader Agent, Distributor Agent)</li>
+<li>Giám sát độ trễ và lỗi replication thông qua SQL Server Replication Monitor</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Amazon RDS Custom for SQL Server allows you to use native SQL Server replication features that are not supported on standard RDS instances. You can deploy snapshot, transactional, merge, or peer-to-peer replication depending on your needs, with special attention to hostname configuration, server name settings, agent permissions, and network access.</p>
+<p>For environments requiring data distribution across multiple databases, high availability, or separate analytical workloads, native replication on RDS Custom provides powerful benefits without the need to build an external replication solution.</p>
+<h2 id="about-the-author">About the Author</h2>
+<p><strong>Sudhir Amin</strong>
+<img src="../../../images/Blog3.1.jpg" width="120" style="float:left; margin:0;" /></p>
+<p>Sudhir là Kiến trúc sư giải pháp cao cấp (Senior Solutions Architect) tại Amazon Web Services, làm việc tại New York. Anh cung cấp hướng dẫn kiến trúc và hỗ trợ kỹ thuật cho các khách hàng doanh nghiệp trên nhiều lĩnh vực khác nhau, giúp họ đẩy nhanh quá trình chuyển đổi và ứng dụng điện toán đám mây.
+Ngoài công việc, Sudhir đam mê bi-a (snooker) và các môn thể thao đối kháng như boxing và UFC. Anh cũng thích du lịch đến các khu bảo tồn thiên nhiên trên khắp thế giới để quan sát các loài động vật hoang dã trong môi trường tự nhiên của chúng.</p>
 <hr>
-<h2 id="tính-năng-mới-trong-giải-pháp">Tính năng mới trong giải pháp</h2>
-<h3 id="1-aws-cloudformation-cross-stack-references">1. AWS CloudFormation cross-stack references</h3>
-<p>Ví dụ <em>outputs</em> trong core microservice:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">Outputs</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Bucket</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref Bucket</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-Bucket</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ArtifactBucket</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref ArtifactBucket</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-ArtifactBucket</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Topic</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref Topic</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-Topic</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Catalog</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref Catalog</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-Catalog</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">CatalogArn</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">GetAtt Catalog.Arn</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-CatalogArn</span>
-</span></span></code></pre></div>
+<p><strong>Mesgana Gormley</strong>
+<img src="../../../images/Blog3.2.jpg" width="120" style="float:left; margin:0;" /></p>
+<p>Mesgana là Kiến trúc sư giải pháp chuyên gia cơ sở dữ liệu cao cấp (Senior Database Specialist Solution Architect) thuộc bộ phận Worldwide Public Sector (WWPS) tại Amazon Web Services (AWS), làm việc cùng nhóm Amazon RDS. Cô tập trung vào việc cung cấp hướng dẫn kỹ thuật cho khách hàng AWS, hỗ trợ họ di chuyển, thiết kế, triển khai và tối ưu hóa các khối lượng công việc cơ sở dữ liệu quan hệ trên AWS một cách hiệu quả.
+Ngoài công việc, Mesgana yêu thích du lịch và dành thời gian bên gia đình, bạn bè.</p>
+
 
 
 
@@ -1914,19 +1977,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1765118002"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1765118002"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1765118002"></script>
-    <script src="../../../js/jquery.sticky.js?1765118002"></script>
-    <script src="../../../js/featherlight.min.js?1765118002"></script>
-    <script src="../../../js/highlight.pack.js?1765118002"></script>
+    <script src="../../../js/clipboard.min.js?1765168168"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1765168168"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1765168168"></script>
+    <script src="../../../js/jquery.sticky.js?1765168168"></script>
+    <script src="../../../js/featherlight.min.js?1765168168"></script>
+    <script src="../../../js/highlight.pack.js?1765168168"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1765118002"></script>
-    <script src="../../../js/learn.js?1765118002"></script>
-    <script src="../../../js/hugo-learn.js?1765118002"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1765168168"></script>
+    <script src="../../../js/learn.js?1765168168"></script>
+    <script src="../../../js/hugo-learn.js?1765168168"></script>
 
-    <link href="../../../mermaid/mermaid.css?1765118002" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1765118002"></script>
+    <link href="../../../mermaid/mermaid.css?1765168168" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1765168168"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -15,21 +15,21 @@
     <title>Proposal :: Internship Report</title>
 
     
-    <link href="../css/nucleus.css?1765118001" rel="stylesheet">
-    <link href="../css/fontawesome-all.min.css?1765118001" rel="stylesheet">
-    <link href="../css/hybrid.css?1765118001" rel="stylesheet">
-    <link href="../css/featherlight.min.css?1765118001" rel="stylesheet">
-    <link href="../css/perfect-scrollbar.min.css?1765118001" rel="stylesheet">
-    <link href="../css/auto-complete.css?1765118001" rel="stylesheet">
-    <link href="../css/atom-one-dark-reasonable.css?1765118001" rel="stylesheet">
-    <link href="../css/theme.css?1765118001" rel="stylesheet">
-    <link href="../css/hugo-theme.css?1765118001" rel="stylesheet">
+    <link href="../css/nucleus.css?1765168167" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1765168167" rel="stylesheet">
+    <link href="../css/hybrid.css?1765168167" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1765168167" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1765168167" rel="stylesheet">
+    <link href="../css/auto-complete.css?1765168167" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1765168167" rel="stylesheet">
+    <link href="../css/theme.css?1765168167" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1765168167" rel="stylesheet">
     
-    <link href="../css/theme-workshop.css?1765118001" rel="stylesheet">
+    <link href="../css/theme-workshop.css?1765168167" rel="stylesheet">
     
     
 
-    <script src="../js/jquery-3.3.1.min.js?1765118001"></script>
+    <script src="../js/jquery-3.3.1.min.js?1765168167"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -88,14 +88,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../js/lunr.min.js?1765118001"></script>
-<script type="text/javascript" src="../js/auto-complete.js?1765118001"></script>
+<script type="text/javascript" src="../js/lunr.min.js?1765168167"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1765168167"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/Danh01092004.github.io\/AWS-workshop\/";
     
 </script>
-<script type="text/javascript" src="../js/search.js?1765118001"></script>
+<script type="text/javascript" src="../js/search.js?1765168167"></script>
  
   </div>
 
@@ -1017,21 +1017,27 @@
                     <div class="progress">
   <div class="wrapper"><nav id="TableOfContents">
   <ul>
-    <li><a href="#a-serverless-social-platform-with-ai-powered-recipe-generation">A Serverless Social Platform with AI-Powered Recipe Generation</a>
-      <ul>
-        <li><a href="#1-executive-summary">1. Executive Summary</a></li>
-        <li><a href="#2-problem-statement">2. Problem Statement</a></li>
-        <li><a href="#whats-the-problem">What’s the Problem?</a></li>
-        <li><a href="#the-solution">The Solution</a></li>
-        <li><a href="#benefits-and-return-on-investment">Benefits and Return on Investment</a></li>
-        <li><a href="#3-solution-architecture">3. Solution Architecture</a></li>
-        <li><a href="#4-technical-implementation">4. Technical Implementation</a></li>
-        <li><a href="#5-timeline--milestones">5. Timeline &amp; Milestones</a></li>
-        <li><a href="#6-budget-estimation">6. Budget Estimation</a></li>
-        <li><a href="#7-risk-assessment">7. Risk Assessment</a></li>
-        <li><a href="#8-expected-outcomes">8. Expected Outcomes</a></li>
-      </ul>
-    </li>
+    <li><a href="#11-executive-summary">1.1 Executive summary</a></li>
+    <li><a href="#12-project-success-criteria">1.2 Project Success Criteria</a></li>
+    <li><a href="#13-assumptions">1.3 Assumptions</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#21-technical-architecture-diagram">2.1 Technical Architecture Diagram</a></li>
+    <li><a href="#22-technical-plan">2.2 Technical Plan</a></li>
+    <li><a href="#23-project-plan">2.3 Project Plan</a></li>
+    <li><a href="#24-security-considerations">2.4 Security Considerations</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#31-activities-and-deliverables">3.1 Activities and deliverables</a></li>
+    <li><a href="#32-out-of-scope">3.2 OUT OF SCOPE</a></li>
+    <li><a href="#33-path-to-production">3.3 PATH TO PRODUCTION</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#71-acceptance-criteria-proposed">7.1 Acceptance Criteria (Proposed)</a></li>
+    <li><a href="#acceptance-process">7.2 Acceptance Process</a></li>
   </ul>
 </nav></div>
 </div>
@@ -1056,286 +1062,1182 @@
 
 
 
-	<h1 id="mini-food-social">Mini Food Social</h1>
-<h2 id="a-serverless-social-platform-with-ai-powered-recipe-generation">A Serverless Social Platform with AI-Powered Recipe Generation</h2>
-<h3 id="1-executive-summary">1. Executive Summary</h3>
-<p>The <strong>Mini Food Social</strong> project is designed as a modern, serverless web application for culinary enthusiasts to share food posts, upload images, and generate AI-based recipe suggestions. The platform supports up to <strong>100 registered users</strong> with authentication, CRUD functionality (create, read, update, delete posts), likes, comments, and AI integration.</p>
-<p>The system leverages <strong>AWS Serverless Architecture</strong> for scalability, low cost, and simplicity. The combination of <strong>AWS Amplify</strong>, <strong>Amazon API Gateway</strong>, <strong>AWS Lambda</strong>, <strong>Amazon DynamoDB</strong>, and <strong>Amazon Bedrock</strong> ensures end-to-end functionality with minimal operational overhead.</p>
-<p><strong>AWS Services Used</strong></p>
-<ul>
-<li><strong>AWS Amplify</strong>: Hosts Next.js web app and manages CI/CD.</li>
-<li><strong>Amazon API Gateway</strong>: Routes requests between frontend and backend.</li>
-<li><strong>AWS Lambda</strong>: Handles business logic and API endpoints.</li>
-<li><strong>Amazon DynamoDB</strong>: Stores user posts, likes, and comments.</li>
-<li><strong>Amazon Cognito</strong>: Manages user authentication.</li>
-<li><strong>Amazon Bedrock (Claude Model)</strong>: Generates creative recipes from user prompts.</li>
-<li><strong>Amazon CloudFront + WAF + Route 53</strong>: Ensures fast, secure content delivery.</li>
-</ul>
-<p><strong>Estimated Cost:</strong> <del>$16.70/month (</del>$200.40/year) without free tier.</p>
+	<h1 id="aws-first-cloud-ai-journey--project-plan">AWS First Cloud AI Journey – Project Plan</h1>
+<p><strong>Hello World – FPT University – EveryoneCook</strong></p>
+<p><strong>Date:</strong> 30/11/2025</p>
+<p>📥 <strong><a href="Proposal.docx">Download Full Proposal (DOCX)</a></strong></p>
 <hr>
-<h3 id="2-problem-statement">2. Problem Statement</h3>
-<h3 id="whats-the-problem">What’s the Problem?</h3>
-<p>Existing recipe-sharing platforms are either static or rely on heavy infrastructure. They often lack:</p>
+<h1 id="table-of-contents">TABLE OF CONTENTS</h1>
+<p><strong>1. <a href="../2-proposal/#background-and-motivation">BACKGROUND AND MOTIVATION</a></strong></p>
+<p>    1.1 <a href="../2-proposal/#executive-summary">executive summary</a></p>
+<p>    1.2 <a href="../2-proposal/#project-success-criteria">PROJECT SUCCESS CRITERIA</a></p>
+<p>    1.3 <a href="../2-proposal/#assumptions">Assumptions</a></p>
+<p><strong>2. <a href="../2-proposal/#solution-architecture-architectural-diagram">SOLUTION ARCHITECTURE / ARCHITECTURAL DIAGRAM</a></strong></p>
+<p>    2.1 <a href="../2-proposal/#technical-architecture-diagram">Technical Architecture Diagram</a></p>
+<p>    2.2 <a href="../2-proposal/#technical-plan">Technical Plan</a></p>
+<p>    2.3 <a href="../2-proposal/#project-plan">Project Plan</a></p>
+<p>    2.4 <a href="../2-proposal/#security-considerations">Security Considerations</a></p>
+<p><strong>3. <a href="../2-proposal/#activities-and-deliverables">ACTIVITIES AND DELIVERABLES</a></strong></p>
+<p>    3.1 <a href="../2-proposal/#activities-and-deliverables-1">Activities and deliverables</a></p>
+<p>    3.2 <a href="../2-proposal/#out-of-scope">OUT OF SCOPE</a></p>
+<p>    3.3 <a href="../2-proposal/#path-to-production">PATH TO PRODUCTION</a></p>
+<p><strong>4. <a href="../2-proposal/#expected-aws-cost-breakdown-by-services">EXPECTED AWS COST BREAKDOWN BY SERVICES</a></strong></p>
+<p><strong>5. <a href="../2-proposal/#team">TEAM</a></strong></p>
+<p><strong>6. <a href="../2-proposal/#resources-cost-estimates">RESOURCES &amp; COST ESTIMATES</a></strong></p>
+<p><strong>7. <a href="../2-proposal/#acceptance">ACCEPTANCE</a></strong></p>
+<h1 id="1background-and-motivation">1.BACKGROUND and motivation</h1>
+<h2 id="11-executive-summary">1.1 Executive summary</h2>
+<p><strong>Customer background</strong></p>
+<p>The customer is a startup focused on building a modern social network platform where users can share cooking recipes, upload food photos, exchange culinary experiences, and explore meals recommended by AI. The organization aims to deliver a highly interactive platform capable of serving a large and growing user base.</p>
+<p><strong>Business and technical objectives &ndash; drivers for moving to the AWS cloud</strong></p>
 <ul>
-<li>Personalized AI recipe generation.</li>
-<li>Serverless scalability and cost optimization.</li>
-<li>Secure authentication and lightweight architecture.</li>
+<li>Enable rapid development and deployment using AWS managed services</li>
+<li>Ensure high scalability as the user base and media storage grow</li>
+<li>Provide a reliable, low-latency environment for AI computation and content delivery</li>
+<li>Reduce upfront infrastructure cost and move toward a pay-as-you-go model</li>
+<li>Improve data security, backup, and compliance through AWS-native capabilities</li>
 </ul>
-<p>Managing infrastructure for dynamic social features like posts, likes, and AI generation requires significant effort and cost.</p>
-<h3 id="the-solution">The Solution</h3>
-<p>Mini Food Social solves these issues through <strong>a fully serverless AWS stack</strong>:</p>
+<p><strong>Use cases</strong></p>
 <ul>
-<li>AWS Amplify + Next.js for hosting and frontend logic.</li>
-<li>Cognito for authentication and user management.</li>
-<li>API Gateway connects to multiple Lambda functions (Post CRUD, User, AI Recipe).</li>
-<li>DynamoDB stores post metadata and user interactions.</li>
-<li>Bedrock (Claude) provides AI recipe generation via Lambda.</li>
-<li>CloudFront + WAF + Route 53 secure the content globally.</li>
+<li>Users upload recipes, photos, and cooking videos to the platform</li>
+<li>System recommends dishes using AI based on available ingredients provided by the user</li>
+<li>Users interact socially through liking, commenting, sharing, and following</li>
+<li>AI processes text and images to generate recipe suggestions</li>
+<li>Admins manage content, monitor platform activity, and track performance analytics</li>
 </ul>
-<h3 id="benefits-and-return-on-investment">Benefits and Return on Investment</h3>
+<p>To meet the customer&rsquo;s objectives of building a scalable social cooking platform with AI-powered recipe recommendations, the partner will deliver a full end-to-end cloud implementation on AWS. The services provided include:</p>
 <ul>
-<li><strong>Low Cost</strong> – Pay only for usage.</li>
-<li><strong>Fully Serverless</strong> – No manual scaling or servers.</li>
-<li><strong>AI-Enhanced Engagement</strong> – Personalized recipe generation keeps users active.</li>
-<li><strong>Secure</strong> – Cognito authentication and data encryption by AWS.</li>
+<li><strong>Cloud Architecture Design:</strong> Define a secure, highly scalable, serverless architecture using AWS best practices (Route 53, API Gateway, Lambda, DynamoDB, S3, CloudFront, Cognito)</li>
+<li><strong>AI Integration:</strong> Implement AWS Bedrock (Claude 3.5 Sonnet) for intelligent recipe suggestions, image analysis, and natural language processing features</li>
+<li><strong>Infrastructure Deployment:</strong> Build and deploy all backend, frontend, authentication, and data layers using Infrastructure as Code (IaC) with fully automated CI/CD pipelines</li>
+<li><strong>Security &amp; Compliance:</strong> Configure IAM roles, encryption (KMS), WAF, logging, monitoring, and compliance guardrails to ensure platform security</li>
+<li><strong>Observability Setup:</strong> Enable CloudWatch dashboards, alarms, X-Ray tracing, and log centralization for real-time monitoring and performance insights</li>
+<li><strong>DevOps &amp; Automation:</strong> Implement automated build/deploy workflows via GitLab + Amplify, operational pipelines, and auto-scaling configurations</li>
+<li><strong>Performance Optimization:</strong> Configure CDN caching, DynamoDB capacity scaling, search indexing, and asynchronous SQS-based background processing</li>
+<li><strong>Knowledge Transfer &amp; Documentation:</strong> Provide technical documentation, best practices, architectural guides, and handover training to the customer&rsquo;s engineering team</li>
 </ul>
-<p>The project demonstrates scalable social architecture under $20/month while integrating AI seamlessly into user experience.</p>
-<hr>
-<h3 id="3-solution-architecture">3. Solution Architecture</h3>
-<p>The Mini Food Social platform follows a <strong>five-layer architecture</strong>:</p>
+<h2 id="12-project-success-criteria">1.2 Project Success Criteria</h2>
+<p><strong>Project Success Criteria</strong></p>
+<ul>
+<li>
+<p>System availability ≥ 99.9% uptime across all production services (API
+Gateway, Lambda, DynamoDB, CloudFront).</p>
+</li>
+<li>
+<p>Page load time &lt; 2.5 seconds for the main user interface delivered
+through CloudFront and Amplify.</p>
+</li>
+<li>
+<p>API response time &lt; 300 ms for 90% of all user-facing API requests
+under normal traffic conditions.</p>
+</li>
+<li>
+<p>AI processing latency &lt; 5 seconds for recipe suggestions generated by
+AWS Bedrock.</p>
+</li>
+<li>
+<p>User authentication success rate ≥ 98% with Cognito handling
+registration, login, and email verification.</p>
+</li>
+<li>
+<p>Zero critical security vulnerabilities after security review and WAF
+rules deployment.</p>
+</li>
+<li>
+<p>Data durability of 99.999999999% (11 nines) ensured through S3 object
+storage and DynamoDB.</p>
+</li>
+<li>
+<p>Scalability to support 10,000+ concurrent users without degradation in
+performance due to serverless infrastructure.</p>
+</li>
+<li>
+<p>Operational cost control within target budget: monthly AWS usage not
+exceeding $200 for production.</p>
+</li>
+<li>
+<p>Image upload &amp; processing success rate ≥ 99%, supported by S3, Lambda
+Workers, and SQS.</p>
+</li>
+<li>
+<p>Search performance under 1 second (if OpenSearch is enabled) for
+recipe/content search queries.</p>
+</li>
+<li>
+<p>Monitoring coverage of 100% critical services using CloudWatch
+dashboards, alarms, and X-Ray tracing.</p>
+</li>
+<li>
+<p>CI/CD deployment time &lt; 5 minutes via GitHub → Amplify and IaC
+automation.</p>
+</li>
+<li>
+<p>Zero data loss events, ensured by DynamoDB PITR and S3 versioning.</p>
+</li>
+</ul>
+<h2 id="13-assumptions">1.3 Assumptions</h2>
+<ul>
+<li>
+<p>The customer will provide full access to their domain registrar
+(Hostinger) to configure DNS delegation to Route 53.</p>
+</li>
+<li>
+<p>The customer will provide valid AWS account access with Administrator
+privileges for deployment and configuration.</p>
+</li>
+<li>
+<p>All required AWS services (Amplify, API Gateway, Lambda, DynamoDB,
+CloudFront, Cognito, Bedrock, SES) are available and supported in the
+chosen region.</p>
+</li>
+<li>
+<p>SES will be successfully moved out of the sandbox and approved for
+production email sending.</p>
+</li>
+<li>
+<p>Third-party integrations (GitHub for CI/CD, external email clients,
+image upload sources) will remain available and stable.</p>
+</li>
+<li>
+<p>The development team will maintain source code quality and follow the
+architectural guidelines provided by the partner.</p>
+</li>
+<li>
+<p>The customer will provide timely feedback and approvals during design,
+testing, and deployment phases.</p>
+</li>
+</ul>
+<p><strong>Dependencies</strong></p>
+<ul>
+<li>
+<p>Reliable internet connectivity is required for all users accessing the
+web application and APIs.</p>
+</li>
+<li>
+<p>The system depends on AWS Bedrock (Claude 3.5 Sonnet) for AI recipe
+generation and may experience performance fluctuations if the model
+becomes rate-limited.</p>
+</li>
+<li>
+<p>Image upload and processing workflows depend on S3, Lambda, and SQS
+processing reliability.</p>
+</li>
+<li>
+<p>If OpenSearch is enabled, search features rely on the availability of
+the OpenSearch domain.</p>
+</li>
+<li>
+<p>GitHub Actions and Amplify depend on GitHub service availability.</p>
+</li>
+</ul>
+<p><strong>Constraints</strong></p>
+<ul>
+<li>
+<p>The project will be fully deployed in a single AWS region, which may
+impact latency for users outside the region.</p>
+</li>
+<li>
+<p>The solution is designed using serverless patterns; custom EC2-based
+workloads are outside the project scope.</p>
+</li>
+<li>
+<p>SES domain reputation may affect email deliverability during initial
+weeks.</p>
+</li>
+<li>
+<p>OpenSearch is deployed as a single-node cluster for cost efficiency,
+which means no high availability for search indexing.</p>
+</li>
+<li>
+<p>The system must stay within the customer&rsquo;s cost target (&lt;
+$200/month), limiting the use of large compute resources.</p>
+</li>
+</ul>
+<p><strong>Risks</strong></p>
+<ul>
+<li>
+<p>SES production approval may be delayed, impacting user onboarding
+emails and notifications.</p>
+</li>
+<li>
+<p>If traffic grows unexpectedly, DynamoDB provisioned capacity may
+throttle without timely scaling adjustments.</p>
+</li>
+<li>
+<p>AI model cost or latency changes by AWS may impact application
+performance or cost control.</p>
+</li>
+<li>
+<p>Misconfigured CloudFront caching could lead to higher latency or
+increased data transfer cost.</p>
+</li>
+<li>
+<p>Any incorrect IAM configuration could lead to security risks or
+service disruption.</p>
+</li>
+<li>
+<p>Customer team turnover or lack of DevOps skills may slow down future
+maintenance or deployments.</p>
+</li>
+</ul>
+<h1 id="solution-architecture-architectural-diagram">2. SOLUTION ARCHITECTURE / ARCHITECTURAL DIAGRAM</h1>
+<h2 id="21-technical-architecture-diagram">2.1 Technical Architecture Diagram</h2>
+<ul>
+<li>The proposed solution architecture for the AI-powered cooking social network platform is designed using a fully serverless and scalable AWS cloud-native stack. The architecture ensures high availability,security, and seamless integration between the web frontend, backend APIs, authentication, data storage, and AI recommendation services.</li>
+<li>Below is a description of the key components and how data flows across the system:</li>
+</ul>
+<p><strong>1. Network &amp; Edge Layer</strong></p>
+<p><strong>Amazon Route 53 (6&ndash;7)</strong></p>
+<ul>
+<li>Provides DNS routing for the custom domain used by the platform.</li>
+<li>Incoming HTTPS requests from users are resolved and forwarded to
+CloudFront.</li>
+</ul>
+<p><strong>Amazon CloudFront (9)</strong></p>
+<ul>
+<li>Acts as a global CDN distributing frontend content with low latency while caching static files.</li>
+</ul>
+<p><strong>AWS WAF (8)</strong></p>
+<ul>
+<li>Protects the application from common web exploits such as SQL
+injection, XSS, and bot attacks.</li>
+</ul>
+<p><strong>2. Frontend Hosting &amp; Deployment</strong></p>
+<p><strong>AWS Amplify Hosting (4)</strong></p>
+<ul>
+<li>Hosts and deploys the Next.js frontend application.</li>
+<li>Integrated with <strong>GitLab CI/CD (3)</strong> for automated deployments from the development workflow.</li>
+</ul>
+<p><strong>3. Application Layer</strong></p>
+<p><strong>Amazon Cognito (10)</strong></p>
+<ul>
+<li>Handles user authentication and authorization, supporting
+email/password and social logins.</li>
+</ul>
+<p><strong>Amazon API Gateway (11)</strong></p>
+<ul>
+<li>Serves as the main entry point for backend APIs, exposing REST
+endpoints used by the frontend.</li>
+</ul>
+<p><strong>AWS Lambda (12, 15)</strong></p>
+<ul>
+<li>
+<p>Contains the backend business logic, including:</p>
+</li>
+<li>
+<p>user management</p>
+</li>
+<li>
+<p>post and recipe operations</p>
+</li>
+<li>
+<p>ingredient analysis</p>
+</li>
+<li>
+<p>connecting to Bedrock for AI recommendations<br>
+This serverless architecture ensures automatic scaling and pay-per-use
+cost efficiency.</p>
+</li>
+</ul>
+<p><strong>4. AI Recommendation Layer</strong></p>
+<p><strong>Amazon Bedrock (16&ndash;17)</strong></p>
+<ul>
+<li>
+<p>Provides generative AI capabilities to suggest recipes based on
+user-provided ingredients.</p>
+</li>
+<li>
+<p>Lambda invokes Bedrock models (e.g., Claude, Titan) to:</p>
+</li>
+<li>
+<p>analyze ingredient lists</p>
+</li>
+<li>
+<p>generate recipe suggestions</p>
+</li>
+<li>
+<p>classify food categories</p>
+</li>
+<li>
+<p>optimize cooking steps.</p>
+</li>
+</ul>
+<p><strong>5. Data Storage Layer</strong></p>
+<p><strong>Amazon DynamoDB (13)</strong><br>
+Stores structured application data such as:</p>
+<ul>
+<li>
+<p>user profiles</p>
+</li>
+<li>
+<p>posts/recipes</p>
+</li>
+<li>
+<p>likes &amp; comments</p>
+</li>
+<li>
+<p>ingredient metadata.</p>
+</li>
+</ul>
+<p><strong>Amazon S3 (14)</strong><br>
+Stores unstructured data:</p>
+<ul>
+<li>
+<p>recipe images</p>
+</li>
+<li>
+<p>user-uploaded food photos</p>
+</li>
+<li>
+<p>static content.<br>
+An S3 bucket is integrated with CloudFront via OAI for secure access.</p>
+</li>
+</ul>
+<p><strong>6. Observability &amp; Security Layer</strong></p>
+<p><strong>Amazon CloudWatch (Logs &amp; Metrics)</strong><br>
+Monitors Lambda performance, API Gateway access logs, and system
+metrics.</p>
+<p><strong>AWS X-Ray</strong><br>
+Performs distributed tracing for API calls and debugging.</p>
+<p><strong>IAM</strong><br>
+Defines permission boundaries between API, Lambda functions, Bedrock,
+DynamoDB, and S3.</p>
+<p><strong>Amazon SES</strong><br>
+Sends verification emails, notifications, and password recovery
+messages.</p>
+<p><strong>Amazon SNS</strong><br>
+Handles system-level alerts and asynchronous messaging.</p>
+<p><strong>7. Deployment &amp; Infrastructure Management</strong></p>
+<p><strong>AWS CDK (1&ndash;2)</strong><br>
+Used by developers to define and provision the entire infrastructure
+via CloudFormation templates.<br>
+Ensures consistent, reproducible, version-controlled deployments.
+<img src="../images/2-Proposal/Fsocialarchitecture.png" alt="Your profile picture"></p>
+<h2 id="22-technical-plan">2.2 Technical Plan</h2>
+<p>Partner will develop Infrastructure-as-Code (IaC) automation using AWS
+CDK (Cloud Development Kit) with TypeScript/Python to provision the
+entire cloud environment. This approach ensures quick, consistent, and
+repeatable deployments across multiple AWS accounts and environments
+(dev, staging, production). All resources such as API Gateway, Lambda
+functions, DynamoDB tables, S3 buckets, Cognito user pools, Bedrock
+integration policies, and CloudFront distributions will be fully
+automated via IaC.</p>
+<p>Application build and deployment processes for the frontend (Next.js)
+will be automated using AWS Amplify Hosting, integrated with GitLab
+pipelines. Backend components will be deployed through CDK pipelines to
+ensure controlled, versioned, and repeatable releases.</p>
+<p>Some additional configuration such as custom domain setup, Route 53 DNS
+changes, SSL/TLS certificate issuance, and IAM permission approvals may
+require customer review and approval. These changes will follow the
+customer's existing change management process, including scheduled
+maintenance windows and documented approvals from the
+security/compliance teams.</p>
+<p>All critical paths, including authentication flows, AI recipe suggestion
+APIs, data persistence logic, and image upload workflows, will undergo
+extensive test coverage. Automated tests (unit, integration, and
+API-level) will be executed in CI/CD pipelines, and manual validation
+will be performed in the staging environment before production
+deployment.</p>
+<h2 id="23-project-plan">2.3 Project Plan</h2>
+<p>[Partner] will adopt the Agile Scrum framework across eight 2-week
+sprints. Stakeholders from the team are required to participate in
+Sprint Reviews and Sprint Retrospectives to ensure alignment and
+continuous improvement.</p>
+<p>The proposed team responsibilities are as follows:</p>
+<ul>
+<li>
+<p>Product Owner: Define user stories, prioritize backlog, and ensure the
+product meets user needs.</p>
+</li>
+<li>
+<p>Scrum Master**:** Facilitate Scrum ceremonies, remove blockers, and
+maintain team productivity.</p>
+</li>
+<li>
+<p>Development Team: Implement features, conduct unit testing, and
+collaborate on integration.</p>
+</li>
+<li>
+<p>AI/ML Specialist: Develop and fine-tune the AI recommendation engine
+that suggests recipes based on user-provided ingredients.</p>
+</li>
+<li>
+<p>UI/UX Designer: Design intuitive interfaces and ensure a smooth user
+experience on both web and mobile platforms.</p>
+</li>
+<li>
+<p>QA/Testers**:** Validate feature functionality, conduct regression
+testing, and ensure system reliability.</p>
+</li>
+</ul>
+<p>Communication cadences will be established as follows:</p>
+<ul>
+<li>
+<p>Daily Stand-ups**:** 15-minute meetings for progress updates and
+immediate blockers.</p>
+</li>
+<li>
+<p>Sprint Planning**:** At the start of each sprint to prioritize tasks.</p>
+</li>
+<li>
+<p>Sprint Review: At the end of each sprint to showcase completed
+features to stakeholders.</p>
+</li>
+<li>
+<p>Sprint Retrospective**:** Following each sprint review to identify
+improvements for the next sprint.</p>
+</li>
+</ul>
+<p>Knowledge transfer sessions will be conducted by the senior developers
+and AI specialists to ensure team members understand system
+architecture, AI integration, and deployment procedures.</p>
+<h2 id="24-security-considerations">2.4 Security Considerations</h2>
+<p>Partner will implement security best practices across the following five
+categories to ensure the confidentiality, integrity, and availability of
+the platform:</p>
 <ol>
-<li>
-<p><strong>Frontend (Amplify + Next.js)</strong>:</p>
-<ul>
-<li>Users upload photos, create posts, and view feeds.</li>
-<li>Handles authentication via Cognito and fetches API data.</li>
-</ul>
-</li>
-<li>
-<p><strong>API Gateway + Lambda Router</strong>:</p>
-<ul>
-<li>Routes requests (CRUD operations, AI requests).</li>
-<li>Lambda functions handle <code>createPost</code>, <code>getPosts</code>, <code>likePost</code>, and <code>generateRecipe</code>.</li>
-</ul>
-</li>
-<li>
-<p><strong>Database (DynamoDB)</strong>:</p>
-<ul>
-<li>Stores users, posts, likes, and recipe results.</li>
-</ul>
-</li>
-<li>
-<p><strong>AI Integration (Bedrock)</strong>:</p>
-<ul>
-<li>Claude model generates creative recipes based on user-uploaded photos or text prompts.</li>
-</ul>
-</li>
-<li>
-<p><strong>Security &amp; Delivery Layer (CloudFront + WAF + Route 53)</strong>:</p>
-<ul>
-<li>Protects the app from malicious traffic.</li>
-<li>Ensures low-latency delivery of assets.</li>
-</ul>
-</li>
+<li><strong>Access</strong></li>
 </ol>
-<p><strong>Architecture Diagram</strong>
-<img src="../images/2-Proposal/Untitled Diagram.drawio.png" alt="Your profile picture" width="800" height="500" /></p>
-<hr>
-<h3 id="4-technical-implementation">4. Technical Implementation</h3>
-<p><strong>Implementation Phases</strong></p>
 <ul>
 <li>
-<p><strong>Phase 1 – Research &amp; Design (Month 0)</strong></p>
-<ul>
-<li>Define system requirements and AWS architecture.</li>
-<li>Study Bedrock integration for recipe generation.</li>
-</ul>
+<p>Enable Multi-Factor Authentication (MFA) for all user and
+administrative accounts.</p>
 </li>
 <li>
-<p><strong>Phase 2 – Setup &amp; Pricing (Month 1)</strong></p>
-<ul>
-<li>Use AWS Pricing Calculator to estimate total cost (~$16.70/month).</li>
-<li>Create GitLab repository and Amplify CI/CD pipeline.</li>
-</ul>
+<p>Implement role-based access control (RBAC) to limit permissions based
+on user roles (e.g., admin, moderator, contributor).</p>
 </li>
 <li>
-<p><strong>Phase 3 – Build &amp; Integration (Month 2)</strong></p>
-<ul>
-<li>Develop Lambda APIs for CRUD and AI recipe endpoints.</li>
-<li>Configure DynamoDB tables and Cognito authentication flow.</li>
+<p>Enforce strong password policies and periodic password rotation.</p>
+</li>
 </ul>
+<ol start="2">
+<li><strong>Infrastructure</strong></li>
+</ol>
+<ul>
+<li>
+<p>Deploy the application on secure, managed cloud services (e.g., AWS)
+following AWS security best practices.</p>
 </li>
 <li>
-<p><strong>Phase 4 – Deployment &amp; Testing (Month 3)</strong></p>
-<ul>
-<li>Deploy Amplify frontend and backend stack.</li>
-<li>Test API integration, AI outputs, and security.</li>
-</ul>
+<p>Use Virtual Private Cloud (VPC), network segmentation, and security
+groups to isolate resources.</p>
+</li>
+<li>
+<p>Regularly patch operating systems and containerized services to
+mitigate vulnerabilities.</p>
 </li>
 </ul>
-<p><strong>Technical Requirements</strong></p>
+<ol start="3">
+<li><strong>Data</strong></li>
+</ol>
 <ul>
-<li><strong>Frontend:</strong> Next.js + AWS Amplify.</li>
-<li><strong>Backend:</strong> AWS Lambda, API Gateway, DynamoDB.</li>
-<li><strong>AI Module:</strong> AWS Lambda calling Amazon Bedrock (Claude) for text generation.</li>
-<li><strong>Auth:</strong> Amazon Cognito for login and JWT verification.</li>
-<li><strong>Storage:</strong> DynamoDB + optional S3 for image upload.</li>
+<li>
+<p>Encrypt all data at rest using AWS KMS-managed keys and data in
+transit using TLS/HTTPS.</p>
+</li>
+<li>
+<p>Implement data classification to protect sensitive user information
+(e.g., email, profile data, dietary preferences).</p>
+</li>
+<li>
+<p>Apply secure data storage and backup procedures to ensure availability
+and integrity.</p>
+</li>
 </ul>
-<hr>
-<h3 id="5-timeline--milestones">5. Timeline &amp; Milestones</h3>
+<ol start="4">
+<li><strong>Detection</strong></li>
+</ol>
+<ul>
+<li>
+<p>Enable AWS CloudTrail and AWS Config to monitor API activity and
+resource configurations.</p>
+</li>
+<li>
+<p>Deploy logging and alerting mechanisms to detect unusual or suspicious
+activities in real time.</p>
+</li>
+<li>
+<p>Conduct periodic vulnerability scanning and penetration testing on the
+platform.</p>
+</li>
+</ul>
+<ol start="5">
+<li><strong>Incident Management</strong></li>
+</ol>
+<ul>
+<li>
+<p>Establish a formal incident response plan including detection,
+containment, remediation, and communication.</p>
+</li>
+<li>
+<p>Maintain audit trails and logs to support forensic investigation if a
+security event occurs.</p>
+</li>
+<li>
+<p>Ensure [Customer] shares regulatory control validations to help
+[Partner] meet all compliance requirements (e.g., GDPR, local
+privacy regulations).</p>
+</li>
+</ul>
+<p>By adhering to these measures, Partner ensures that the social cooking
+platform remains secure, compliant, and resilient against potential
+threats.</p>
+<h1 id="3-activities-and-deliverables">3. Activities AND Deliverables</h1>
+<h2 id="31-activities-and-deliverables">3.1 Activities and deliverables</h2>
+<p><em>[Provide project milestones with timeline and respective deliverables,
+corresponding to the items and activities described in the Scope of Work
+/ Technical Project Plan section. Indicate plans on how to govern the
+project/ change management; communication plans; transition plans]</em></p>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 12%" />
+<col style="width: 25%" />
+<col style="width: 32%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Project Phase</strong></th>
+<th><strong>Timeline</strong></th>
+<th><strong>Activities</strong></th>
+<th><strong>Deliverables/Milestones</strong></th>
+<th><strong>Total man-day</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Infrastructure Setup</td>
+<td>Week 1-2</td>
+<td><p>- Learn all aws service</p>
+<p>- Practice Lab     </p></td>
+<td>-     Worklog </td>
+<td>2 week</td>
+</tr>
+<tr class="even">
+<td>Project Foundation &amp; Infrastructure Setup</td>
+<td>Week 3</td>
+<td><p>-  Initialize monorepo structure</p>
+<p>-   setup development environment       </p>
+<p>- Initialize Git repository and CI/CD</p>
+<p>- Initialize CDK project structure</p>
+<p>-Create environment configuration system</p>
+<p>-Setup CDK deployment scripts</p></td>
+<td><p>-  Setup Git repository with CI/CD pipelines and branch
+protection</p>
+<p>-  Configure local testing scripts and Git hooks for code quality</p>
+<p>- Set up AWS CDK project structure with proper organization for
+infrastructure as code</p>
+<p>-  Implement centralized configuration management for dev, staging,
+and prod environments</p></td>
+<td>1 week</td>
+</tr>
+<tr class="odd">
+<td><p>-DNS Infrastructure (Route 53 Hosted Zone) - DNS Stack</p>
+<p>- Side Quest: CloudFront yêu cầu ACM certificate ở us-east-1, nhưng
+stack chính deploy ở ap-southeast-1</p></td>
+<td>Week 4 ,5</td>
+<td><p>- Create a Public Hosted Zone</p>
+<p>- Configure name server delegation</p>
+<p>- Architecture Design</p>
+<p>- Create DNS Stack in CDK project</p>
+<p>- Connect DNS , User Route 53 Alias targeting for AWS - managed </p>
+<p>- Request ACM certificates, Configure DNS validation in Route 53</p>
+<p>- Configure MX records for email , add SPF,DKIM,DMARC for email
+authentication</p>
+<p>- Create DNS structure , Validate DNS</p>
+<p>-npm run cdk deploy EveryoneCook-dev-Certificate </p></td>
+<td><p>-  Domain &amp; Hosted Zone Setup</p>
+<p>- Deploy DNS Stack</p>
+<p>- Route 53 Hosted Zone Status</p>
+<p>- Create Public Hosted Zone &amp; NS Delegation Plan</p>
+<p>- ACM Certificates Automation</p>
+<p>- Test DNS</p>
+<p>- Link DNS to AWS Resources</p>
+<p>- Monitoring</p>
+<p>- Deploy Certificate Stack </p></td>
+<td>2 weeks</td>
+</tr>
+<tr class="even">
+<td>Structure Core Stack </td>
+<td>Week 6,7</td>
+<td><p>-  Initialize Core Stack for DynamoDB, S3, CloudFront, and
+OpenSearch infrastructure</p>
+<p>-  Create DynamoDB table with Provisioned Mode and Auto-Scaling for
+cost optimization</p>
+<p>- Implement Global Secondary Indexes for diverse access patterns</p>
+<p>- Configure KMS encryption and security settings for DynamoDB</p>
+<p>- Create all 4 S3 buckets (content, logs, incoming emails, CDN logs)
+with Intelligent-Tiering for cost optimization</p>
+<p>-  Configure CloudFront CDN with compression and caching
+optimization</p>
+<p>- Setup signed URLs for private content (avatars, backgrounds)</p>
+<p>- Create OpenSearch domain for advanced search with cost
+optimization</p></td>
+<td><p>- Create CoreStack class</p>
+<p>- Implement DynamoDB Single Table with cost optimization</p>
+<p>- Create 5 GSI indexes</p>
+<p>- Setup encryption and security for DynamoDB </p>
+<p>- S3 Storage, CloudFront CDN,OpenSeach Domain</p>
+<p>- Deploy Core Stack</p>
+<p> </p></td>
+<td>2 week</td>
+</tr>
+<tr class="odd">
+<td>Authentication Stack</td>
+<td>Week 8</td>
+<td><p>-  Initialize Authentication Stack for Cognito User Pool</p>
+<p>-  Create Cognito User Pool with production-grade security
+settings</p>
+<p>- Setup SES for production email sending with Route 53 DNS
+automation</p>
+<p>- Implement Lambda triggers for Cognito lifecycle events</p></td>
+<td><p><strong>-</strong> Cognito User Pool Setup</p>
+<p> - Implement Cognito User Pool with production settings</p>
+<p>- Configure SES email integration (Production mode)</p>
+<p>- Setup Cognito Lambda triggers</p></td>
+<td>1 week</td>
+</tr>
+<tr class="even">
+<td>Backend Stack (API Gateway + Lambda )</td>
+<td>Week 9,10</td>
+<td><p>-  Create API Gateway REST API with production settings and
+Cognito authorizer</p>
+<p>- Configure Cognito User Pool authorizer for API Gateway</p>
+<p>- Enable API Gateway caching for production to improve performance
+and reduce Lambda invocations</p>
+<p>-  Enable request validation at API Gateway level to reject invalid
+requests early</p>
+<p>- Enable compression for API responses to reduce data transfer
+costs</p>
+<p>-  Configure API Gateway custom domain for Everyone Cook project</p>
+<p>- Setup API Router Lambda directory structure</p>
+<p>- Implement routing logic for API Gateway requests</p>
+<p>-  Deploy API Router Lambda to AWS and implement JWT validation for
+Cognito tokens</p>
+<p>- Setup Auth &amp; User module directory structure</p></td>
+<td><p>- Create BackendStack class</p>
+<p>- Create API Gateway REST API</p>
+<p>- Setup Cognito Authorizer</p>
+<p>- Configure API Gateway caching</p>
+<p>-  Configure API Gateway request validation</p>
+<p>-  Enable API Gateway compression</p>
+<p>-  Configure API Gateway custom domain</p>
+<p>-  Create API Router Lambda structure</p>
+<p>-  Implement API Router handler</p>
+<p>-  Deploy API Router Lambda + Implement JWT Validation</p>
+<p>- Create Auth &amp; User module structure</p>
+<p>- Implement authentication handlers</p>
+<p>- Implement user profile handlers,…</p>
+<p>- Social Module Lambda</p></td>
+<td>2 weeks</td>
+</tr>
+<tr class="odd">
+<td>Frontend Stack + Fix bug , Tester</td>
+<td>Week 11,12</td>
+<td><p>- Foundation</p>
+<p>- Authentication</p>
+<p>- UserProfile Managenment</p>
+<p>- Privacy Setting Pagess</p>
+<p>- Avatar Upload Component</p>
+<p>- Recipe Management</p>
+<p>- AI Recipe Suggestion</p>
+<p>- Social Feature, Search Discovery</p>
+<p>- Testing and Fix Bug</p>
+<p>- Functional profile view page</p></td>
+<td><p><strong>-</strong> Login, signup, logout, password reset, and security middleware</p>
+<p>- Profile editing with validation</p>
+<p>- Avatar upload with S3 integration</p>
+<p>- Privacy settings interface</p></td>
+<td>2 week</td>
+</tr>
+</tbody>
+</table>
+<h2 id="32-out-of-scope">3.2 OUT OF SCOPE</h2>
+<p><strong>Real-time Messaging / Chat System</strong></p>
+<ul>
+<li>
+<p>Private or group chat</p>
+</li>
+<li>
+<p>Real-time messaging infrastructure (WebSocket, SignalR, Firebase
+Realtime DB, etc.)</p>
+</li>
+<li>
+<p>Message history storage &amp; encryption</p>
+</li>
+</ul>
+<p><strong>Friends / Social Graph Management</strong></p>
+<ul>
+<li>
+<p>Friend requests, following/followers</p>
+</li>
+<li>
+<p>User-to-user connection graph</p>
+</li>
+<li>
+<p>Activity feed, notifications tied to friend actions</p>
+</li>
+</ul>
+<p><strong>Real-time Voice &amp; Video Calling</strong></p>
+<ul>
+<li>
+<p>1-to-1 or group voice call</p>
+</li>
+<li>
+<p>Video call, screen sharing</p>
+</li>
+<li>
+<p>WebRTC signaling servers &amp; TURN/STUN infrastructure</p>
+</li>
+</ul>
+<p><strong>Advanced Social Interaction</strong></p>
+<ul>
+<li>
+<p>In-app messaging reactions</p>
+</li>
+<li>
+<p>Typing indicators, online/offline status</p>
+</li>
+<li>
+<p>Read receipts, presence tracking</p>
+</li>
+</ul>
+<h2 id="33-path-to-production">3.3 PATH TO PRODUCTION</h2>
+<p><strong>1. Project Foundation &amp; Infrastructure</strong></p>
+<p>- Initialize project structure</p>
+<p>- Set up core infrastructure baseline</p>
+<p>- Configure Route 53 Hosted Zone (DNS Stack)</p>
+<p><strong>2. Cross-Region Certificate (Side Quest)</strong></p>
+<p>- Handle CloudFront requirement for ACM certificate in <strong>us-east-1</strong></p>
+<p>- Sync certificate usage with main stack in <strong>ap-southeast-1</strong></p>
+<p><strong>3. Core Application Stacks</strong></p>
+<p><strong>- Core Stack:</strong> Shared resources / environment setup</p>
+<p><strong>- Authentication Stack:</strong> User auth, Cognito, permissions</p>
+<p><strong>- Backend Stack:</strong> API Gateway + Lambda functions</p>
+<p><strong>4. Frontend Deployment</strong></p>
+<p>- Deploy frontend (S3 + CloudFront)</p>
+<p>- Bug fixes &amp; QA testing</p>
+<h1 id="4-expected-aws-cost-breakdown-by-services">4. EXPECTED AWS COST BREAKDOWN BY SERVICES</h1>
+<p>Target workload: 100-500 Monthly Active Users (MAU)</p>
+<p>Average Lambda duration: 200ms per invocation</p>
+<p>DynamoDB peak activity: ~8 hours per month</p>
+<p>S3 to CloudFront data transfer is FREE (same region)</p>
+<p>All services leverage AWS Free Tier where applicable (Lambda 1M
+requests, SQS 1M requests, Cognito 50K MAU, Amplify 1000 build minutes)</p>
+<p>API Gateway caching enabled at 0.5GB ($14.60/month) - can be disabled
+to reduce costs</p>
+<p>CloudFront WAF removed to optimize costs (~$9/month savings), Shield
+Standard provides DDoS protection</p>
+<p>Bedrock uses on-demand pricing with Claude 3 Haiku (lowest cost
+Anthropic model)</p>
+<p><a href="https://calculator.aws/#/estimate?id=7a8833402a63e273357ddc71071bfc2cdce4be2c">https://calculator.aws/#/estimate?id=7a8833402a63e273357ddc71071bfc2cdce4be2c</a></p>
+<h1 id="5-team">5. TEAM</h1>
+<p><strong>Partner Executive Sponsor</strong></p>
 <table>
   <thead>
       <tr>
-          <th>Phase</th>
-          <th>Duration</th>
+          <th>Name</th>
+          <th>Title</th>
           <th>Description</th>
+          <th>Email / Contact Info</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>Month 0</td>
-          <td>1 month</td>
-          <td>Design system &amp; architecture</td>
-      </tr>
-      <tr>
-          <td>Month 1</td>
-          <td>1 month</td>
-          <td>Pricing &amp; setup of AWS Amplify + Cognito</td>
-      </tr>
-      <tr>
-          <td>Month 2</td>
-          <td>1 month</td>
-          <td>Develop API Gateway + Lambda + Bedrock integration</td>
-      </tr>
-      <tr>
-          <td>Month 3</td>
-          <td>1 month</td>
-          <td>Testing, deployment, and optimization</td>
-      </tr>
-      <tr>
-          <td>Post-Launch</td>
-          <td>Ongoing</td>
-          <td>Monitor, improve AI model prompts, collect feedback</td>
+          <td>Nguyen Gia Hung</td>
+          <td>Director of FCJ Vietnam Training Program</td>
+          <td>As the Executive Sponsor, you are responsible for the overall oversight of the FCJ internship program. Ensure the project delivers learning value and adheres to AWS technical and career goals</td>
+          <td><a href="mailto:hunggia@amazon.com">hunggia@amazon.com</a></td>
       </tr>
   </tbody>
 </table>
-<hr>
-<h3 id="6-budget-estimation">6. Budget Estimation</h3>
-<p>You can find the full budget on the <a href="https://calculator.aws/#/estimate?id=abcd1234efgh5678">AWS Pricing Calculator</a>.<br>
-Or download the <a href="../attachments/budget_estimation_mfs.pdf">Budget Estimation File</a>.</p>
-<h4 id="infrastructure-costs">Infrastructure Costs</h4>
+<p><strong>Project Stakeholders</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Title</th>
+          <th>Stakeholder for</th>
+          <th>Email / Contact Info</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Van Hoang Kha</td>
+          <td>Support Teams</td>
+          <td>is the Executive Assistant responsible for overall oversight of the FCJ internship program</td>
+          <td><a href="mailto:Khab9thd@gmail.com">Khab9thd@gmail.com</a></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Partner Project Team</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Title</th>
+          <th>Role</th>
+          <th>Email / Contact Info</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Pham Minh Hoang Viet</td>
+          <td>Leader</td>
+          <td>Project Manager</td>
+          <td><a href="mailto:vietpmhse181851@gmail.com">vietpmhse181851@gmail.com</a></td>
+      </tr>
+      <tr>
+          <td>Nguyen Van Truong</td>
+          <td>Member</td>
+          <td>DevOps</td>
+          <td><a href="mailto:truongnvse182034@fpt.edu.vn">truongnvse182034@fpt.edu.vn</a></td>
+      </tr>
+      <tr>
+          <td>Huynh Duc Anh</td>
+          <td>Member</td>
+          <td>Cloud Engineer</td>
+          <td><a href="mailto:anhhdse183114@fpt.edu.vn">anhhdse183114@fpt.edu.vn</a></td>
+      </tr>
+      <tr>
+          <td>Nguyen Thanh Hong</td>
+          <td>Member</td>
+          <td>Tester</td>
+          <td><a href="mailto:hongntse183239@fpt.edu.vn">hongntse183239@fpt.edu.vn</a></td>
+      </tr>
+      <tr>
+          <td>Nguyen Quy Duc</td>
+          <td>Member</td>
+          <td>Frontend</td>
+          <td><a href="mailto:ducnqse182087@fpt.edu.vn">ducnqse182087@fpt.edu.vn</a></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Project Escalation Contacts</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Title</th>
+          <th>Role</th>
+          <th>Email / Contact Info</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Pham Minh Hoang Viet</td>
+          <td>Leader</td>
+          <td>Project Manager</td>
+          <td><a href="mailto:vietpmhse181851@gmail.com">vietpmhse181851@gmail.com</a></td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="6-resources--cost-estimates">6. Resources &amp; cost estimates</h1>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Resource</strong></th>
+          <th><strong>Responsibility</strong></th>
+          <th><strong>Rate (USD) / Hour</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Solution Architects [[1]]{.mark}</td>
+          <td>Architecture design, AWS service selection, security review, cost optimization</td>
+          <td>$150</td>
+      </tr>
+      <tr>
+          <td>Engineers [[2]]{.mark}</td>
+          <td>Frontend (Next.js), Backend (Lambda/Node.js), Infrastructure (CDK), Testing</td>
+          <td>$100</td>
+      </tr>
+      <tr>
+          <td>Other . DevOps [1]</td>
+          <td>CI/CD setup, monitoring, deployment automation</td>
+          <td>$80</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 20%" />
+<col style="width: 19%" />
+<col style="width: 11%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Project Phase</strong></th>
+<th><strong>Solution Architects</strong></th>
+<th><strong>Engineers</strong></th>
+<th><p><strong>Other</strong></p>
+<p><strong>(DevOps)</strong></p></th>
+<th><strong>Total Hours</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Discovery &amp; Requirements</td>
+<td>16</td>
+<td>24</td>
+<td>8</td>
+<td>48</td>
+</tr>
+<tr class="even">
+<td>Architecture Design</td>
+<td>40</td>
+<td>16</td>
+<td>8</td>
+<td>64</td>
+</tr>
+<tr class="odd">
+<td>Development</td>
+<td>16</td>
+<td>200</td>
+<td>40</td>
+<td>256</td>
+</tr>
+<tr class="even">
+<td>Testing &amp; QA</td>
+<td>8</td>
+<td>40</td>
+<td>16</td>
+<td>64</td>
+</tr>
+<tr class="odd">
+<td>Deployment &amp; Go-Live</td>
+<td>8</td>
+<td>24</td>
+<td>24</td>
+<td>56</td>
+</tr>
+<tr class="even">
+<td>Documentation &amp; Training</td>
+<td>8</td>
+<td>16</td>
+<td>8</td>
+<td>32</td>
+</tr>
+<tr class="odd">
+<td>Total Hours</td>
+<td>96</td>
+<td>320</td>
+<td>104</td>
+<td>520</td>
+</tr>
+<tr class="even">
+<td>Total Cost</td>
+<td>$14,400 | $32,000</td>
+<td>$8,320 | $54,720</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Monthly AWS Infrastructure Cost</strong></p>
+<p><strong>Based on AWS Pricing Calculator estimate for 100-500 MAU:</strong></p>
 <table>
   <thead>
       <tr>
           <th>Service</th>
-          <th>Monthly Estimate</th>
+          <th>Monthly Cost (USD)</th>
           <th>Description</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>AWS Amplify</td>
-          <td>$3.00</td>
-          <td>Web hosting &amp; CI/CD</td>
+          <td>Amazon DynamoDB</td>
+          <td>$13.06</td>
+          <td>Single-table design, 5 GSIs, provisioned capacity</td>
       </tr>
       <tr>
-          <td>API Gateway</td>
-          <td>$2.50</td>
-          <td>20,000 requests/month</td>
+          <td>Amazon S3</td>
+          <td>$0.84</td>
+          <td>2 buckets, Intelligent-Tiering</td>
+      </tr>
+      <tr>
+          <td>Amazon CloudFront</td>
+          <td>$1.44</td>
+          <td>CDN, Price Class 200</td>
+      </tr>
+      <tr>
+          <td>Amazon Cognito</td>
+          <td>$5.00</td>
+          <td>User authentication</td>
       </tr>
       <tr>
           <td>AWS Lambda</td>
+          <td>$0.00</td>
+          <td>13 functions (Free Tier)</td>
+      </tr>
+      <tr>
+          <td>Amazon API Gateway</td>
+          <td>$20.65</td>
+          <td>REST API with 0.5GB cache</td>
+      </tr>
+      <tr>
+          <td>Amazon SQS</td>
+          <td>$0.00</td>
+          <td>8 queues (Free Tier)</td>
+      </tr>
+      <tr>
+          <td>Amazon SES</td>
+          <td>$0.02</td>
+          <td>Transactional emails</td>
+      </tr>
+      <tr>
+          <td>AWS KMS</td>
           <td>$2.00</td>
-          <td>50,000 invocations/month</td>
+          <td>2 customer managed keys</td>
       </tr>
       <tr>
-          <td>DynamoDB</td>
-          <td>$1.20</td>
-          <td>1 GB storage</td>
+          <td>AWS WAF</td>
+          <td>$10.00</td>
+          <td>Web ACL, 5 rules</td>
       </tr>
       <tr>
-          <td>Cognito</td>
-          <td>$1.00</td>
-          <td>100 active users</td>
+          <td>Amazon CloudWatch</td>
+          <td>$21.25</td>
+          <td>Metrics, dashboards, alarms, logs</td>
       </tr>
       <tr>
-          <td>Bedrock (Claude)</td>
-          <td>$5.00</td>
-          <td>500 AI recipe generations</td>
+          <td>Amazon Route 53</td>
+          <td>$0.93</td>
+          <td>DNS hosted zone</td>
       </tr>
       <tr>
-          <td>CloudFront + WAF</td>
-          <td>$2.00</td>
-          <td>CDN and basic firewall</td>
+          <td>AWS Amplify</td>
+          <td>$4.58</td>
+          <td>Frontend hosting (Next.js)</td>
+      </tr>
+      <tr>
+          <td>Amazon Bedrock</td>
+          <td>$64.80</td>
+          <td>Claude 3 Haiku AI</td>
+      </tr>
+      <tr>
+          <td>Total</td>
+          <td>~$144.54</td>
+          <td>Per month</td>
       </tr>
   </tbody>
 </table>
-<p><strong>Total Monthly:</strong> ~$16.70<br>
-<strong>Total Annual:</strong> ~$200.40</p>
-<hr>
-<h3 id="7-risk-assessment">7. Risk Assessment</h3>
-<h4 id="risk-matrix">Risk Matrix</h4>
+<p><strong>Cost Summary</strong></p>
 <table>
   <thead>
       <tr>
-          <th>Risk</th>
-          <th>Impact</th>
-          <th>Probability</th>
-          <th>Mitigation</th>
+          <th>Cost Type</th>
+          <th>Amount (USD)</th>
+          <th>Notes</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>High Bedrock Cost</td>
-          <td>Medium</td>
-          <td>Medium</td>
-          <td>Limit AI calls per user/day</td>
+          <td>One-time Development Cost</td>
+          <td>$54,720</td>
+          <td>Resource hours × rates</td>
       </tr>
       <tr>
-          <td>API Gateway Bottlenecks</td>
-          <td>Medium</td>
-          <td>Low</td>
-          <td>Use caching and CloudFront</td>
+          <td>Monthly AWS Infrastructure</td>
+          <td>~$145</td>
+          <td>Based on 100-500 MAU</td>
       </tr>
       <tr>
-          <td>DynamoDB Hot Partition</td>
-          <td>Medium</td>
-          <td>Low</td>
-          <td>Implement balanced keys</td>
+          <td>Annual AWS Infrastructure</td>
+          <td>~$1,740</td>
+          <td>Monthly × 12</td>
       </tr>
       <tr>
-          <td>Authentication Issues</td>
-          <td>Medium</td>
-          <td>Low</td>
-          <td>Use Cognito token refresh and multi-region backup</td>
-      </tr>
-      <tr>
-          <td>Over-usage</td>
-          <td>Low</td>
-          <td>Medium</td>
-          <td>Apply API throttling and budget alerts</td>
+          <td>Year 1 Total Cost</td>
+          <td>~$56,460</td>
+          <td>Development + 12 months AWS</td>
       </tr>
   </tbody>
 </table>
-<h4 id="contingency-plans">Contingency Plans</h4>
+<p>Cost Contribution Distribution</p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Party</strong></th>
+          <th><strong>Contribution (USD)</strong></th>
+          <th><strong>% Contribution of Total</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Customer</td>
+          <td>$54,720</td>
+          <td>100%</td>
+      </tr>
+      <tr>
+          <td>Partner</td>
+          <td>$0</td>
+          <td>$0</td>
+      </tr>
+      <tr>
+          <td>AWS</td>
+          <td>$0</td>
+          <td>$0</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="7-acceptance">7. Acceptance</h1>
+<p>Since this project is currently at the presentation stage and has not
+yet been formally evaluated by a customer, the following acceptance
+process is proposed for future delivery phases:</p>
+<h2 id="71-acceptance-criteria-proposed">7.1 Acceptance Criteria (Proposed)</h2>
+<p>A deliverable will be considered acceptable when it meets the following criteria:</p>
 <ul>
-<li>Use fallback recipe templates if Bedrock API fails.</li>
-<li>Migrate to DynamoDB on-demand mode for scalability.</li>
-<li>Enable AWS Cost Explorer alerts for budget control.</li>
+<li>
+<p>Functional features work as specified (authentication, recipe
+management, social features, AI functions).</p>
+</li>
+<li>
+<p>All APIs respond correctly and integrate with AWS services (Lambda,
+API Gateway, DynamoDB, S3).</p>
+</li>
+<li>
+<p>Security requirements are met (JWT verification, HTTPS, access
+control, data encryption).</p>
+</li>
+<li>
+<p>UI works as expected on supported devices.</p>
+</li>
+<li>
+<p>No critical errors appear during test execution.</p>
+</li>
 </ul>
-<hr>
-<h3 id="8-expected-outcomes">8. Expected Outcomes</h3>
-<h4 id="technical-improvements">Technical Improvements</h4>
+<h2 id="acceptance-process" class="unnumbered">7.2 Acceptance Process</h2>
 <ul>
-<li>Serverless architecture allows instant scalability.</li>
-<li>AI integration enriches user interaction and creativity.</li>
-<li>Minimal maintenance and infrastructure management.</li>
-</ul>
-<h4 id="long-term-value">Long-Term Value</h4>
-<ul>
-<li>Demonstrates AWS serverless and AI integration for education and startup use.</li>
-<li>Reusable for future projects (social, content, or AI-based apps).</li>
-<li>Foundation for AI-driven user personalization and recommendation systems.</li>
+<li>
+<p>Review period: <strong>8 business days</strong> for evaluation and testing.</p>
+</li>
+<li>
+<p>If accepted → Deliverable is signed off.</p>
+</li>
+<li>
+<p>If issues are found → A rejection notice will be issued with feedback.</p>
+</li>
+<li>
+<p>Fixes will be applied and a revised version will be resubmitted for
+review.</p>
+</li>
+<li>
+<p>If no response is received by the end of the review period →
+Deliverable is <strong>deemed accepted</strong>.</p>
+</li>
+<li>
+<p>After completing each milestone, the team submits the deliverables and documentation.</p>
+</li>
 </ul>
 
 
@@ -2069,19 +2971,19 @@ Or download the <a href="../attachments/budget_estimation_mfs.pdf">Budget Estima
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../js/clipboard.min.js?1765118001"></script>
-    <script src="../js/perfect-scrollbar.min.js?1765118001"></script>
-    <script src="../js/perfect-scrollbar.jquery.min.js?1765118001"></script>
-    <script src="../js/jquery.sticky.js?1765118001"></script>
-    <script src="../js/featherlight.min.js?1765118001"></script>
-    <script src="../js/highlight.pack.js?1765118001"></script>
+    <script src="../js/clipboard.min.js?1765168167"></script>
+    <script src="../js/perfect-scrollbar.min.js?1765168167"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1765168167"></script>
+    <script src="../js/jquery.sticky.js?1765168167"></script>
+    <script src="../js/featherlight.min.js?1765168167"></script>
+    <script src="../js/highlight.pack.js?1765168167"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../js/modernizr.custom-3.6.0.js?1765118001"></script>
-    <script src="../js/learn.js?1765118001"></script>
-    <script src="../js/hugo-learn.js?1765118001"></script>
+    <script src="../js/modernizr.custom-3.6.0.js?1765168167"></script>
+    <script src="../js/learn.js?1765168167"></script>
+    <script src="../js/hugo-learn.js?1765168167"></script>
 
-    <link href="../mermaid/mermaid.css?1765118001" rel="stylesheet" />
-    <script src="../mermaid/mermaid.js?1765118001"></script>
+    <link href="../mermaid/mermaid.css?1765168167" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js?1765168167"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

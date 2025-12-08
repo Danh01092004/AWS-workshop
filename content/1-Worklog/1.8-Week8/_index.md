@@ -55,5 +55,4 @@ pre: " <b> 1.8. </b> "
 
 ---
 
- **Summary:**  
-By the end of Week 8, I gained advanced knowledge of AWS networking, including hybrid cloud design, Direct Connect, and secure traffic management. I successfully configured and tested private connectivity and monitoring for production-grade cloud environments.
+

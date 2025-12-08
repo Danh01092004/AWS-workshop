@@ -1,125 +1,93 @@
 ---
 title: "Blog 4"
 date: 2025-01-01
-weight: 1
+weight: 4
 chapter: false
 pre: " <b> 3.4. </b> "
 ---
 
+# AWS for Games: Jackbox Games Mở Ra Cơ Hội Mới Với Amazon GameLift Streams
 
+**Bởi David Holladay – ngày 6 tháng 3 năm 2025**
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+*Tags: Amazon CloudFront, Amazon GameLift, Amazon SQS, Amazon S3, Giải pháp Khách hàng, Phát triển Game, Game, Messaging, Networking & Content Delivery, Storage, Industries*
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+## Giới Thiệu
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+Jackbox Games là studio trò chơi có trụ sở tại Chicago, nổi tiếng với các tựa game party như Quiplash, Fibbage, Drawful, Trivia Murder Party, và nhiều trò khác. Với hơn 50 trò chơi trong danh mục, Jackbox theo đuổi mục tiêu về "gaming dễ tiếp cận" — tức là người chơi có thể tham gia từ thiết bị bất kỳ mà họ có. Toàn bộ hạ tầng server của công ty được xây dựng trên Amazon Web Services.
 
----
+Trước đây, người chơi thường sử dụng TV để hiển thị trò chơi và điện thoại làm điều khiển — một cách chơi đơn giản nhưng vẫn rất phổ biến. Gần đây, Jackbox quyết định hợp tác với Amazon GameLift Streams để mang trải nghiệm chơi không cần cài đặt, truy cập trực tiếp cho người chơi.
 
-## Hướng dẫn kiến trúc
+Amazon GameLift Streams là một tính năng trong GameLift, cho phép trò chơi được stream với độ trễ thấp, khung hình cao và quy mô toàn cầu — giúp studio như Jackbox mở rộng phạm vi tiếp cận mà không cần phụ thuộc vào console hoặc thiết bị mạnh.
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+## 1. Kiểm Soát Chi Phí Khi Mở Rộng
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+Việc đưa một trò chơi lên nền tảng streaming có thể rất tốn kém nếu làm riêng lẻ. Jackbox có danh mục rất lớn, nên họ cần một cách tối ưu hóa chi phí.
 
-**Kiến trúc giải pháp bây giờ như sau:**
+#### 1.1 Tạo Nhóm Stream (Stream Group) Cho Tất Cả Trò Chơi
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+AWS đã hợp tác với Jackbox để gom 50 trò chơi vào một Stream Group duy nhất trong Amazon GameLift Streams. Nhờ vậy, họ có thể mở rộng quy mô cho toàn bộ danh mục cùng nhau thay vì từng trò riêng biệt.
 
----
+#### 1.2 Multi-tenancy & Giảm Chi Phí Tài Nguyên
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+Vì các trò Jackbox không yêu cầu GPU mạnh, một instance server có thể chạy nhiều trò chơi cùng lúc – tức là áp dụng mô hình đa ứng dụng (multi-tenancy) để tiết kiệm chi phí.
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+#### 1.3 Sử Dụng Data Channel Để Chèn Quảng Cáo
 
----
+Amazon GameLift Streams cung cấp tính năng Data Channel, cho phép chèn quảng cáo vào các khoảnh khắc hợp lý giữa các vòng chơi — giúp Jackbox duy trì mô hình miễn phí hoặc hỗ trợ doanh thu bằng quảng cáo.
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+## 2. Cải Thiện Quy Trình Cập Nhật Và Phát Hành
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+#### 2.1 Mô Hình Party Pack Truyền Thống & Hạn Chế
 
----
+Trước đây, Jackbox phát hành trò chơi theo Party Packs — mỗi gói gồm 5 trò. Khi muốn cập nhật một trò, họ phải cập nhật toàn bộ gói trên mọi nền tảng, gây phức tạp trong quản lý và triển khai.
 
-## The pub/sub hub
+#### 2.2 Streaming Cho Phép Cập Nhật Riêng Lẻ, Linh Hoạt
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+Với GameLift Streams, Jackbox có thể cập nhật một trò duy nhất ở server mà không ảnh hưởng các trò khác, và không cần quan tâm đến các platform khác nhau. Điều này cũng cho phép người chơi chuyển từ trò này sang trò kia mượt mà, mà không cần đóng mở gói trò.
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+#### 2.3 Tăng Tính Khả Khám Phá Trò Chơi (Discoverability)
 
----
+Khi mọi trò đều có thể truy cập qua dịch vụ streaming, người chơi có nhiều cơ hội thử trò mới ngay — thay vì bị giới hạn trong các gói họ đã mua trước.
 
-## Core microservice
+## 3. Hỗ Trợ & Tích Hợp Sâu Với AWS
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+#### 3.1 Hỗ Trợ Kỹ Thuật Tích Hợp Vào Slack
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+Trong quá trình triển khai, AWS hỗ trợ Jackbox trực tiếp thông qua Slack của họ — giúp đội phát triển dễ dàng trao đổi, giải quyết sự cố nhanh chóng. CTO Jackbox cho biết trải nghiệm này khiến AWS giống như một phần của đội họ.
 
----
+#### 3.2 Sử Dụng Nhiều Dịch Vụ AWS Khác
 
-## Front door microservice
+Bên cạnh GameLift Streams, Jackbox dùng nhiều dịch vụ AWS để vận hành hệ thống:
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+- **Amazon EC2** cho xử lý backend, session management
+- **Amazon S3** cho lưu trữ tài nguyên trò chơi và dữ liệu
+- **Amazon SQS** cho quản lý hàng đợi
+- **Amazon CloudFront** để phân phối nội dung nhanh và ổn định
 
----
+Tất cả đều nằm trong hệ sinh thái AWS mà Jackbox đã sử dụng từ trước.
 
-## Staging ER7 microservice
+## 4. Định Hướng Tương Lai & Tầm Nhìn
 
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+Jackbox rất kỳ vọng vào việc tiếp cận người chơi mới qua thiết bị phổ biến như Smart TV, mà không yêu cầu console. Họ muốn trải nghiệm như mở ứng dụng streaming (như Netflix) để chơi trò chơi trực tiếp.
 
----
+Streaming cũng tạo điều kiện để Jackbox xem xét hợp tác với các studio khác, đưa trò chơi từ các engine khác vào dịch vụ của họ — mở rộng danh mục nhanh hơn. CTO của Jackbox nhấn mạnh rằng streaming mở ra "mô hình kinh doanh mới" mà họ không làm được với cấu trúc Party Pack truyền thống — mô hình đăng ký, quảng cáo, truy cập trực tiếp — và GameLift Streams mang lại linh hoạt để họ tiếp tục phát triển.
 
-## Tính năng mới trong giải pháp
+## Kết Luận
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Nhờ ứng dụng Amazon GameLift Streams, Jackbox Games đạt được nhiều lợi ích:
+
+- Mở rộng khả năng tiếp cận người chơi toàn cầu
+- Giảm chi phí vận hành nhờ multi-tenancy và quản lý tập trung
+- Đơn giản hóa quy trình cập nhật trò chơi
+- Cho phép mô hình doanh thu linh hoạt hơn (quảng cáo, đăng ký)
+- Cải thiện trải nghiệm người chơi và khả năng khám phá nội dung
+
+Sự hợp tác giữa Jackbox và AWS cho thấy streaming trò chơi không chỉ là xu hướng, mà là nền tảng để đổi mới trong ngành game.
+
+## Về Tác Giả
+
+**David Holladay**
+<img src="/images/blog1.jpeg" width="300" style="float:left; margin:0;" />
+
+David Holladay là Principal Solutions Architect thuộc nhóm AWS Game Tech, chuyên tư vấn và hỗ trợ các studio trò chơi trong việc xây dựng hạ tầng quy mô lớn trên AWS. Ông có hơn 15 năm kinh nghiệm trong phát triển phần mềm và thiết kế hệ thống cho ngành game, từng làm việc với nhiều studio hàng đầu thế giới. Khi không làm việc, David yêu thích việc stream các game indie mới ra mắt và tham gia các sự kiện game jam để chia sẻ kinh nghiệm lập trình với cộng đồng phát triển trò chơi.
