@@ -1,0 +1,84 @@
+/* Common styles for menu and footer elements */
+#sidebar ul li,
+#sidebar a,
+left b,
+left a {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover effects */
+#sidebar ul li a:hover,
+left a:hover,
+left b:hover {
+    color: #00a6eb;
+    background: linear-gradient(135deg, rgba(0,166,235,0.1) 0%, rgba(0,166,235,0.05) 100%);
+    transform: translateX(5px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Advanced Tooltip */
+#sidebar ul li a:hover:after,
+left a:hover:after,
+left b:hover:after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 105%;
+    top: 50%;
+    transform: translateY(-50%);
+    min-width: 150px;
+    background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    z-index: 99999;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    animation: tooltipFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Arrow for tooltip */
+#sidebar ul li a:hover:before,
+left a:hover:before,
+left b:hover:before {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 8px solid transparent;
+    border-right-color: #2193b0;
+    animation: arrowFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animations */
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+}
+
+@keyframes arrowFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+}
+
+/* Active state */
+#sidebar ul li.active > a {
+    color: #00a6eb;
+    font-weight: bold;
+    background: linear-gradient(135deg, rgba(0,166,235,0.15) 0%, rgba(0,166,235,0.1) 100%);
+}
